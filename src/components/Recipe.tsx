@@ -1,7 +1,15 @@
-import { ITEMS_BASE_URL } from "../data/items";
-import RESOURCES, { RESOURCES_BASE_URL } from "../data/resources";
+import { JSX } from "react";
 
-const Recipe = ({ item }) => {
+import useFetch from "../hooks/useFetch";
+import { fetchResources } from "../http";
+
+import ErrorBlock from "./ErrorBlock";
+
+export const BASE_URL = "https://static.wikia.nocookie.net/astroneer_gamepedia/images/";
+
+const Recipe = ({ item }: { item: any }): JSX.Element => {
+  const { isFetching, error, fetchedData: resources } = useFetch(fetchResources, []);
+
   const recipeTable = () => {
     return (
       <table className="table">
@@ -11,19 +19,23 @@ const Recipe = ({ item }) => {
             <th className="p-2 text-end">Quantity</th>
           </tr>
         </thead>
-        <tbody>{item.recipe.map((recipeItem, i) => recipeTableRow(recipeItem, i))}</tbody>
+        <tbody>
+          {item.recipe.map((recipeItem: any, i: number) => recipeTableRow(recipeItem, i))}
+        </tbody>
       </table>
     );
   };
 
-  const recipeTableRow = (recipeItem, index) => {
-    const currentResource = RESOURCES.filter(r => r.name === recipeItem.resource)[0];
+  const recipeTableRow = (recipeItem: any, index: number) => {
+    if (!resources || resources.length === 0) return;
+
+    const currentResource = resources.filter((r: any) => r.name === recipeItem.resource)[0];
 
     return (
       <tr key={index}>
         <td className="p-2 text-start">
           <img
-            src={RESOURCES_BASE_URL + currentResource.icon}
+            src={BASE_URL + currentResource.icon}
             alt={`${recipeItem.resource} icon`}
             style={{ width: "20px" }}
           />
@@ -50,17 +62,26 @@ const Recipe = ({ item }) => {
     }
   };
 
+  if (isFetching)
+    return (
+      <div className="row">
+        <p className="col-12">Fetching resources...</p>
+      </div>
+    );
+
+  if (error) return <ErrorBlock title="Something went wrong." message={error} />;
+
   return (
     <div className="row">
       <h4 className="col-12">
-        <img src={ITEMS_BASE_URL + item.icon} alt={`${item.name} icon`} style={{ width: "25px" }} />
+        <img src={BASE_URL + item.icon} alt={`${item.name} icon`} style={{ width: "25px" }} />
         {item.name}
       </h4>
 
       <p className="text-small">{itemPrinter()}</p>
 
       <div className="col-xs-12 col-md-3">
-        <img src={ITEMS_BASE_URL + item.image} alt={`${item.name}`} className="w-100" />
+        <img src={BASE_URL + item.image} alt={`${item.name}`} className="w-100" />
       </div>
       <div className="col-xs-12 col-md-9">
         <div className="row">
