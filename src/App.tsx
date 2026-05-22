@@ -1,46 +1,33 @@
-import { JSX, useState } from "react";
-
+import { createBrowserRouter, RouterProvider } from "react-router";
 import "./App.css";
-
-import Header from "./components/Header";
+import RootPage from "./pages/RootPage";
+import HomePage, { itemsLoader } from "./pages/HomePage";
 import ItemSelector from "./components/ItemSelector";
-import Recipe from "./components/Recipe";
+import ErrorBlock from "./components/ErrorBlock";
 
 export const RESOURCES_BASE_URL = "https://static.wikia.nocookie.net/astroneer_gamepedia/images/";
 
-const App = (): JSX.Element => {
-  const [selectedItem, setSelectedItem] = useState<any>();
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootPage />,
+    errorElement: <ErrorBlock />,
+    children: [
+      {
+        path: "",
+        element: <HomePage />,
+        loader: itemsLoader,
+      },
+      {
+        path: "items/:id",
+        element: <ItemPage />,
+      },
+    ],
+  },
+]);
 
-  const handleClearForm = () => {
-    setSelectedItem(null);
-  };
-
-  return (
-    <div className="container">
-      <Header />
-
-      <main className="row">
-        <div>
-          <ItemSelector onSelectedItemChange={value => setSelectedItem(value)} />
-          {selectedItem && (
-            <p className="col badge text-bg-secondary">
-              {selectedItem.name}{" "}
-              <i
-                className="fa-solid fa-x"
-                style={{ cursor: "pointer" }}
-                onClick={handleClearForm}
-              ></i>
-            </p>
-          )}
-        </div>
-        <section className="col-12">
-          <h3>Recipe</h3>
-
-          {selectedItem && selectedItem ? <Recipe item={selectedItem} /> : <p>Nothing here.</p>}
-        </section>
-      </main>
-    </div>
-  );
+const App = () => {
+  return <RouterProvider router={router} />;
 };
 
 export default App;
