@@ -1,5 +1,6 @@
 [
   {
+    "id": "r1-n1",
     "icon": "5/57/Icon_Soil.png",
     "image": "9/90/Small_Canister_Full.png",
     "name": "soil",
@@ -7,6 +8,7 @@
     "type": "natural"
   },
   {
+    "id": "r2-n2",
     "icon": "e/e0/Icon_Resin.png",
     "image": "3/34/Nugget_Resin.png",
     "name": "resin",
@@ -14,6 +16,7 @@
     "type": "natural"
   },
   {
+    "id": "r3-n3",
     "icon": "f/fc/Icon_Quartz.png",
     "image": "4/40/Nugget_Quartz.png",
     "name": "quartz",
@@ -21,6 +24,7 @@
     "type": "natural"
   },
   {
+    "id": "r4-n4",
     "icon": "9/9a/Icon_Compound.png",
     "image": "0/0a/Nugget_Compound.png",
     "name": "compound",
@@ -28,6 +32,7 @@
     "type": "natural"
   },
   {
+    "id": "r5-n5",
     "icon": "9/90/Icon_Organic.png",
     "image": "c/ca/Nugget_Organic.png",
     "name": "organic",
@@ -35,6 +40,7 @@
     "type": "natural"
   },
   {
+    "id": "r6-n6",
     "icon": "a/ae/Icon_Wolframite.png",
     "image": "0/03/Nugget_Wolframite.png",
     "name": "wolframite",
@@ -42,6 +48,7 @@
     "type": "natural"
   },
   {
+    "id": "r7-n7",
     "icon": "4/4e/Icon_Clay.png",
     "image": "6/6e/Nugget_Clay.png",
     "name": "clay",
@@ -49,6 +56,7 @@
     "type": "natural"
   },
   {
+    "id": "r8-n8",
     "icon": "7/75/Icon_Hematite.png",
     "image": "3/39/Nugget_Hematite.png",
     "name": "hematite",
@@ -56,6 +64,7 @@
     "type": "natural"
   },
   {
+    "id": "r9-n9",
     "icon": "3/3b/Icon_Malachite.png",
     "image": "b/be/Nugget_Malachite.png",
     "name": "malachite",
@@ -63,6 +72,7 @@
     "type": "natural"
   },
   {
+    "id": "r10-n10",
     "icon": "0/05/Icon_Laterite.png",
     "image": "0/08/Nugget_Laterite.png",
     "name": "laterite",
@@ -70,6 +80,7 @@
     "type": "natural"
   },
   {
+    "id": "r11-n11",
     "icon": "3/30/Icon_Ammonium.png",
     "image": "f/f5/Nugget_Ammonium.png",
     "name": "ammonium",
@@ -77,6 +88,7 @@
     "type": "natural"
   },
   {
+    "id": "r12-n12",
     "icon": "c/c1/Icon_Graphite.png",
     "image": "c/cf/Nugget_Graphite.png",
     "name": "graphite",
@@ -84,6 +96,7 @@
     "type": "natural"
   },
   {
+    "id": "r13-n13",
     "icon": "d/d8/Icon_Titanite.png",
     "image": "e/e7/Nugget_Titanite.png",
     "name": "titanite",
@@ -91,6 +104,7 @@
     "type": "natural"
   },
   {
+    "id": "r14-n14",
     "icon": "2/20/Icon_Lithium.png",
     "image": "e/ef/Nugget_Lithium.png",
     "name": "lithium",
@@ -98,6 +112,7 @@
     "type": "natural"
   },
   {
+    "id": "r15-n15",
     "icon": "3/3c/Icon_Astronium.png",
     "image": "f/f0/Nugget_Astronium.png",
     "name": "astronium",
@@ -105,6 +120,7 @@
     "type": "natural"
   },
   {
+    "id": "r16-n16",
     "icon": "5/5d/Icon_Sphalerite.png",
     "image": "c/cd/Nugget_Sphalerite.png",
     "name": "sphalerite",
@@ -112,78 +128,88 @@
     "type": "natural"
   },
   {
+    "id": "r17-r1",
     "icon": "7/76/Icon_Glass.png",
     "image": "3/3b/Nugget_Glass.png",
     "name": "glass",
-    "recipe": [{ "resource": "quartz" }],
+    "recipe": [{ "resource": "r3-n3" }],
     "obtainBy": "smelting",
     "type": "refined"
   },
   {
+    "id": "r18-r2",
     "icon": "d/d1/Icon_Carbon.png",
     "image": "4/48/Nugget_Carbon.png",
     "name": "carbon",
-    "recipe": [{ "resource": "organic" }],
+    "recipe": [{ "resource": "r5-n5" }],
     "obtainBy": "smelting",
     "type": "refined"
   },
   {
+    "id": "r19-r3",
     "icon": "9/91/Icon_Tungsten.png",
     "image": "4/48/Nugget_Tungsten.png",
     "name": "tungsten",
-    "recipe": [{ "resource": "wolframite" }],
+    "recipe": [{ "resource": "r6-n6" }],
     "obtainBy": "smelting",
     "type": "refined"
   },
   {
+    "id": "r20-r4",
     "icon": "0/03/Icon_Ceramic.png",
     "image": "1/10/Nugget_Ceramic.png",
     "name": "ceramic",
-    "recipe": [{ "resource": "clay" }],
+    "recipe": [{ "resource": "r7-n7" }],
     "obtainBy": "smelting",
     "type": "refined"
   },
   {
+    "id": "r21-r5",
     "icon": "7/71/Icon_Iron.png",
     "image": "b/bf/Nugget_Iron.png",
     "name": "iron",
-    "recipe": [{ "resource": "hematite" }],
+    "recipe": [{ "resource": "r8-n8" }],
     "obtainBy": "smelting",
     "type": "refined"
   },
   {
+    "id": "r22-r6",
     "icon": "d/db/Icon_Copper.png",
     "image": "e/e6/Nugget_Copper.png",
     "name": "copper",
-    "recipe": [{ "resource": "malachite" }],
+    "recipe": [{ "resource": "r9-n9" }],
     "obtainBy": "smelting",
     "type": "refined"
   },
   {
+    "id": "r23-r7",
     "icon": "a/ac/Icon_Aluminum.png",
     "image": "0/0f/Nugget_Aluminum.png",
     "name": "aluminum",
-    "recipe": [{ "resource": "laterite" }],
+    "recipe": [{ "resource": "r10-n10" }],
     "obtainBy": "smelting",
     "type": "refined"
   },
   {
+    "id": "r24-r8",
     "icon": "2/2a/Icon_Titanium.png",
     "image": "a/a9/Nugget_Titanium.png",
     "name": "titanium",
-    "recipe": [{ "resource": "titanite" }],
+    "recipe": [{ "resource": "r13-n13" }],
     "obtainBy": "smelting",
     "type": "refined"
   },
   {
+    "id": "r25-r9",
     "icon": "8/85/Icon_Zinc.png",
     "image": "b/b6/Nugget_Zinc.png",
     "name": "zinc",
-    "recipe": [{ "resource": "sphalerite" }],
+    "recipe": [{ "resource": "r16-n16" }],
     "obtainBy": "smelting",
     "type": "refined"
   },
   {
+    "id": "r26-a1",
     "icon": "1/14/Icon_Methane.png",
     "image": "e/e6/Nugget_Methane.png",
     "name": "methane",
@@ -191,6 +217,7 @@
     "type": "atmospheric"
   },
   {
+    "id": "r27-a2",
     "icon": "4/45/Icon_Sulfur.png",
     "image": "5/5d/Nugget_Sulfur.png",
     "name": "sulfur",
@@ -198,6 +225,7 @@
     "type": "atmospheric"
   },
   {
+    "id": "r28-a3",
     "icon": "2/24/Icon_Argon.png",
     "image": "b/b7/Nugget_Argon.png",
     "name": "argon",
@@ -205,6 +233,7 @@
     "type": "atmospheric"
   },
   {
+    "id": "r29-a4",
     "icon": "4/42/Icon_Hydrogen.png",
     "image": "4/40/Nugget_Hydrogen.png",
     "name": "hydrogen",
@@ -212,6 +241,7 @@
     "type": "atmospheric"
   },
   {
+    "id": "r30-a5",
     "icon": "e/e2/Icon_Nitrogen.png",
     "image": "d/d7/Nugget_Nitrogen.png",
     "name": "nitrogen",
@@ -219,6 +249,7 @@
     "type": "atmospheric"
   },
   {
+    "id": "r31-a6",
     "icon": "7/79/Icon_Helium.png",
     "image": "9/9a/Nugget_Helium.png",
     "name": "helium",
@@ -227,109 +258,123 @@
   },
 
   {
+    "id": "r32-c1",
     "icon": "1/11/Icon_Silicone.png",
     "image": "b/b6/Nugget_Silicone.png",
     "name": "silicon",
-    "recipe": [{ "resource": "resin" }, { "resource": "quartz" }, { "resource": "organic" }],
+    "recipe": [{ "resource": "r2-n2" }, { "resource": "r3-n3" }, { "resource": "r5-n5" }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r33-c2",
     "icon": "a/a5/Icon_Rubber.png",
     "image": "5/5f/Nugget_Rubber.png",
     "name": "rubber",
-    "recipe": [{ "resource": "resin" }, { "resource": "organic" }],
+    "recipe": [{ "resource": "r2-n2" }, { "resource": "r5-n5" }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r34-c3",
     "icon": "c/c8/Icon_Plastic.png",
     "image": "b/b9/Nugget_Plastic.png",
     "name": "plastic",
-    "recipe": [{ "resource": "carbon" }, { "resource": "compound" }],
+    "recipe": [{ "resource": "r18-r2" }, { "resource": "r4-n4" }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r35-c4",
     "icon": "8/8f/Icon_Explosive_Powder.png",
     "image": "f/fb/Nugget_ExplosivePowder.png",
     "name": "explosive powder",
-    "recipe": [{ "resource": "sulfur" }, { "resource": "carbon", "quantity": 2 }],
+    "recipe": [{ "resource": "r27-a2" }, { "resource": "r18-r2", "quantity": 2 }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r36-c5",
     "icon": "3/38/Icon_Steel.png",
     "image": "6/60/Nugget_Steel.png",
     "name": "steel",
-    "recipe": [{ "resource": "carbon" }, { "resource": "argon" }, { "resource": "iron" }],
+    "recipe": [{ "resource": "r18-r2" }, { "resource": "r28-a3" }, { "resource": "r21-r5" }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r37-c6",
     "icon": "0/06/Icon_Tungsten_Carbide.png",
     "image": "c/cf/Nugget_Tungsten_Carbide.png",
     "name": "tungsten carbide",
-    "recipe": [{ "resource": "tungsten" }, { "resource": "carbon" }],
+    "recipe": [{ "resource": "r19-r3" }, { "resource": "r18-r2" }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r38-c7",
     "icon": "3/30/Icon_Aluminum_Alloy.png",
     "image": "0/00/Nugget_Aluminum_Alloy.png",
     "name": "aluminum alloy",
-    "recipe": [{ "resource": "copper" }, { "resource": "aluminum" }],
+    "recipe": [{ "resource": "r22-r6" }, { "resource": "r23-r7" }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r39-c8",
     "icon": "f/fb/Icon_Hydrazine.png",
     "image": "e/ec/Nugget_Hydrazine.png",
     "name": "hydrazine",
-    "recipe": [{ "resource": "hydrogen" }, { "resource": "ammonium", "quantity": 2 }],
+    "recipe": [{ "resource": "r29-a4" }, { "resource": "r11-n11", "quantity": 2 }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r40-c9",
     "icon": "a/af/Icon_Graphene.png",
     "image": "9/95/Nugget_Graphene.png",
     "name": "graphene",
-    "recipe": [{ "resource": "graphite" }, { "resource": "hydrazine" }],
+    "recipe": [{ "resource": "r12-n12" }, { "resource": "r39-c8" }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r41-c10",
     "icon": "a/af/Icon_Diamond.png",
     "image": "8/8a/Nugget_Diamond.png",
     "name": "diamond",
-    "recipe": [{ "resource": "graphene", "quantity": 2 }],
+    "recipe": [{ "resource": "r40-c9", "quantity": 2 }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r42-c11",
     "icon": "8/85/Icon_Titanium_Alloy.png",
     "image": "1/1f/Nugget_Titanium_Alloy.png",
     "name": "titanium alloy",
-    "recipe": [{ "resource": "graphene" }, { "resource": "titanium" }, { "resource": "nitrogen" }],
+    "recipe": [{ "resource": "r40-c9" }, { "resource": "r24-r8" }, { "resource": "r30-a5" }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
   {
+    "id": "r43-c12",
     "icon": "0/0c/Icon_Nanocarbon_Alloy.png",
     "image": "c/cb/Nugget_Nanocarbon_Alloy.png",
     "name": "nano-carbon alloy",
-    "recipe": [{ "resource": "titanium ally" }, { "resource": "helium" }],
+    "recipe": [{ "resource": "r42-c11" }, { "resource": "r31-a6" }],
     "obtainBy": "chemistryLab",
     "type": "composite"
   },
 
   {
+    "id": "r44-o1",
     "icon": "7/74/Icon_Scrap.png",
     "image": "9/97/Nugget_Scrap.png",
     "name": "scrap",
     "type": "other"
   },
   {
+    "id": "r45-o2",
     "icon": "f/fa/Icon_EXO_Chip.png",
     "image": "e/e7/Nugget_EXO_Chip.png",
     "name": "EXO chip",
