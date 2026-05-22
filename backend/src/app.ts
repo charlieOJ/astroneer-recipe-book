@@ -21,7 +21,6 @@ app.get("/", (req, res) => {
 
 app.get("/resources", async (req, res) => {
   const fileContent = (await fs.readFile("./data/resources.json")) as any;
-
   const data = JSON.parse(fileContent);
 
   res.status(200).json({ resources: data });
@@ -29,10 +28,17 @@ app.get("/resources", async (req, res) => {
 
 app.get("/items", async (req, res) => {
   const fileContent = (await fs.readFile("./data/items.json")) as any;
-
   const data = JSON.parse(fileContent);
 
   res.status(200).json({ items: data });
+});
+
+app.get("/item/:id", async (req, res) => {
+  const fileContent = (await fs.readFile("./data/items.json")) as any;
+  const data = JSON.parse(fileContent);
+  const item = data.find((item: any) => item.id === req.params.id);
+
+  res.status(200).json({ item });
 });
 
 // 404
