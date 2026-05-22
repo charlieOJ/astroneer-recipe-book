@@ -14,8 +14,8 @@ export const fetchItems = async () => {
 
   const data = await response.json();
   if (!response.ok) {
-    throw new Error("Failed to fetch user items.");
+    throw new Response(JSON.stringify({ message: "Failed to fetch user items." }), { status: 500 });
   }
 
-  return data.items;
+  return { items: data.items };
 };
