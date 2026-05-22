@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import "./App.css";
 import RootPage from "./pages/RootPage";
 import HomePage, { itemsLoader } from "./pages/HomePage";
-import ItemSelector from "./components/ItemSelector";
+import ItemPage from "./pages/ItemPage";
 import ErrorBlock from "./components/ErrorBlock";
 
 export const RESOURCES_BASE_URL = "https://static.wikia.nocookie.net/astroneer_gamepedia/images/";
