@@ -18,6 +18,10 @@ const router = createBrowserRouter([
         element: <HomePage />,
         loader: itemsLoader,
       },
+      {
+        path: "items/:id",
+        element: <ItemPage />,
+      },
     ],
   },
 ]);
