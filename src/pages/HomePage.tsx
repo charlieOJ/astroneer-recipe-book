@@ -7,8 +7,6 @@ import SearchableList from "../components/SearchableList";
 import { fetchItems } from "../util/http";
 import { Await, useLoaderData } from "react-router-dom";
 
-export const RESOURCES_BASE_URL = "https://static.wikia.nocookie.net/astroneer_gamepedia/images/";
-
 const HomePage = (): JSX.Element => {
   const { items } = useLoaderData();
 
