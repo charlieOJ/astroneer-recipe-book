@@ -5,8 +5,6 @@ import HomePage, { itemsLoader } from "./pages/HomePage";
 import ItemPage, { itemLoader } from "./pages/ItemPage";
 import ErrorBlock from "./components/ErrorBlock";
 
-export const RESOURCES_BASE_URL = "https://static.wikia.nocookie.net/astroneer_gamepedia/images/";
-
 const router = createBrowserRouter([
   {
     path: "/",
