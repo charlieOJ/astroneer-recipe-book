@@ -7,7 +7,7 @@ interface Error {
 }
 
 const ErrorBlock = (): JSX.Element => {
-  const error = useRouteError() as Error;
+  const error = useRouteError() as Error | any;
 
   let title = "An error occurred!";
   let message = "Something went wrong!";
@@ -21,6 +21,7 @@ const ErrorBlock = (): JSX.Element => {
       message = "Could not find resource or page.";
       break;
     default:
+      message = error.message;
   }
 
   return (
