@@ -28,7 +28,19 @@ const SearchableList = ({ items, itemKeyFn, children }: Props) => {
 
   return (
     <div className="searchable-list">
-      <input type="search" placeholder="Search" onChange={onChange} />
+      <div className="input-group my-4">
+        <span className="input-group-text" id="basic-addon1">
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </span>
+        <input
+          type="search"
+          className="form-control"
+          placeholder="Search item"
+          aria-label="Search item"
+          aria-describedby="basic-addon1"
+          onChange={onChange}
+        />
+      </div>
 
       <div className="row">
         {searchResults.map(item => (
