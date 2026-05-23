@@ -1,14 +1,16 @@
-import { RESOURCES_BASE_URL } from "../App";
-import useFetch from "../hooks/useFetch";
+import { PRINTERS, RESOURCES_BASE_URL } from "../util/constants";
 import { itemType } from "../types/itemType";
+import useFetch from "../hooks/useFetch";
 import { fetchResources } from "../util/http";
+
 import ErrorBlock from "./ErrorBlock";
 
 const RecipeTable = ({ item }: { item: itemType }) => {
-  const resourceIds = item.recipe?.map(ing => ing.resource) || [];
-  const { isFetching, error, fetchedData: resources } = useFetch(fetchResources);
-  const recipeItems =
-    resources?.resources.filter((resource: any) => resourceIds.includes(resource.id)) || [];
+  const resourceIds = useMemo(() => item.recipe?.map((ing: any) => ing.resource) || [], [item]);
+  const { isFetching, error, fetchedData } = useFetch(fetchResources);
+  const resources = fetchedData?.resources;
+  const recipeItems = resources?.filter((resource: any) => resourceIds.includes(resource.id)) || [];
+
 
   return (
     <table className="table">
@@ -53,7 +55,7 @@ const RecipeTable = ({ item }: { item: itemType }) => {
               </ul>
             )}
           </td>
-          <td className="text-center">{item.tier}</td>
+          <td className="text-center">{PRINTERS[item.tier - 1]}</td>
           <td className="text-center">{item.name}</td>
         </tr>
       </tbody>

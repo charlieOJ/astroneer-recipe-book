@@ -1,6 +1,6 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { RESOURCES_BASE_URL } from "../util/constants";
 import { fetchItem } from "../util/http";
-import { RESOURCES_BASE_URL } from "../App";
 import RecipeTable from "../components/RecipeTable";
 
 const ItemPage = () => {

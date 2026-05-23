@@ -2,7 +2,7 @@ import { JSX } from "react";
 import { Link } from "react-router-dom";
 
 import { itemType } from "../types/itemType";
-import { RESOURCES_BASE_URL } from "../App";
+import { RESOURCES_BASE_URL } from "../util/constants";
 
 const Item = ({ item }: { item: itemType }): JSX.Element => {
   return (
