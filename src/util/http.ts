@@ -2,8 +2,13 @@ import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
 import { PlanetType } from "../types/planetType";
 
-export const fetchResources = async (): Promise<{ resources: ResourceType[] } | ResponseType> => {
-  const response = await fetch("http://localhost:3001/resources");
+export const fetchResources = async (
+  ids?: string[],
+): Promise<{ resources: ResourceType[] } | ResponseType> => {
+  let url = "http://localhost:3001/resources/";
+  if (ids) url += ids;
+
+  const response = await fetch(url);
   const data = await response.json();
 
   if (!response.ok) {
@@ -49,7 +54,7 @@ export const fetchItem = async (id: string): Promise<{ item: ItemType } | Respon
 };
 
 export const fetchPlanets = async (
-  ids: string[],
+  ids?: string[],
 ): Promise<{ planets: PlanetType[] } | ResponseType> => {
   let url = "http://localhost:3001/planets/";
   if (ids) url += ids;
