@@ -6,3 +6,10 @@ export const PRINTERS = [
   "medium printer",
   "large printer",
 ];
+
+export const OBTAIN_BY = {
+  mining: "mining",
+  smelting: "smelting",
+  atmosphericCondenser: "atmospheric condenser",
+  chemistryLab: "chemistry lab",
+} as any;
