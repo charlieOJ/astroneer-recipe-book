@@ -8,8 +8,8 @@ export const PRINTERS = [
 ];
 
 export const OBTAIN_BY = {
-  mining: "mining",
-  smelting: "smelting",
-  atmosphericCondenser: "atmospheric condenser",
-  chemistryLab: "chemistry lab",
+  mining: { from: "mining" },
+  smelting: { from: "smelting", id: "i81-t3" },
+  atmosphericCondenser: { from: "atmospheric condenser", id: "i84-t3" },
+  chemistryLab: { from: "chemistry lab", id: "i83-t3" },
 } as any;

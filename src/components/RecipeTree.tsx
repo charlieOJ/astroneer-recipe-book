@@ -1,0 +1,87 @@
+import { Link } from "react-router-dom";
+import Accordion from "react-bootstrap/Accordion";
+
+import { recipeTreeData, toCapitalizeCase } from "../util/utils";
+import { OBTAIN_BY, RESOURCES_BASE_URL } from "../util/constants";
+import { ResourceType } from "../types/resourceType";
+import { ItemType } from "../types/itemType";
+import { RecipeSubResourceType, RecipeTreeType } from "../types/recipeType";
+
+interface Props {
+  element: ResourceType | ItemType;
+  resources: ResourceType[];
+}
+
+const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
+  const itemRecipeData = recipeTreeData(resources, element) as RecipeTreeType;
+
+  const recipeTree = (recipe: RecipeTreeType | RecipeSubResourceType) => {
+    return (
+      recipe?.recipeResource && (
+        <ul className="d-flex flex-column gap-3">
+          {Object.keys(recipe?.recipeResource).map((resourceId: string): React.ReactNode => {
+            const resourceData = recipe?.recipeResource && recipe?.recipeResource[resourceId];
+            const resource = resourceData?.resource;
+            let obtainBy = null;
+            let obtainByUrl = null;
+            if (resource?.obtainBy) {
+              obtainBy = " - obtain by ";
+              obtainByUrl = OBTAIN_BY[resource?.obtainBy].id;
+            }
+
+            return (
+              <li
+                key={resourceId}
+                className="list-group-item border-start border-2 border-secondary-subtle ps-1"
+              >
+                <div className="d-flex align-items-center">
+                  <img
+                    src={RESOURCES_BASE_URL + resource?.image}
+                    style={{ maxWidth: "50px" }}
+                    alt={resource?.name}
+                  />
+                  <p className="m-0">
+                    <Link to={`/resources/${resource?.id}`}>
+                      <strong>{toCapitalizeCase(resource!.name)}</strong>
+                    </Link>{" "}
+                    x{resourceData?.quantity ?? 1}
+                    {obtainBy && (
+                      <>
+                        {obtainBy}
+                        {obtainByUrl ? (
+                          <Link to={`/items/${obtainByUrl}`}>
+                            <strong>{OBTAIN_BY[resource?.obtainBy ?? 0].from}</strong>
+                          </Link>
+                        ) : (
+                          <strong>{OBTAIN_BY[resource?.obtainBy ?? 0].from}</strong>
+                        )}
+                      </>
+                    )}
+                  </p>
+                </div>
+                {resourceData && recipeTree(resourceData)}
+              </li>
+            );
+          })}
+        </ul>
+      )
+    );
+  };
+
+  if (!itemRecipeData.recipeResource) return <></>;
+
+  return (
+    <Accordion defaultActiveKey="0">
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>Show full recipe tree</Accordion.Header>
+        <Accordion.Body>
+          <h3>{toCapitalizeCase(itemRecipeData.name)}</h3>
+          <p>Create from : </p>
+          {recipeTree(itemRecipeData)}
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  );
+};
+
+export default RecipeTree;

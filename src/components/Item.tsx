@@ -1,10 +1,13 @@
-import { JSX } from "react";
 import { Link } from "react-router-dom";
 
-import { itemType } from "../types/itemType";
+import { ItemType } from "../types/itemType";
 import { RESOURCES_BASE_URL } from "../util/constants";
 
-const Item = ({ item }: { item: itemType }): JSX.Element => {
+interface Props {
+  item: ItemType;
+}
+
+const Item = ({ item }: Props): React.JSX.Element => {
   return (
     <Link to={`/items/${item.id}`}>
       <div className="card h-100">
