@@ -49,6 +49,21 @@ app.get("/item/:id", async (req, res) => {
   res.status(200).json({ item });
 });
 
+app.get("/planets", async (req, res) => {
+  const fileContent = (await fs.readFile("./data/planets.json")) as any;
+  const data = JSON.parse(fileContent);
+
+  res.status(200).json({ planets: data });
+});
+
+app.get("/planet/:id", async (req, res) => {
+  const fileContent = (await fs.readFile("./data/planets.json")) as any;
+  const data = JSON.parse(fileContent);
+  const planet = data.find((planet: any) => planet.id === req.params.id);
+
+  res.status(200).json({ planet });
+});
+
 // 404
 app.use((req, res, next) => {
   if (req.method === "OPTIONS") {

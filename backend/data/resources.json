@@ -5,7 +5,8 @@
     "image": "9/90/Small_Canister_Full.png",
     "name": "soil",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r2-n2",
@@ -13,7 +14,8 @@
     "image": "3/34/Nugget_Resin.png",
     "name": "resin",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r3-n3",
@@ -21,7 +23,8 @@
     "image": "4/40/Nugget_Quartz.png",
     "name": "quartz",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r4-n4",
@@ -29,7 +32,8 @@
     "image": "0/0a/Nugget_Compound.png",
     "name": "compound",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r5-n5",
@@ -37,7 +41,8 @@
     "image": "c/ca/Nugget_Organic.png",
     "name": "organic",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r6-n6",
@@ -45,7 +50,8 @@
     "image": "0/03/Nugget_Wolframite.png",
     "name": "wolframite",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p2", "p3"]
   },
   {
     "id": "r7-n7",
@@ -53,7 +59,8 @@
     "image": "6/6e/Nugget_Clay.png",
     "name": "clay",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r8-n8",
@@ -61,7 +68,8 @@
     "image": "3/39/Nugget_Hematite.png",
     "name": "hematite",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p5", "p6"]
   },
   {
     "id": "r9-n9",
@@ -69,7 +77,8 @@
     "image": "b/be/Nugget_Malachite.png",
     "name": "malachite",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p3"]
   },
   {
     "id": "r10-n10",
@@ -77,7 +86,8 @@
     "image": "0/08/Nugget_Laterite.png",
     "name": "laterite",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r11-n11",
@@ -85,7 +95,8 @@
     "image": "f/f5/Nugget_Ammonium.png",
     "name": "ammonium",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r12-n12",
@@ -93,7 +104,8 @@
     "image": "c/cf/Nugget_Graphite.png",
     "name": "graphite",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r13-n13",
@@ -101,7 +113,8 @@
     "image": "e/e7/Nugget_Titanite.png",
     "name": "titanite",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p4", "p6"]
   },
   {
     "id": "r14-n14",
@@ -109,7 +122,8 @@
     "image": "e/ef/Nugget_Lithium.png",
     "name": "lithium",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p4", "p5"]
   },
   {
     "id": "r15-n15",
@@ -117,7 +131,8 @@
     "image": "f/f0/Nugget_Astronium.png",
     "name": "astronium",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2", "p3", "p4", "p5", "p6", "p7"]
   },
   {
     "id": "r16-n16",
@@ -125,7 +140,8 @@
     "image": "c/cd/Nugget_Sphalerite.png",
     "name": "sphalerite",
     "obtainBy": "mining",
-    "type": "natural"
+    "type": "natural",
+    "planets": ["p1", "p2"]
   },
   {
     "id": "r17-r1",
@@ -214,7 +230,8 @@
     "image": "e/e6/Nugget_Methane.png",
     "name": "methane",
     "obtainBy": "atmosphericCondenser",
-    "type": "atmospheric"
+    "type": "atmospheric",
+    "planets": ["p5", "p7"]
   },
   {
     "id": "r27-a2",
@@ -222,7 +239,8 @@
     "image": "5/5d/Nugget_Sulfur.png",
     "name": "sulfur",
     "obtainBy": "atmosphericCondenser",
-    "type": "atmospheric"
+    "type": "atmospheric",
+    "planets": ["p3", "p7"]
   },
   {
     "id": "r28-a3",
@@ -230,7 +248,8 @@
     "image": "b/b7/Nugget_Argon.png",
     "name": "argon",
     "obtainBy": "atmosphericCondenser",
-    "type": "atmospheric"
+    "type": "atmospheric",
+    "planets": ["p4", "p6"]
   },
   {
     "id": "r29-a4",
@@ -238,7 +257,8 @@
     "image": "4/40/Nugget_Hydrogen.png",
     "name": "hydrogen",
     "obtainBy": "atmosphericCondenser",
-    "type": "atmospheric"
+    "type": "atmospheric",
+    "planets": ["p1", "p3", "p4", "p5"]
   },
   {
     "id": "r30-a5",
@@ -246,7 +266,8 @@
     "image": "d/d7/Nugget_Nitrogen.png",
     "name": "nitrogen",
     "obtainBy": "atmosphericCondenser",
-    "type": "atmospheric"
+    "type": "atmospheric",
+    "planets": ["p1", "p4", "p7"]
   },
   {
     "id": "r31-a6",
@@ -254,7 +275,8 @@
     "image": "9/9a/Nugget_Helium.png",
     "name": "helium",
     "obtainBy": "atmosphericCondenser",
-    "type": "atmospheric"
+    "type": "atmospheric",
+    "planets": ["p7"]
   },
 
   {
