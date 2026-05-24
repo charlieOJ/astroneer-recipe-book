@@ -1,11 +1,12 @@
 import { Suspense } from "react";
 import { Await, useNavigate, useRouteLoaderData } from "react-router-dom";
 
-import { RESOURCES_BASE_URL } from "../util/constants";
+import { OBTAIN_BY, RESOURCES_BASE_URL } from "../util/constants";
 import { fetchResource, fetchResources } from "../util/http";
 
 import RecipeTree from "../components/RecipeTree";
 import { ResourceType } from "../types/resourceType";
+import { toCapitalizeCase } from "../util/utils";
 
 const ResourcePage = (): React.JSX.Element => {
   const navigate = useNavigate();
@@ -45,7 +46,14 @@ const ResourcePage = (): React.JSX.Element => {
                     />
                   </div>
                 )}
+
+                <div className="col-xs-12 col-md-8">
+                  <p>
+                    Obtain by : {toCapitalizeCase(OBTAIN_BY[loadedResource?.obtainBy || 0].from)}
+                  </p>
+                </div>
               </div>
+
               <Suspense fallback={<p>Loading resources...</p>}>
                 <Await resolve={resources}>
                   {(loadedData: { resources: ResourceType[] }) => {

@@ -5,6 +5,7 @@ import RootPage from "./pages/RootPage";
 import HomePage, { itemsLoader } from "./pages/HomePage";
 import ItemPage, { itemLoaders } from "./pages/ItemPage";
 import ResourcePage, { resourceLoaders } from "./pages/ResourcePage";
+import PlanetPage, { planetLoaders } from "./pages/PlanetPage";
 
 import ErrorBlock from "./components/ErrorBlock";
 
@@ -30,6 +31,12 @@ const router = createBrowserRouter([
         element: <ResourcePage />,
         id: "resource",
         loader: resourceLoaders,
+      },
+      {
+        path: "planets/:id",
+        element: <PlanetPage />,
+        id: "planet",
+        loader: planetLoaders,
       },
     ],
   },

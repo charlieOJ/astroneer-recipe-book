@@ -25,6 +25,7 @@ const ItemPage = (): React.JSX.Element => {
                 <button className="btn" onClick={() => navigate(-1)}>
                   <i className="fa-solid fa-angle-left mb-2"></i>
                 </button>
+
                 <h2 className="d-flex gap-3 align-items-center">
                   {loadedItem.icon && (
                     <img
@@ -47,6 +48,7 @@ const ItemPage = (): React.JSX.Element => {
                     />
                   </div>
                 )}
+
                 <div className="col-xs-12 col-md-8">
                   <p>Craft on : {toCapitalizeCase(PRINTERS[loadedItem.tier - 1])}</p>
                   <p>Unlock cost : {loadedItem.cost} Bytes</p>
