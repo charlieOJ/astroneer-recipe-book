@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { PRINTERS, RESOURCES_BASE_URL } from "../util/constants";
 import { itemType } from "../types/itemType";
 import useFetch from "../hooks/useFetch";
