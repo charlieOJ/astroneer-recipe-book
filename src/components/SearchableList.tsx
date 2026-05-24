@@ -1,17 +1,17 @@
 import { useRef, useState } from "react";
-import { itemType } from "../types/itemType";
+import { ItemType } from "../types/itemType";
 
 interface Props {
-  items: itemType[];
-  itemKeyFn: (item: itemType) => string;
-  children: any;
+  items: ItemType[];
+  itemKeyFn: (item: ItemType) => string;
+  children: (item: ItemType) => React.ReactNode;
 }
 
-const SearchableList = ({ items, itemKeyFn, children }: Props) => {
-  const [search, setSearch] = useState("");
-  const lastChange = useRef(0);
+const SearchableList = ({ items, itemKeyFn, children }: Props): React.JSX.Element => {
+  const [search, setSearch] = useState<string>("");
+  const lastChange = useRef<number>(0);
 
-  const searchResults = items.filter(item =>
+  const searchResults = items.filter((item: ItemType) =>
     JSON.stringify(item.name).includes(search.toLowerCase()),
   );
 

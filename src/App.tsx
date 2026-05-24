@@ -1,8 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 import "./App.css";
+
 import RootPage from "./pages/RootPage";
 import HomePage, { itemsLoader } from "./pages/HomePage";
 import ItemPage, { itemLoaders } from "./pages/ItemPage";
+import ResourcePage, { resourceLoaders } from "./pages/ResourcePage";
+
 import ErrorBlock from "./components/ErrorBlock";
 
 const router = createBrowserRouter([
@@ -32,7 +35,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-const App = () => {
+const App = (): React.JSX.Element => {
   return <RouterProvider router={router} />;
 };
 

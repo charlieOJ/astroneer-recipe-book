@@ -1,4 +1,3 @@
-import { JSX } from "react";
 import { useRouteError } from "react-router-dom";
 
 interface Error {
@@ -6,7 +5,7 @@ interface Error {
   status?: number;
 }
 
-const ErrorBlock = (): JSX.Element => {
+const ErrorBlock = (): React.JSX.Element => {
   const error = useRouteError() as Error | any;
 
   let title = "An error occurred!";

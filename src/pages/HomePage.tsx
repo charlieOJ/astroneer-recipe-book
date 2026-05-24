@@ -1,13 +1,13 @@
-import { JSX, Suspense } from "react";
+import { Suspense } from "react";
+import { Await, useLoaderData } from "react-router-dom";
 
-import { itemType } from "../types/itemType";
+import { ItemType } from "../types/itemType";
+import { fetchItems } from "../util/http";
 
 import Item from "../components/Item";
 import SearchableList from "../components/SearchableList";
-import { fetchItems } from "../util/http";
-import { Await, useLoaderData } from "react-router-dom";
 
-const HomePage = (): JSX.Element => {
+const HomePage = (): React.JSX.Element => {
   const { items } = useLoaderData();
 
   return (
@@ -16,10 +16,10 @@ const HomePage = (): JSX.Element => {
 
       <Suspense fallback={<p style={{ textAlign: "center" }}>Loading items...</p>}>
         <Await resolve={items}>
-          {loadedItems => {
+          {(loadedItems: ItemType[]) => {
             return (
-              <SearchableList items={loadedItems} itemKeyFn={(item: itemType) => item.id}>
-                {(item: itemType) => <Item item={item} />}
+              <SearchableList items={loadedItems} itemKeyFn={(item: ItemType) => item.id}>
+                {(item: ItemType) => <Item item={item} />}
               </SearchableList>
             );
           }}

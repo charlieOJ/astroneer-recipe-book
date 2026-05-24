@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 
-const useFetch = (fetchingFn: () => Promise<{ resources: any }>, initialData?: any) => {
+interface Return {
+  isFetching: boolean;
+  error: null | any[];
+  fetchedData: null | any;
+  setFetchedData: (prev?: null | any) => void;
+}
+
+const useFetch = (fetchingFn: () => Promise<{ resources: any }>, initialData?: any): Return => {
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [error, setError] = useState<null | any[]>(null);
   const [fetchedData, setFetchedData] = useState<null | any>(initialData);
