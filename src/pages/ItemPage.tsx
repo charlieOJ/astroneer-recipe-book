@@ -1,32 +1,35 @@
 import { Suspense } from "react";
 import { Await, useNavigate, useRouteLoaderData } from "react-router-dom";
-import Accordion from "react-bootstrap/Accordion";
 
 import { PRINTERS, RESOURCES_BASE_URL } from "../util/constants";
-import { fetchItem, fetchResources } from "../util/http";
-import ItemRecipeTree from "../components/ItemRecipeTree";
 import { toCapitalizeCase } from "../util/utils";
+import { fetchItem, fetchResources } from "../util/http";
 
-const ItemPage = () => {
+import RecipeTree from "../components/RecipeTree";
+import { ItemType } from "../types/itemType";
+import { ResourceType } from "../types/resourceType";
+
+const ItemPage = (): React.JSX.Element => {
   const navigate = useNavigate();
-  const { item } = useRouteLoaderData("item");
+  const { item, resources } = useRouteLoaderData("item");
 
   return (
     <Suspense fallback={<p>Loading item data...</p>}>
       <Await resolve={item}>
-        {loadedData => {
+        {(loadedData: { item: ItemType }) => {
           const loadedItem = loadedData.item;
+
           return (
             <>
               <div className="align-items-center d-flex">
                 <button className="btn" onClick={() => navigate("../")}>
                   <i className="fa-solid fa-angle-left mb-2"></i>
                 </button>
-                <h2 className="d-flex gap-3">
+                <h2 className="d-flex gap-3 align-items-center">
                   {loadedItem.icon && (
                     <img
                       src={RESOURCES_BASE_URL + loadedItem.icon}
-                      style={{ width: "30px" }}
+                      style={{ width: "30px", height: "30px" }}
                       alt={loadedItem.name}
                     />
                   )}
@@ -50,14 +53,13 @@ const ItemPage = () => {
                 </div>
               </div>
 
-              <Accordion defaultActiveKey="0">
-                <Accordion.Item eventKey="0">
-                  <Accordion.Header>Show full recipe tree</Accordion.Header>
-                  <Accordion.Body>
-                    <ItemRecipeTree item={loadedItem} />
-                  </Accordion.Body>
-                </Accordion.Item>
-              </Accordion>
+              <Suspense fallback={<p>Loading item data...</p>}>
+                <Await resolve={resources}>
+                  {(loadedData: { resources: ResourceType[] }) => {
+                    return <RecipeTree element={loadedItem} resources={loadedData.resources} />;
+                  }}
+                </Await>
+              </Suspense>
             </>
           );
         }}
@@ -68,17 +70,17 @@ const ItemPage = () => {
 
 export default ItemPage;
 
-export const itemLoader = async (params: any) => {
-  return await fetchItem(params.id);
+const itemLoader = async (id: string) => {
+  return await fetchItem(id);
 };
 
-export const resourcesLoader = async () => {
+const resourcesLoader = async () => {
   return await fetchResources();
 };
 
 export const itemLoaders = async ({ params }: { params: any }) => {
   return {
-    item: await itemLoader(params),
+    item: await itemLoader(params.id),
     resources: resourcesLoader(),
   };
 };
