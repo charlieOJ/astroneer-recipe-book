@@ -8,4 +8,5 @@ export interface ResourceType {
   type: string;
   obtainBy?: string;
   recipe?: RecipeType[];
+  planets: string[];
 }

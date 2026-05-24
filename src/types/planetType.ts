@@ -1,0 +1,27 @@
+export interface PlanetType {
+  id: string;
+  name: string;
+  icon: string;
+  image: string;
+  type: string;
+  typeDescription: string;
+  resources: {
+    primary: string | null;
+    secondary: string | null;
+    gases: GasType[] | null;
+  };
+  dayNightCycle: string;
+  difficulty: string;
+  sun: string;
+  wind: string;
+  gateway: {
+    chamberPower: number;
+    icon: string;
+    material: string;
+  };
+}
+
+export interface GasType {
+  id: string;
+  ppu: number;
+}

@@ -19,11 +19,20 @@ app.get("/", (req, res) => {
   res.send("Hello from the backend!");
 });
 
+// Resources requests
 app.get("/resources", async (req, res) => {
   const fileContent = (await fs.readFile("./data/resources.json")) as any;
   const data = JSON.parse(fileContent);
 
   res.status(200).json({ resources: data });
+});
+
+app.get("/resources/:ids", async (req, res) => {
+  const fileContent = (await fs.readFile("./data/resources.json")) as any;
+  const data = JSON.parse(fileContent);
+  const resources = data.filter((resource: any) => req.params.ids.includes(resource.id));
+
+  res.status(200).json({ resources });
 });
 
 app.get("/resource/:id", async (req, res) => {
@@ -34,6 +43,7 @@ app.get("/resource/:id", async (req, res) => {
   res.status(200).json({ resource });
 });
 
+// Items requests
 app.get("/items", async (req, res) => {
   const fileContent = (await fs.readFile("./data/items.json")) as any;
   const data = JSON.parse(fileContent);
@@ -47,6 +57,30 @@ app.get("/item/:id", async (req, res) => {
   const item = data.find((item: any) => item.id === req.params.id);
 
   res.status(200).json({ item });
+});
+
+// Planets requests
+app.get("/planets", async (req, res) => {
+  const fileContent = (await fs.readFile("./data/planets.json")) as any;
+  const data = JSON.parse(fileContent);
+
+  res.status(200).json({ planets: data });
+});
+
+app.get("/planets/:ids", async (req, res) => {
+  const fileContent = (await fs.readFile("./data/planets.json")) as any;
+  const data = JSON.parse(fileContent);
+  const planets = data.filter((planet: any) => req.params.ids.includes(planet.id));
+
+  res.status(200).json({ planets });
+});
+
+app.get("/planet/:id", async (req, res) => {
+  const fileContent = (await fs.readFile("./data/planets.json")) as any;
+  const data = JSON.parse(fileContent);
+  const planet = data.find((planet: any) => planet.id === req.params.id);
+
+  res.status(200).json({ planet });
 });
 
 // 404
