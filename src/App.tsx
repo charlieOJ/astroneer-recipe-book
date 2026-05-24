@@ -22,6 +22,12 @@ const router = createBrowserRouter([
         element: <ItemPage />,
         loader: itemLoaders,
       },
+      {
+        path: "resources/:id",
+        element: <ResourcePage />,
+        id: "resource",
+        loader: resourceLoaders,
+      },
     ],
   },
 ]);
