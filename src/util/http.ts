@@ -48,8 +48,13 @@ export const fetchItem = async (id: string): Promise<{ item: ItemType } | Respon
   return { item: data.item };
 };
 
-export const fetchPlanets = async (): Promise<{ planets: PlanetType[] } | ResponseType> => {
-  const response = await fetch("http://localhost:3001/planets");
+export const fetchPlanets = async (
+  ids: string[],
+): Promise<{ planets: PlanetType[] } | ResponseType> => {
+  let url = "http://localhost:3001/planets/";
+  if (ids) url += ids;
+
+  const response = await fetch(url);
   const data = await response.json();
 
   if (!response.ok) {

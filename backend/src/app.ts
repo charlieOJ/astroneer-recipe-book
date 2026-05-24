@@ -56,6 +56,14 @@ app.get("/planets", async (req, res) => {
   res.status(200).json({ planets: data });
 });
 
+app.get("/planets/:ids", async (req, res) => {
+  const fileContent = (await fs.readFile("./data/planets.json")) as any;
+  const data = JSON.parse(fileContent);
+  const planets = data.filter((planet: any) => req.params.ids.includes(planet.id));
+
+  res.status(200).json({ planets });
+});
+
 app.get("/planet/:id", async (req, res) => {
   const fileContent = (await fs.readFile("./data/planets.json")) as any;
   const data = JSON.parse(fileContent);
