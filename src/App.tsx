@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import "./App.css";
 import RootPage from "./pages/RootPage";
 import HomePage, { itemsLoader } from "./pages/HomePage";
-import ItemPage, { itemLoader } from "./pages/ItemPage";
+import ItemPage, { itemLoaders } from "./pages/ItemPage";
 import ErrorBlock from "./components/ErrorBlock";
 
 const router = createBrowserRouter([
@@ -18,8 +18,9 @@ const router = createBrowserRouter([
       },
       {
         path: "items/:id",
+        id: "item",
         element: <ItemPage />,
-        loader: itemLoader,
+        loader: itemLoaders,
       },
     ],
   },
