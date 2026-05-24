@@ -26,6 +26,14 @@ app.get("/resources", async (req, res) => {
   res.status(200).json({ resources: data });
 });
 
+app.get("/resource/:id", async (req, res) => {
+  const fileContent = (await fs.readFile("./data/resources.json")) as any;
+  const data = JSON.parse(fileContent);
+  const resource = data.find((resource: any) => resource.id === req.params.id);
+
+  res.status(200).json({ resource });
+});
+
 app.get("/items", async (req, res) => {
   const fileContent = (await fs.readFile("./data/items.json")) as any;
   const data = JSON.parse(fileContent);
