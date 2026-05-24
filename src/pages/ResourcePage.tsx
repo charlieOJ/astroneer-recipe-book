@@ -20,7 +20,7 @@ const ResourcePage = (): React.JSX.Element => {
           return (
             <>
               <div className="align-items-center d-flex">
-                <button className="btn" onClick={() => navigate("../")}>
+                <button className="btn" onClick={() => navigate(-1)}>
                   <i className="fa-solid fa-angle-left mb-2"></i>
                 </button>
                 <h2 className="d-flex gap-3 align-items-center">
