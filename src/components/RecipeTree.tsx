@@ -68,6 +68,8 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
     );
   };
 
+  if (!itemRecipeData.recipeResource) return <></>;
+
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
