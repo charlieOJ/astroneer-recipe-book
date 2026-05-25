@@ -32,7 +32,7 @@ const ResourcePage = (): React.JSX.Element => {
                   <PlanetsList resource={loadedResource} />
                 </DetailContent>
 
-                {loadedResource.recipe ? (
+                {loadedResource.recipe && (
                   <Suspense fallback={<p>Loading full recipe...</p>}>
                     <Await resolve={resources}>
                       {(loadedData: { resources: ResourceType[] }) => {
@@ -42,8 +42,6 @@ const ResourcePage = (): React.JSX.Element => {
                       }}
                     </Await>
                   </Suspense>
-                ) : (
-                  ""
                 )}
               </>
             );
