@@ -1,9 +1,9 @@
 import { Await, Link } from "react-router-dom";
-import { PlanetType } from "../../types/planetType";
-import { ResourceType } from "../../types/resourceType";
-import { RESOURCES_BASE_URL } from "../../util/constants";
-import { toCapitalizeCase } from "../../util/utils";
-import { planetsLoader } from "../../pages/ResourcePage";
+import { PlanetType } from "../types/planetType";
+import { ResourceType } from "../types/resourceType";
+import { RESOURCES_BASE_URL } from "../util/constants";
+import { toCapitalizeCase } from "../util/utils";
+import { planetsLoader } from "../pages/ResourcePage";
 import { Suspense } from "react";
 
 interface Props {
