@@ -8,7 +8,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const DetailContent = ({ element, children }: Props) => {
+const DetailContent = ({ element, children }: Props): React.JSX.Element => {
   return (
     <div className="row">
       {element.image && (

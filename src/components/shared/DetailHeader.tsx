@@ -8,7 +8,7 @@ interface Props {
   element: ItemType | ResourceType | PlanetType;
 }
 
-const DetailHeader = ({ element }: Props) => {
+const DetailHeader = ({ element }: Props): React.JSX.Element => {
   const navigate = useNavigate();
 
   return (
