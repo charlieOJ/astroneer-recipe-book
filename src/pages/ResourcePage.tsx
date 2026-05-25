@@ -9,7 +9,7 @@ import { ResourceType } from "../types/resourceType";
 import RecipeTree from "../components/RecipeTree";
 import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
-import PlanetsList from "../components/resource/PlanetsList";
+import PlanetsList from "../components/PlanetsList";
 
 const ResourcePage = (): React.JSX.Element => {
   const { resource, resources } = useRouteLoaderData("resource");
