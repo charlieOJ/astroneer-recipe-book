@@ -13,3 +13,22 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+.planet .row-title {
+  width: 20vw;
+}
+
+.icon-30 {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-40 {
+  width: 40px;
+  height: 40px;
+}
+
+.icon-50 {
+  width: 50px;
+  height: 50px;
+}

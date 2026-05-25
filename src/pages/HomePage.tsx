@@ -14,7 +14,7 @@ const HomePage = (): React.JSX.Element => {
     <>
       <h2>Items</h2>
 
-      <Suspense fallback={<p style={{ textAlign: "center" }}>Loading items...</p>}>
+      <Suspense fallback={<p className="text-center">Loading items...</p>}>
         <Await resolve={items}>
           {(loadedItems: ItemType[]) => {
             return (

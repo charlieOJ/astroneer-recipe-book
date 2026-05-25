@@ -1,16 +1,17 @@
 import { Suspense } from "react";
-import { Await, useNavigate, useRouteLoaderData } from "react-router-dom";
+import { Await, useRouteLoaderData } from "react-router-dom";
 
-import { PRINTERS, RESOURCES_BASE_URL } from "../util/constants";
+import { PRINTERS } from "../util/constants";
 import { toCapitalizeCase } from "../util/utils";
 import { fetchItem, fetchResources } from "../util/http";
 
 import RecipeTree from "../components/RecipeTree";
 import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
+import DetailHeader from "../components/shared/DetailHeader";
+import DetailContent from "../components/shared/DetailContent";
 
 const ItemPage = (): React.JSX.Element => {
-  const navigate = useNavigate();
   const { item, resources } = useRouteLoaderData("item");
 
   return (
@@ -21,47 +22,22 @@ const ItemPage = (): React.JSX.Element => {
 
           return (
             <>
-              <div className="align-items-center d-flex">
-                <button className="btn" onClick={() => navigate(-1)}>
-                  <i className="fa-solid fa-angle-left mb-2"></i>
-                </button>
+              <DetailHeader element={loadedItem} />
 
-                <h2 className="d-flex gap-3 align-items-center">
-                  {loadedItem.icon && (
-                    <img
-                      src={RESOURCES_BASE_URL + loadedItem.icon}
-                      style={{ width: "30px", height: "30px" }}
-                      alt={loadedItem.name}
-                    />
-                  )}
-                  {loadedItem.name.toUpperCase()}
-                </h2>
-              </div>
+              <DetailContent element={loadedItem}>
+                <p>Craft on : {toCapitalizeCase(PRINTERS[loadedItem.tier - 1])}</p>
+                {loadedItem.cost && <p>Unlock cost : {loadedItem.cost} Bytes</p>}
+              </DetailContent>
 
-              <div className="row">
-                {loadedItem.image && (
-                  <div className="img-thumbnail p-3 border-0 col-xs-12 col-md-4">
-                    <img
-                      src={RESOURCES_BASE_URL + loadedItem.image}
-                      className="w-100"
-                      alt={loadedItem.name}
-                    />
-                  </div>
-                )}
-
-                <div className="col-xs-12 col-md-8">
-                  <p>Craft on : {toCapitalizeCase(PRINTERS[loadedItem.tier - 1])}</p>
-                  <p>Unlock cost : {loadedItem.cost} Bytes</p>
-                </div>
-              </div>
-
-              <Suspense fallback={<p>Loading item data...</p>}>
-                <Await resolve={resources}>
-                  {(loadedData: { resources: ResourceType[] }) => {
-                    return <RecipeTree element={loadedItem} resources={loadedData.resources} />;
-                  }}
-                </Await>
-              </Suspense>
+              {loadedItem.recipe && (
+                <Suspense fallback={<p>Loading item data...</p>}>
+                  <Await resolve={resources}>
+                    {(loadedData: { resources: ResourceType[] }) => {
+                      return <RecipeTree element={loadedItem} resources={loadedData.resources} />;
+                    }}
+                  </Await>
+                </Suspense>
+              )}
             </>
           );
         }}
