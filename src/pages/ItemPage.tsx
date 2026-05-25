@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Await, useNavigate, useRouteLoaderData } from "react-router-dom";
+import { Await, useRouteLoaderData } from "react-router-dom";
 
 import { PRINTERS, RESOURCES_BASE_URL } from "../util/constants";
 import { toCapitalizeCase } from "../util/utils";
@@ -8,9 +8,9 @@ import { fetchItem, fetchResources } from "../util/http";
 import RecipeTree from "../components/RecipeTree";
 import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
+import DetailHeader from "../components/shared/DetailHeader";
 
 const ItemPage = (): React.JSX.Element => {
-  const navigate = useNavigate();
   const { item, resources } = useRouteLoaderData("item");
 
   return (
@@ -21,22 +21,7 @@ const ItemPage = (): React.JSX.Element => {
 
           return (
             <>
-              <div className="align-items-center d-flex">
-                <button className="btn" onClick={() => navigate(-1)}>
-                  <i className="fa-solid fa-angle-left mb-2"></i>
-                </button>
-
-                <h2 className="d-flex gap-3 align-items-center">
-                  {loadedItem.icon && (
-                    <img
-                      src={RESOURCES_BASE_URL + loadedItem.icon}
-                      style={{ width: "30px", height: "30px" }}
-                      alt={loadedItem.name}
-                    />
-                  )}
-                  {loadedItem.name.toUpperCase()}
-                </h2>
-              </div>
+              <DetailHeader element={loadedItem} />
 
               <div className="row">
                 {loadedItem.image && (

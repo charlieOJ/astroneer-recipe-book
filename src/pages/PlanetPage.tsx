@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { Await, useNavigate, useRouteLoaderData } from "react-router-dom";
+import { Await, useRouteLoaderData } from "react-router-dom";
 
 import { RESOURCES_BASE_URL } from "../util/constants";
 import { fetchPlanet, fetchResources } from "../util/http";
@@ -7,9 +7,9 @@ import { fetchPlanet, fetchResources } from "../util/http";
 import { ResourceType } from "../types/resourceType";
 import { toCapitalizeCase } from "../util/utils";
 import { GasType, PlanetType } from "../types/planetType";
+import DetailHeader from "../components/shared/DetailHeader";
 
 const PlanetPage = (): React.JSX.Element => {
-  const navigate = useNavigate();
   const { planet } = useRouteLoaderData("planet");
 
   return (
@@ -27,14 +27,7 @@ const PlanetPage = (): React.JSX.Element => {
 
           return (
             <>
-              <div className="align-items-center d-flex">
-                <button className="btn" onClick={() => navigate(-1)}>
-                  <i className="fa-solid fa-angle-left mb-2"></i>
-                </button>
-                <h2 className="d-flex gap-3 align-items-center">
-                  {loadedPlanet.name.toUpperCase()}
-                </h2>
-              </div>
+              <DetailHeader element={loadedPlanet} />
 
               <div className="row">
                 {loadedPlanet.image && (
