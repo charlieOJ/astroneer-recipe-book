@@ -9,6 +9,7 @@ import { PlanetType } from "../types/planetType";
 
 import RecipeTree from "../components/RecipeTree";
 import DetailHeader from "../components/shared/DetailHeader";
+import DetailContent from "../components/shared/DetailContent";
 
 const ResourcePage = (): React.JSX.Element => {
   const { resource, resources } = useRouteLoaderData("resource");
@@ -23,56 +24,43 @@ const ResourcePage = (): React.JSX.Element => {
             return (
               <>
                 <DetailHeader element={loadedResource} />
+                <DetailContent element={loadedResource}>
+                  <p>
+                    Obtain by : {toCapitalizeCase(OBTAIN_BY[loadedResource?.obtainBy || 0].from)}
+                  </p>
+                  {loadedResource.planets && (
+                    <Suspense>
+                      <Await resolve={planetsLoader(loadedResource.planets)}>
+                        {(loadData: any) => {
+                          const planets = loadData.planets;
 
-                <div className="row">
-                  {loadedResource.image && (
-                    <div className="img-thumbnail p-3 border-0 col-xs-12 col-md-4">
-                      <img
-                        src={RESOURCES_BASE_URL + loadedResource.image}
-                        className="w-100"
-                        alt={loadedResource.name}
-                      />
-                    </div>
+                          if (planets.length === 7) return <p>Available on all planets.</p>;
+
+                          return (
+                            <>
+                              <h3>Found on the following planets :</h3>
+                              {planets.map((planet: PlanetType) => {
+                                return (
+                                  <div key={planet.id}>
+                                    <Link to={`/planets/${planet.id}`}>
+                                      <img
+                                        src={RESOURCES_BASE_URL + planet.icon}
+                                        style={{ width: "40px", height: "40px" }}
+                                        className="me-2"
+                                        alt={planet.name}
+                                      />
+                                      {toCapitalizeCase(planet.name)}
+                                    </Link>
+                                  </div>
+                                );
+                              })}
+                            </>
+                          );
+                        }}
+                      </Await>
+                    </Suspense>
                   )}
-
-                  <div className="col-xs-12 col-md-8">
-                    <p>
-                      Obtain by : {toCapitalizeCase(OBTAIN_BY[loadedResource?.obtainBy || 0].from)}
-                    </p>
-                    {loadedResource.planets && (
-                      <Suspense>
-                        <Await resolve={planetsLoader(loadedResource.planets)}>
-                          {(loadData: any) => {
-                            const planets = loadData.planets;
-
-                            if (planets.length === 7) return <p>Available on all planets.</p>;
-
-                            return (
-                              <>
-                                <h3>Found on the following planets :</h3>
-                                {planets.map((planet: PlanetType) => {
-                                  return (
-                                    <div key={planet.id}>
-                                      <Link to={`/planets/${planet.id}`}>
-                                        <img
-                                          src={RESOURCES_BASE_URL + planet.icon}
-                                          style={{ width: "40px", height: "40px" }}
-                                          className="me-2"
-                                          alt={planet.name}
-                                        />
-                                        {toCapitalizeCase(planet.name)}
-                                      </Link>
-                                    </div>
-                                  );
-                                })}
-                              </>
-                            );
-                          }}
-                        </Await>
-                      </Suspense>
-                    )}
-                  </div>
-                </div>
+                </DetailContent>
 
                 <Suspense fallback={<p>Loading resources...</p>}>
                   <Await resolve={resources}>

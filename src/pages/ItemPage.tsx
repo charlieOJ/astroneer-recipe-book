@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Await, useRouteLoaderData } from "react-router-dom";
 
-import { PRINTERS, RESOURCES_BASE_URL } from "../util/constants";
+import { PRINTERS } from "../util/constants";
 import { toCapitalizeCase } from "../util/utils";
 import { fetchItem, fetchResources } from "../util/http";
 
@@ -9,6 +9,7 @@ import RecipeTree from "../components/RecipeTree";
 import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
 import DetailHeader from "../components/shared/DetailHeader";
+import DetailContent from "../components/shared/DetailContent";
 
 const ItemPage = (): React.JSX.Element => {
   const { item, resources } = useRouteLoaderData("item");
@@ -23,22 +24,10 @@ const ItemPage = (): React.JSX.Element => {
             <>
               <DetailHeader element={loadedItem} />
 
-              <div className="row">
-                {loadedItem.image && (
-                  <div className="img-thumbnail p-3 border-0 col-xs-12 col-md-4">
-                    <img
-                      src={RESOURCES_BASE_URL + loadedItem.image}
-                      className="w-100"
-                      alt={loadedItem.name}
-                    />
-                  </div>
-                )}
-
-                <div className="col-xs-12 col-md-8">
-                  <p>Craft on : {toCapitalizeCase(PRINTERS[loadedItem.tier - 1])}</p>
-                  <p>Unlock cost : {loadedItem.cost} Bytes</p>
-                </div>
-              </div>
+              <DetailContent element={loadedItem}>
+                <p>Craft on : {toCapitalizeCase(PRINTERS[loadedItem.tier - 1])}</p>
+                <p>Unlock cost : {loadedItem.cost} Bytes</p>
+              </DetailContent>
 
               <Suspense fallback={<p>Loading item data...</p>}>
                 <Await resolve={resources}>

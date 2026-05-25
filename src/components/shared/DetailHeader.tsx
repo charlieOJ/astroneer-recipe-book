@@ -1,4 +1,4 @@
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ItemType } from "../../types/itemType";
 import { ResourceType } from "../../types/resourceType";
 import { PlanetType } from "../../types/planetType";
