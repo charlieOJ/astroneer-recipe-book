@@ -2,6 +2,7 @@ import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
 import { PlanetType } from "../types/planetType";
 
+// Fetch resources
 export const fetchResources = async (
   ids?: string[],
 ): Promise<{ resources: ResourceType[] } | ResponseType> => {
@@ -31,6 +32,7 @@ export const fetchResource = async (
   return { resource: data.resource };
 };
 
+// Fetch items
 export const fetchItems = async (): Promise<{ items: ItemType[] } | ResponseType> => {
   const response = await fetch("http://localhost:3001/items");
   const data = await response.json();
@@ -53,6 +55,7 @@ export const fetchItem = async (id: string): Promise<{ item: ItemType } | Respon
   return { item: data.item };
 };
 
+// Fetch planets
 export const fetchPlanets = async (
   ids?: string[],
 ): Promise<{ planets: PlanetType[] } | ResponseType> => {

@@ -5,6 +5,7 @@ const RootPage = (): React.JSX.Element => {
   return (
     <div className="container">
       <Header />
+
       <Outlet />
     </div>
   );
