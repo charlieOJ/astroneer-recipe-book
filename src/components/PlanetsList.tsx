@@ -1,10 +1,11 @@
+import { Suspense } from "react";
 import { Await, Link } from "react-router-dom";
+
 import { PlanetType } from "../types/planetType";
 import { ResourceType } from "../types/resourceType";
 import { RESOURCES_BASE_URL } from "../util/constants";
 import { toCapitalizeCase } from "../util/utils";
 import { planetsLoader } from "../pages/ResourcePage";
-import { Suspense } from "react";
 
 interface Props {
   resource: ResourceType;
@@ -30,8 +31,7 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
                     <Link to={`/planets/${planet.id}`}>
                       <img
                         src={RESOURCES_BASE_URL + planet.icon}
-                        style={{ width: "40px", height: "40px" }}
-                        className="me-2"
+                        className="me-2 icon-40"
                         alt={planet.name}
                       />
                       {toCapitalizeCase(planet.name)}

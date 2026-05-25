@@ -10,9 +10,9 @@ interface Props {
 
 const DetailContent = ({ element, children }: Props): React.JSX.Element => {
   return (
-    <div className="row">
+    <div className="row mb-3">
       {element.image && (
-        <div className="img-thumbnail p-3 border-0 col-xs-12 col-md-3">
+        <div className="border-0 col-xs-12 col-md-3">
           <img src={RESOURCES_BASE_URL + element.image} className="w-100" alt={element.name} />
         </div>
       )}

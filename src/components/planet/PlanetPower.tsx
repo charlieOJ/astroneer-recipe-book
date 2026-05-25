@@ -4,11 +4,11 @@ interface Props {
   planet: PlanetType;
 }
 
-const PlanetPower = ({ planet }: Props) => {
+const PlanetPower = ({ planet }: Props): React.JSX.Element => {
   return (
     <>
       <tr>
-        <td>
+        <td className="row-title">
           <b>Sun</b>
         </td>
 

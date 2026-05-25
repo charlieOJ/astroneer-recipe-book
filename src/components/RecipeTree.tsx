@@ -37,7 +37,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
                 <div className="d-flex align-items-center">
                   <img
                     src={RESOURCES_BASE_URL + resource?.image}
-                    style={{ maxWidth: "50px" }}
+                    className="icon-50"
                     alt={resource?.name}
                   />
                   <p className="m-0">
@@ -71,16 +71,20 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
   if (!itemRecipeData.recipeResource) return <></>;
 
   return (
-    <Accordion defaultActiveKey="0">
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>Show full recipe tree</Accordion.Header>
-        <Accordion.Body>
-          <h3>{toCapitalizeCase(itemRecipeData.name)}</h3>
-          <p>Create from : </p>
-          {recipeTree(itemRecipeData)}
-        </Accordion.Body>
-      </Accordion.Item>
-    </Accordion>
+    <div className="row">
+      <div className="col-xs-12">
+        <Accordion defaultActiveKey="0">
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>Show full recipe tree</Accordion.Header>
+            <Accordion.Body>
+              <h3>{toCapitalizeCase(itemRecipeData.name)}</h3>
+              <p>Create from : </p>
+              {recipeTree(itemRecipeData)}
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </div>
+    </div>
   );
 };
 

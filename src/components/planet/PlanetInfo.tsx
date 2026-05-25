@@ -16,7 +16,7 @@ interface Props {
   planet: PlanetType;
 }
 
-const PlanetInfo = ({ planet }: Props) => {
+const PlanetInfo = ({ planet }: Props): React.JSX.Element => {
   const gasIds = planet.resources?.gases?.map(gas => gas.id) || [];
 
   const resourceIds = (): string[] => {
@@ -68,7 +68,7 @@ const PlanetInfo = ({ planet }: Props) => {
           const resources = resourcesData(loadedData.resources);
 
           return (
-            <table className="table table-borderless">
+            <table className="table table-borderless planet">
               <tbody>
                 <PlanetInfo.Title>Details</PlanetInfo.Title>
                 <PlanetDetail planet={planet} />
@@ -83,8 +83,7 @@ const PlanetInfo = ({ planet }: Props) => {
                   <img
                     src={RESOURCES_BASE_URL + planet.gateway.icon}
                     alt={`${planet.name} gateway symbol`}
-                    style={{ width: "30px", height: "30px" }}
-                    className="me-2"
+                    className="me-2 icon-30"
                   />
                   Gateway
                 </PlanetInfo.Title>

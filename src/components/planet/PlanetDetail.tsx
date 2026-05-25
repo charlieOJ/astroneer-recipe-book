@@ -6,11 +6,11 @@ interface Props {
   planet: PlanetType;
 }
 
-const PlanetDetail = ({ planet }: Props) => {
+const PlanetDetail = ({ planet }: Props): React.JSX.Element => {
   return (
     <>
       <tr>
-        <td rowSpan={2}>
+        <td rowSpan={2} className="row-title">
           <b>Type</b>
         </td>
 
@@ -18,9 +18,8 @@ const PlanetDetail = ({ planet }: Props) => {
           {planet.icon && (
             <img
               src={RESOURCES_BASE_URL + planet.icon}
-              style={{ width: "30px", height: "30px" }}
               alt={planet.name}
-              className="me-2"
+              className="me-2 icon-30"
             />
           )}
           {toCapitalizeCase(planet.type)}
@@ -32,14 +31,14 @@ const PlanetDetail = ({ planet }: Props) => {
       </tr>
 
       <tr>
-        <td>
+        <td className="row-title">
           <b>Day/night cycle</b>
         </td>
         <td>~ {planet.dayNightCycle}</td>
       </tr>
 
       <tr>
-        <td>
+        <td className="row-title">
           <b>Difficulty</b>
         </td>
         <td>{planet.difficulty}</td>

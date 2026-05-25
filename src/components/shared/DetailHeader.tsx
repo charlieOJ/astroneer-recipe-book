@@ -19,11 +19,7 @@ const DetailHeader = ({ element }: Props): React.JSX.Element => {
 
       <h2 className="d-flex gap-3 align-items-center">
         {element.icon && (
-          <img
-            src={RESOURCES_BASE_URL + element.icon}
-            style={{ width: "30px", height: "30px" }}
-            alt={element.name}
-          />
+          <img src={RESOURCES_BASE_URL + element.icon} className="icon-30" alt={element.name} />
         )}
         {element.name.toUpperCase()}
       </h2>

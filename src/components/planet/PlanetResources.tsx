@@ -12,13 +12,13 @@ interface Props {
   };
 }
 
-const PlanetResources = ({ planet, resources }: Props) => {
-  const renderPrimaryResource = () => {
-    if (!resources.primary) return;
+const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
+  const renderPrimaryResource = (): React.JSX.Element => {
+    if (!resources.primary) return <></>;
 
     return (
       <tr>
-        <td>
+        <td className="row-title">
           <b>Caves</b>
         </td>
 
@@ -26,7 +26,7 @@ const PlanetResources = ({ planet, resources }: Props) => {
           <img
             src={RESOURCES_BASE_URL + resources.primary.icon}
             alt={`${resources.primary.name} primary resource`}
-            style={{ width: "40px", height: "40px" }}
+            className="icon-40"
           />
 
           {toCapitalizeCase(resources.primary.name)}
@@ -35,12 +35,12 @@ const PlanetResources = ({ planet, resources }: Props) => {
     );
   };
 
-  const renderSecondaryResource = () => {
-    if (!resources.secondary) return;
+  const renderSecondaryResource = (): React.JSX.Element => {
+    if (!resources.secondary) return <></>;
 
     return (
       <tr>
-        <td>
+        <td className="row-title">
           <b>Mantle/Mountains</b>
         </td>
 
@@ -48,7 +48,7 @@ const PlanetResources = ({ planet, resources }: Props) => {
           <img
             src={RESOURCES_BASE_URL + resources.secondary.icon}
             alt={`${resources.secondary.name} secondary resource`}
-            style={{ width: "40px", height: "40px" }}
+            className="icon-40"
           />
 
           {toCapitalizeCase(resources.secondary.name)}
@@ -57,14 +57,14 @@ const PlanetResources = ({ planet, resources }: Props) => {
     );
   };
 
-  const renderGasesResource = () => {
-    if (!resources.gases) return;
-    if (!planet?.resources?.gases) return;
+  const renderGasesResource = (): React.JSX.Element => {
+    if (!resources.gases) return <></>;
+    if (!planet?.resources?.gases) return <></>;
 
     return (
       <>
         <tr>
-          <td rowSpan={resources.gases.length + 1 || 1}>
+          <td rowSpan={resources.gases.length + 1 || 1} className="row-title">
             <b>Gases</b>
           </td>
         </tr>
@@ -84,7 +84,7 @@ const PlanetResources = ({ planet, resources }: Props) => {
           <img
             src={RESOURCES_BASE_URL + currentResource.icon}
             alt={`${currentResource.name} gas`}
-            style={{ width: "40px", height: "40px" }}
+            className="icon-40"
           />
           {toCapitalizeCase(currentResource.name)} ({gas.ppu} ppu)
         </td>

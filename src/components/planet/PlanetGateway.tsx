@@ -10,9 +10,9 @@ interface Props {
   };
 }
 
-const PlanetGateway = ({ planet, resources }: Props) => {
-  const renderGatewayResource = () => {
-    if (!resources.gateway) return;
+const PlanetGateway = ({ planet, resources }: Props): React.JSX.Element => {
+  const renderGatewayResource = (): React.JSX.Element => {
+    if (!resources.gateway) return <></>;
 
     return (
       <tr>
@@ -24,7 +24,7 @@ const PlanetGateway = ({ planet, resources }: Props) => {
           <img
             src={RESOURCES_BASE_URL + resources.gateway.icon}
             alt={`${resources.gateway.name} gateway material`}
-            style={{ width: "40px", height: "40px" }}
+            className="icon-40"
           />
 
           {toCapitalizeCase(resources.gateway.name)}
@@ -36,9 +36,10 @@ const PlanetGateway = ({ planet, resources }: Props) => {
   return (
     <>
       <tr>
-        <td>
+        <td className="row-title">
           <b>Chamber power required</b>
         </td>
+
         <td>{planet.gateway.chamberPower} U/s</td>
       </tr>
 
