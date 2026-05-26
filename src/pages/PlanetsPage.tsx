@@ -9,7 +9,7 @@ const PlanetsPage = () => {
   const { planets } = useLoaderData();
 
   return (
-    <>
+    <div className="container">
       <h1>Planets</h1>
 
       <Suspense fallback={<p className="text-center">Loading planets...</p>}>
@@ -26,7 +26,7 @@ const PlanetsPage = () => {
           }}
         </Await>
       </Suspense>
-    </>
+    </div>
   );
 };
 

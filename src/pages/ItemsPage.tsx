@@ -11,7 +11,7 @@ const ItemsPage = (): React.JSX.Element => {
   const { items } = useLoaderData();
 
   return (
-    <>
+    <div className="container">
       <h2>Items</h2>
 
       <Suspense fallback={<p className="text-center">Loading items...</p>}>
@@ -29,7 +29,7 @@ const ItemsPage = (): React.JSX.Element => {
           }}
         </Await>
       </Suspense>
-    </>
+    </div>
   );
 };
 

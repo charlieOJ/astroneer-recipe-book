@@ -15,39 +15,41 @@ const ItemPage = (): React.JSX.Element => {
   const { item, resources } = useRouteLoaderData("item");
 
   return (
-    <Suspense fallback={<p>Loading item data...</p>}>
-      <Await resolve={item}>
-        {(loadedData: { item: ItemType }) => {
-          const loadedItem = loadedData.item;
+    <div className="container">
+      <Suspense fallback={<p>Loading item data...</p>}>
+        <Await resolve={item}>
+          {(loadedData: { item: ItemType }) => {
+            const loadedItem = loadedData.item;
 
-          return (
-            <>
-              <DetailHeader element={loadedItem} />
+            return (
+              <>
+                <DetailHeader element={loadedItem} />
 
-              <DetailContent element={loadedItem}>
-                <p>Craft on : {toCapitalizeCase(PRINTERS[loadedItem.tier - 1])}</p>
-                {loadedItem.cost && (
-                  <p>
-                    Unlock cost :
-                    {loadedItem.cost === "unlock" ? " unlock" : ` ${loadedItem.cost} Bytes`}
-                  </p>
+                <DetailContent element={loadedItem}>
+                  <p>Craft on : {toCapitalizeCase(PRINTERS[loadedItem.tier - 1])}</p>
+                  {loadedItem.cost && (
+                    <p>
+                      Unlock cost :
+                      {loadedItem.cost === "unlock" ? " unlock" : ` ${loadedItem.cost} Bytes`}
+                    </p>
+                  )}
+                </DetailContent>
+
+                {loadedItem.recipe && (
+                  <Suspense fallback={<p>Loading item data...</p>}>
+                    <Await resolve={resources}>
+                      {(loadedData: { resources: ResourceType[] }) => {
+                        return <RecipeTree element={loadedItem} resources={loadedData.resources} />;
+                      }}
+                    </Await>
+                  </Suspense>
                 )}
-              </DetailContent>
-
-              {loadedItem.recipe && (
-                <Suspense fallback={<p>Loading item data...</p>}>
-                  <Await resolve={resources}>
-                    {(loadedData: { resources: ResourceType[] }) => {
-                      return <RecipeTree element={loadedItem} resources={loadedData.resources} />;
-                    }}
-                  </Await>
-                </Suspense>
-              )}
-            </>
-          );
-        }}
-      </Await>
-    </Suspense>
+              </>
+            );
+          }}
+        </Await>
+      </Suspense>
+    </div>
   );
 };
 

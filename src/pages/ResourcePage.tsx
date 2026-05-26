@@ -15,7 +15,7 @@ const ResourcePage = (): React.JSX.Element => {
   const { resource, resources } = useRouteLoaderData("resource");
 
   return (
-    <>
+    <div className="container">
       <Suspense fallback={<p>Loading resource data...</p>}>
         <Await resolve={resource}>
           {(loadedData: { resource: ResourceType }) => {
@@ -48,7 +48,7 @@ const ResourcePage = (): React.JSX.Element => {
           }}
         </Await>
       </Suspense>
-    </>
+    </div>
   );
 };
 

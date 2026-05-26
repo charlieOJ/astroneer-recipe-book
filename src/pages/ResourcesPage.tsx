@@ -9,7 +9,7 @@ const ResourcesPage = () => {
   const { resources } = useLoaderData();
 
   return (
-    <>
+    <div className="container">
       <h1>Resources</h1>
 
       <Suspense fallback={<p className="text-center">Loading resources...</p>}>
@@ -26,7 +26,7 @@ const ResourcesPage = () => {
           }}
         </Await>
       </Suspense>
-    </>
+    </div>
   );
 };
 

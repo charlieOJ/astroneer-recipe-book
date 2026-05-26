@@ -12,22 +12,24 @@ const PlanetPage = (): React.JSX.Element => {
   const { planet } = useRouteLoaderData("planet");
 
   return (
-    <Suspense fallback={<p>Loading planet data...</p>}>
-      <Await resolve={planet}>
-        {(loadedData: { planet: PlanetType }) => {
-          const loadedPlanet = loadedData.planet;
+    <div className="container">
+      <Suspense fallback={<p>Loading planet data...</p>}>
+        <Await resolve={planet}>
+          {(loadedData: { planet: PlanetType }) => {
+            const loadedPlanet = loadedData.planet;
 
-          return (
-            <>
-              <DetailHeader element={loadedPlanet} />
-              <DetailContent element={loadedPlanet}>
-                <PlanetInfo planet={loadedPlanet} />
-              </DetailContent>
-            </>
-          );
-        }}
-      </Await>
-    </Suspense>
+            return (
+              <>
+                <DetailHeader element={loadedPlanet} />
+                <DetailContent element={loadedPlanet}>
+                  <PlanetInfo planet={loadedPlanet} />
+                </DetailContent>
+              </>
+            );
+          }}
+        </Await>
+      </Suspense>
+    </div>
   );
 };
 
