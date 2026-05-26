@@ -14,11 +14,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-main.main-bg {
+.main-bg {
   background: url("../public/bg2.png") no-repeat;
-  height: 80vh;
+  height: 90vh;
   width: 100%;
-  background-size: contain;
+  background-size: cover;
 }
 
 .planet .row-title {

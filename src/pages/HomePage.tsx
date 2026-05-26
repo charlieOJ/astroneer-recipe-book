@@ -1,20 +1,35 @@
 import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "motion/react";
+import HomePageButton from "../components/HomePageButton";
+
+const MotionLink = motion(Link);
 
 const HomePage = (): React.JSX.Element => {
   return (
-    <>
-      <main className="main-bg d-flex align-items-center justify-content-around">
-        <Link to="resources" className="btn btn-lg btn-light btn-outline-dark">
-          Resources
-        </Link>
-        <Link to="items" className="btn btn-lg btn-light btn-outline-dark">
-          Items
-        </Link>
-        <Link to="planets" className="btn btn-lg btn-light btn-outline-dark">
-          Planets
-        </Link>
-      </main>
-    </>
+    <div className="p-5 bg-body-tertiary main-bg">
+      <AnimatePresence mode="sync">
+        <motion.div
+          className="container-fluid py-5 bg-opacity-75 rounded-3 bg-light mt-5"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0, transition: { ease: "easeOut" } }}
+        >
+          <h1 className="display-5 fw-bold">Welcome to the Astroneer recipe book</h1>
+          <div className="row">
+            <p className="col-md-12 fs-4">
+              Looking for a specific item, but you don't know who to craft it ? Annoy to look where
+              you can find this resource or if you need to craft it ? Finally a place to know it all
+              in one click !
+            </p>
+          </div>
+
+          <div className="d-flex justify-content-around align-items-center">
+            <HomePageButton link="resources">Resources</HomePageButton>
+            <HomePageButton link="items">Items</HomePageButton>
+            <HomePageButton link="planets">Planets</HomePageButton>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
   );
 };
 
