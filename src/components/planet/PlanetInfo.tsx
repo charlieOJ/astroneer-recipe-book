@@ -27,6 +27,9 @@ const PlanetInfo = ({ planet }: Props): React.JSX.Element => {
     if (planet.resources?.secondary) {
       resourceIds.push(planet.resources?.secondary);
     }
+    if (planet.gateway.material) {
+      resourceIds.push(planet.gateway.material);
+    }
     if (planet?.resources?.gases) {
       resourceIds.push(gasIds);
     }

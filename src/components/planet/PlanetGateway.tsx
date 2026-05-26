@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PlanetType } from "../../types/planetType";
 import { ResourceType } from "../../types/resourceType";
 import { RESOURCES_BASE_URL } from "../../util/constants";
@@ -27,7 +28,9 @@ const PlanetGateway = ({ planet, resources }: Props): React.JSX.Element => {
             className="icon-40"
           />
 
-          {toCapitalizeCase(resources.gateway.name)}
+          <Link to={`/resources/${resources.gateway.id}`} className="text-decoration-none">
+            {toCapitalizeCase(resources.gateway.name)}
+          </Link>
         </td>
       </tr>
     );

@@ -21,6 +21,7 @@ const DetailHeader = ({ element }: Props): React.JSX.Element => {
         {element.icon && (
           <img src={RESOURCES_BASE_URL + element.icon} className="icon-30" alt={element.name} />
         )}
+
         {element.name.toUpperCase()}
       </h2>
     </div>

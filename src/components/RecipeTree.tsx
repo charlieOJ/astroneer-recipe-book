@@ -41,7 +41,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
                     alt={resource?.name}
                   />
                   <p className="m-0">
-                    <Link to={`/resources/${resource?.id}`}>
+                    <Link to={`/resources/${resource?.id}`} className="text-decoration-none">
                       <strong>{toCapitalizeCase(resource!.name)}</strong>
                     </Link>{" "}
                     x{resourceData?.quantity ?? 1}
@@ -49,7 +49,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
                       <>
                         {obtainBy}
                         {obtainByUrl ? (
-                          <Link to={`/items/${obtainByUrl}`}>
+                          <Link to={`/items/${obtainByUrl}`} className="text-decoration-none">
                             <strong>{OBTAIN_BY[resource?.obtainBy ?? 0].from}</strong>
                           </Link>
                         ) : (
@@ -78,6 +78,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
             <Accordion.Header>Show full recipe tree</Accordion.Header>
             <Accordion.Body>
               <h3>{toCapitalizeCase(itemRecipeData.name)}</h3>
+
               <p>Create from : </p>
               {recipeTree(itemRecipeData)}
             </Accordion.Body>

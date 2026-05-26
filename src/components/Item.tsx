@@ -9,7 +9,7 @@ interface Props {
 
 const Item = ({ item }: Props): React.JSX.Element => {
   return (
-    <Link to={`/items/${item.id}`}>
+    <Link to={`/items/${item.id}`} className="text-decoration-none">
       <div className="card h-100">
         {item.image && (
           <div className="img-thumbnail p-3 border-0">

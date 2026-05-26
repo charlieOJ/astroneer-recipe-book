@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { GasType, PlanetType } from "../../types/planetType";
 import { ResourceType } from "../../types/resourceType";
 import { RESOURCES_BASE_URL } from "../../util/constants";
@@ -29,7 +30,9 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
             className="icon-40"
           />
 
-          {toCapitalizeCase(resources.primary.name)}
+          <Link to={`/resources/${resources.primary.id}`} className="text-decoration-none">
+            {toCapitalizeCase(resources.primary.name)}
+          </Link>
         </td>
       </tr>
     );
@@ -51,7 +54,9 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
             className="icon-40"
           />
 
-          {toCapitalizeCase(resources.secondary.name)}
+          <Link to={`/resources/${resources.secondary.id}`} className="text-decoration-none">
+            {toCapitalizeCase(resources.secondary.name)}
+          </Link>
         </td>
       </tr>
     );
@@ -86,7 +91,10 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
             alt={`${currentResource.name} gas`}
             className="icon-40"
           />
-          {toCapitalizeCase(currentResource.name)} ({gas.ppu} ppu)
+          <Link to={`/resources/${currentResource.id}`} className="text-decoration-none me-2">
+            {toCapitalizeCase(currentResource.name)}
+          </Link>
+          ({gas.ppu} ppu)
         </td>
       </tr>
     );
