@@ -14,6 +14,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+main.main-bg {
+  background: url("../public/bg2.png") no-repeat;
+  height: 80vh;
+  width: 100%;
+  background-size: contain;
+}
+
 .planet .row-title {
   width: 20vw;
 }
