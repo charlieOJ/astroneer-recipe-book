@@ -13,6 +13,7 @@ import PlanetsList from "../components/PlanetsList";
 
 const ResourcePage = (): React.JSX.Element => {
   const { resource, resources } = useRouteLoaderData("resource");
+  console.log("🚀 ~ ResourcePage ~ resource:", resource);
 
   return (
     <>

@@ -26,7 +26,12 @@ const ItemPage = (): React.JSX.Element => {
 
               <DetailContent element={loadedItem}>
                 <p>Craft on : {toCapitalizeCase(PRINTERS[loadedItem.tier - 1])}</p>
-                {loadedItem.cost && <p>Unlock cost : {loadedItem.cost} Bytes</p>}
+                {loadedItem.cost && (
+                  <p>
+                    Unlock cost :
+                    {loadedItem.cost === "unlock" ? " unlock" : ` ${loadedItem.cost} Bytes`}
+                  </p>
+                )}
               </DetailContent>
 
               {loadedItem.recipe && (

@@ -1,0 +1,40 @@
+import { Suspense } from "react";
+import { Await, useLoaderData } from "react-router-dom";
+
+import { fetchItems } from "../util/http";
+import { ItemType } from "../types/itemType";
+
+import SearchableList from "../components/searchableList/SearchableList";
+import Item from "../components/Item";
+
+const ItemsPage = (): React.JSX.Element => {
+  const { items } = useLoaderData();
+
+  return (
+    <>
+      <h2>Items</h2>
+
+      <Suspense fallback={<p className="text-center">Loading items...</p>}>
+        <Await resolve={items}>
+          {(loadedItems: ItemType[]) => {
+            return (
+              <SearchableList
+                elements={loadedItems}
+                searchParams={["search", "tiers"]}
+                elementKeyFn={(item: ItemType) => item.id}
+              >
+                {(item: ItemType) => <Item item={item} />}
+              </SearchableList>
+            );
+          }}
+        </Await>
+      </Suspense>
+    </>
+  );
+};
+
+export default ItemsPage;
+
+export const itemsLoader = async () => {
+  return await fetchItems();
+};
