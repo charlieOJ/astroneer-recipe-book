@@ -3,7 +3,6 @@ import { Await } from "react-router-dom";
 
 import { resourcesLoader } from "../../pages/PlanetPage";
 import { PlanetType } from "../../types/planetType";
-import { ResourceType } from "../../types/resourceType";
 import { RESOURCES_BASE_URL } from "../../util/constants";
 
 import PlanetDetail from "./PlanetDetail";
@@ -11,64 +10,22 @@ import PlanetResources from "./PlanetResources";
 import PlanetPower from "./PlanetPower";
 import PlanetGateway from "./PlanetGateway";
 import PlanetInfoTitle from "./PlanetInfoTitle";
+import { resourceIds, resourcesData } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
 }
 
 const PlanetInfo = ({ planet }: Props): React.JSX.Element => {
-  const gasIds = planet.resources?.gases?.map(gas => gas.id) || [];
-
-  const resourceIds = (): string[] => {
-    let resourceIds = [] as any;
-    if (planet.resources?.primary) {
-      resourceIds.push(planet.resources?.primary);
-    }
-    if (planet.resources?.secondary) {
-      resourceIds.push(planet.resources?.secondary);
-    }
-    if (planet.gateway.material) {
-      resourceIds.push(planet.gateway.material);
-    }
-    if (planet?.resources?.gases) {
-      resourceIds.push(gasIds);
-    }
-    return resourceIds.flat();
-  };
-
-  const resourcesData = (resources: ResourceType[]) => {
-    let resourcesData = {} as any;
-    resourcesData["gases"] = [] as any;
-
-    resources.forEach((r: ResourceType) => {
-      switch (r.id) {
-        case planet.gateway.material:
-          resourcesData["gateway"] = r;
-          break;
-        case planet.resources.primary:
-          resourcesData["primary"] = r;
-          break;
-        case planet.resources.secondary:
-          resourcesData["secondary"] = r;
-          break;
-        default:
-          gasIds.forEach((gasId: string) => {
-            if (r.id === gasId) resourcesData["gases"].push(r);
-          });
-          break;
-      }
-    });
-
-    return resourcesData;
-  };
-
   if (Object.keys(planet?.resources).length === 0) return <></>;
+
+  const gasIds = planet.resources?.gases?.map(gas => gas.id) || [];
 
   return (
     <Suspense fallback={<p>Loading planets data...</p>}>
-      <Await resolve={resourcesLoader([...new Set(resourceIds())])}>
+      <Await resolve={resourcesLoader([...new Set(resourceIds(planet, gasIds))])}>
         {(loadedData: any) => {
-          const resources = resourcesData(loadedData.resources);
+          const resources = resourcesData(planet, loadedData.resources, gasIds);
 
           return (
             <table className="table table-borderless planet">
