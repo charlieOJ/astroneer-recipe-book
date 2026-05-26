@@ -27,7 +27,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
           <img
             src={RESOURCES_BASE_URL + resources.primary.icon}
             alt={`${resources.primary.name} primary resource`}
-            className="icon-40"
+            className="icon-30"
           />
 
           <Link to={`/resources/${resources.primary.id}`} className="text-decoration-none">
@@ -51,7 +51,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
           <img
             src={RESOURCES_BASE_URL + resources.secondary.icon}
             alt={`${resources.secondary.name} secondary resource`}
-            className="icon-40"
+            className="icon-30"
           />
 
           <Link to={`/resources/${resources.secondary.id}`} className="text-decoration-none">
@@ -89,7 +89,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
           <img
             src={RESOURCES_BASE_URL + currentResource.icon}
             alt={`${currentResource.name} gas`}
-            className="icon-40"
+            className="icon-30"
           />
           <Link to={`/resources/${currentResource.id}`} className="text-decoration-none me-2">
             {toCapitalizeCase(currentResource.name)}

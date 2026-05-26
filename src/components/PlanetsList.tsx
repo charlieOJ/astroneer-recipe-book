@@ -31,7 +31,7 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
                     <Link to={`/planets/${planet.id}`} className="text-decoration-none">
                       <img
                         src={RESOURCES_BASE_URL + planet.icon}
-                        className="me-2 icon-40"
+                        className="me-2 icon-30"
                         alt={planet.name}
                       />
                       {toCapitalizeCase(planet.name)}

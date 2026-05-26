@@ -25,7 +25,7 @@ const PlanetGateway = ({ planet, resources }: Props): React.JSX.Element => {
           <img
             src={RESOURCES_BASE_URL + resources.gateway.icon}
             alt={`${resources.gateway.name} gateway material`}
-            className="icon-40"
+            className="icon-30"
           />
 
           <Link to={`/resources/${resources.gateway.id}`} className="text-decoration-none">
