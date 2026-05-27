@@ -20,67 +20,99 @@ app.get("/", (req, res) => {
 });
 
 // Resources requests
-app.get("/resources", async (req, res) => {
-  const fileContent = (await fs.readFile("./data/resources.json")) as any;
-  const data = JSON.parse(fileContent);
+app.get("/resources", async (_req, res) => {
+  try {
+    const fileContent = (await fs.readFile("./data/resources.json")) as any;
+    const data = JSON.parse(fileContent);
 
-  res.status(200).json({ resources: data });
+    res.status(200).json({ resources: data });
+  } catch (error) {
+    res.status(500).json({ error: error || "Failed to fetch resources." });
+  }
 });
 
 app.get("/resources/:ids", async (req, res) => {
-  const fileContent = (await fs.readFile("./data/resources.json")) as any;
-  const data = JSON.parse(fileContent);
-  const resources = data.filter((resource: any) => req.params.ids.includes(resource.id));
+  try {
+    const fileContent = (await fs.readFile("./data/resources.json")) as any;
+    const data = JSON.parse(fileContent);
+    const resources = data.filter((resource: any) => req.params.ids.includes(resource.id));
 
-  res.status(200).json({ resources });
+    res.status(200).json({ resources });
+  } catch (error) {
+    res.status(500).json({ error: error || "Failed to fetch resources." });
+  }
 });
 
 app.get("/resource/:id", async (req, res) => {
-  const fileContent = (await fs.readFile("./data/resources.json")) as any;
-  const data = JSON.parse(fileContent);
-  const resource = data.find((resource: any) => resource.id === req.params.id);
+  try {
+    const fileContent = (await fs.readFile("./data/resources.json")) as any;
+    const data = JSON.parse(fileContent);
+    const resource = data.find((resource: any) => resource.id === req.params.id);
 
-  res.status(200).json({ resource });
+    res.status(200).json({ resource });
+  } catch (error) {
+    res.status(500).json({ error: error || "Failed to fetch resource data." });
+  }
 });
 
 // Items requests
-app.get("/items", async (req, res) => {
-  const fileContent = (await fs.readFile("./data/items.json")) as any;
-  const data = JSON.parse(fileContent);
+app.get("/items", async (_req, res) => {
+  try {
+    const fileContent = (await fs.readFile("./data/items.json")) as any;
+    const data = JSON.parse(fileContent);
 
-  res.status(200).json({ items: data });
+    res.status(200).json({ items: data });
+  } catch (error) {
+    res.status(500).json({ error: error || "Failed to fetch items." });
+  }
 });
 
 app.get("/item/:id", async (req, res) => {
-  const fileContent = (await fs.readFile("./data/items.json")) as any;
-  const data = JSON.parse(fileContent);
-  const item = data.find((item: any) => item.id === req.params.id);
+  try {
+    const fileContent = (await fs.readFile("./data/items.json")) as any;
+    const data = JSON.parse(fileContent);
+    const item = data.find((item: any) => item.id === req.params.id);
 
-  res.status(200).json({ item });
+    res.status(200).json({ item });
+  } catch (error) {
+    res.status(500).json({ error: error || "Failed to fetch item data." });
+  }
 });
 
 // Planets requests
-app.get("/planets", async (req, res) => {
-  const fileContent = (await fs.readFile("./data/planets.json")) as any;
-  const data = JSON.parse(fileContent);
+app.get("/planets", async (_req, res) => {
+  try {
+    const fileContent = (await fs.readFile("./data/planets.json")) as any;
+    const data = JSON.parse(fileContent);
 
-  res.status(200).json({ planets: data });
+    res.status(200).json({ planets: data });
+  } catch (error) {
+    res.status(500).json({ error: error || "Failed to fetch planets." });
+  }
 });
 
 app.get("/planets/:ids", async (req, res) => {
-  const fileContent = (await fs.readFile("./data/planets.json")) as any;
-  const data = JSON.parse(fileContent);
-  const planets = data.filter((planet: any) => req.params.ids.includes(planet.id));
+  try {
+    const fileContent = (await fs.readFile("./data/planets.json")) as any;
+    const data = JSON.parse(fileContent);
+    const planets = data.filter((planet: any) => req.params.ids.includes(planet.id));
 
-  res.status(200).json({ planets });
+    res.status(200).json({ planets });
+  } catch (error) {
+    res.status(500).json({ error: error || "Failed to fetch planets." });
+  }
 });
 
 app.get("/planet/:id", async (req, res) => {
-  const fileContent = (await fs.readFile("./data/planets.json")) as any;
-  const data = JSON.parse(fileContent);
-  const planet = data.find((planet: any) => planet.id === req.params.id);
+  try {
+    const fileContent = (await fs.readFile("./data/planets.json")) as any;
+    const data = JSON.parse(fileContent);
+    const planet = data.find((planet: any) => planet.id === req.params.id);
 
-  res.status(200).json({ planet });
+    res.status(200).json({ planet });
+  } catch (error) {
+    res.status(500).json({ error: error || "Failed to fetch planet data." });
+  }
 });
 
 // 404
