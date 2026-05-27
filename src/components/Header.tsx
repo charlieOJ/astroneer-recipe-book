@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 const Header = (): React.JSX.Element => {
   return (
-    <header className="d-flex flex-wrap justify-content-center pt-3 mb-4 border-bottom">
+    <header className="d-flex flex-wrap justify-content-center pt-3 mb-4 border-bottom pb-1">
       <Link
         to="/"
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"

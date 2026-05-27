@@ -72,7 +72,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
 
   return (
     <div className="row">
-      <div className="col-xs-12">
+      <div className="col-xs-12 mb-3">
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="0">
             <Accordion.Header>Show full recipe tree</Accordion.Header>
