@@ -23,53 +23,56 @@ import PlanetPage from "./pages/PlanetPage";
 
 import ErrorBlock from "./components/ErrorBlock";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <RootPage />,
-    errorElement: <ErrorBlock />,
-    children: [
-      {
-        path: "",
-        index: true,
-        element: <HomePage />,
-      },
-      {
-        path: "items",
-        element: <ItemsPage />,
-        loader: itemsLoader,
-      },
-      {
-        path: "items/:id",
-        id: "item",
-        element: <ItemPage />,
-        loader: itemLoaders,
-      },
-      {
-        path: "resources",
-        element: <ResourcesPage />,
-        loader: () => resourcesLoader(),
-      },
-      {
-        path: "resources/:id",
-        element: <ResourcePage />,
-        id: "resource",
-        loader: resourceLoaders,
-      },
-      {
-        path: "planets",
-        element: <PlanetsPage />,
-        loader: () => planetsLoader(),
-      },
-      {
-        path: "planets/:id",
-        element: <PlanetPage />,
-        id: "planet",
-        loader: planetLoaders,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <RootPage />,
+      errorElement: <ErrorBlock />,
+      children: [
+        {
+          path: "",
+          index: true,
+          element: <HomePage />,
+        },
+        {
+          path: "items",
+          element: <ItemsPage />,
+          loader: itemsLoader,
+        },
+        {
+          path: "items/:id",
+          id: "item",
+          element: <ItemPage />,
+          loader: itemLoaders,
+        },
+        {
+          path: "resources",
+          element: <ResourcesPage />,
+          loader: () => resourcesLoader(),
+        },
+        {
+          path: "resources/:id",
+          element: <ResourcePage />,
+          id: "resource",
+          loader: resourceLoaders,
+        },
+        {
+          path: "planets",
+          element: <PlanetsPage />,
+          loader: () => planetsLoader(),
+        },
+        {
+          path: "planets/:id",
+          element: <PlanetPage />,
+          id: "planet",
+          loader: planetLoaders,
+        },
+      ],
+    },
+  ],
+  { basename: "/astroneer-recipe-book" },
+);
 
 const App = (): React.JSX.Element => {
   return <RouterProvider router={router} />;
