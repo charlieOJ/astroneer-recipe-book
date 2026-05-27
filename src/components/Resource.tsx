@@ -23,7 +23,7 @@ const Resource = ({ resource }: Props): React.JSX.Element => {
           </div>
         )}
 
-        <div className="card-body d-flex align-items-end justify-content-center">
+        <div className="card-body d-flex align-items-center justify-content-center">
           <h5 className="card-title">{resource.name.toUpperCase()}</h5>
         </div>
       </div>
