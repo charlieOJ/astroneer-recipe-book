@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { Await, useLoaderData } from "react-router-dom";
 
-import { fetchItems } from "../util/http";
 import { ItemType } from "../types/itemType";
 
 import SearchableList from "../components/searchableList/SearchableList";
@@ -35,7 +34,3 @@ const ItemsPage = (): React.JSX.Element => {
 };
 
 export default ItemsPage;
-
-export const itemsLoader = async () => {
-  return await fetchItems();
-};

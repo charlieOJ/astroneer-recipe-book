@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { fetchResources } from "../util/http";
 import { Await, useLoaderData } from "react-router-dom";
 import { ResourceType } from "../types/resourceType";
 import SearchableList from "../components/searchableList/SearchableList";
@@ -32,7 +31,3 @@ const ResourcesPage = () => {
 };
 
 export default ResourcesPage;
-
-export const resourcesLoader = async () => {
-  return await fetchResources();
-};

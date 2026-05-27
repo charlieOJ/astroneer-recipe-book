@@ -4,7 +4,7 @@ import { Await, Link } from "react-router-dom";
 import { PlanetType } from "../types/planetType";
 import { ResourceType } from "../types/resourceType";
 import { RESOURCES_BASE_URL } from "../util/constants";
-import { planetsLoader } from "../pages/ResourcePage";
+import { planetsLoader } from "../util/loaders";
 import Loading from "./shared/Loading";
 
 interface Props {

@@ -35,17 +35,3 @@ const PlanetPage = (): React.JSX.Element => {
 };
 
 export default PlanetPage;
-
-const planetLoader = async (id: string) => {
-  return await fetchPlanet(id);
-};
-
-export const resourcesLoader = async (ids: string[]) => {
-  return await fetchResources(ids);
-};
-
-export const planetLoaders = async ({ params }: { params: any }) => {
-  return {
-    planet: await planetLoader(params.id),
-  };
-};

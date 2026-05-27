@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { Await, useRouteLoaderData } from "react-router-dom";
 
 import { OBTAIN_BY } from "../util/constants";
-import { fetchPlanets, fetchResource, fetchResources } from "../util/http";
 import { ResourceType } from "../types/resourceType";
 
 import RecipeTree from "../components/RecipeTree";
@@ -56,22 +55,3 @@ const ResourcePage = (): React.JSX.Element => {
 };
 
 export default ResourcePage;
-
-const resourceLoader = async (id: string) => {
-  return await fetchResource(id);
-};
-
-const resourcesLoader = async () => {
-  return await fetchResources();
-};
-
-export const planetsLoader = async (planets: string[]) => {
-  return await fetchPlanets(planets);
-};
-
-export const resourceLoaders = async ({ params }: { params: any }) => {
-  return {
-    resource: await resourceLoader(params.id),
-    resources: resourcesLoader(),
-  };
-};

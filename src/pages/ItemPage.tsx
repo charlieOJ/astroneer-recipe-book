@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { Await, useRouteLoaderData } from "react-router-dom";
 
 import { PRINTERS } from "../util/constants";
-import { fetchItem, fetchResources } from "../util/http";
 
 import RecipeTree from "../components/RecipeTree";
 import { ItemType } from "../types/itemType";
@@ -57,18 +56,3 @@ const ItemPage = (): React.JSX.Element => {
 };
 
 export default ItemPage;
-
-const itemLoader = async (id: string) => {
-  return await fetchItem(id);
-};
-
-const resourcesLoader = async () => {
-  return await fetchResources();
-};
-
-export const itemLoaders = async ({ params }: { params: any }) => {
-  return {
-    item: await itemLoader(params.id),
-    resources: resourcesLoader(),
-  };
-};

@@ -1,16 +1,25 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 
+import {
+  itemsLoader,
+  itemLoaders,
+  resourcesLoader,
+  resourceLoaders,
+  planetsLoader,
+  planetLoaders,
+} from "./util/loaders";
+
 import RootPage from "./pages/RootPage";
 import HomePage from "./pages/HomePage";
 
-import ItemsPage, { itemsLoader } from "./pages/ItemsPage";
-import ItemPage, { itemLoaders } from "./pages/ItemPage";
+import ItemsPage from "./pages/ItemsPage";
+import ItemPage from "./pages/ItemPage";
 
-import ResourcesPage, { resourcesLoader } from "./pages/ResourcesPage";
-import ResourcePage, { resourceLoaders } from "./pages/ResourcePage";
+import ResourcesPage from "./pages/ResourcesPage";
+import ResourcePage from "./pages/ResourcePage";
 
-import PlanetsPage, { planetsLoader } from "./pages/PlanetsPage";
-import PlanetPage, { planetLoaders } from "./pages/PlanetPage";
+import PlanetsPage from "./pages/PlanetsPage";
+import PlanetPage from "./pages/PlanetPage";
 
 import ErrorBlock from "./components/ErrorBlock";
 
@@ -39,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "resources",
         element: <ResourcesPage />,
-        loader: resourcesLoader,
+        loader: () => resourcesLoader(),
       },
       {
         path: "resources/:id",
@@ -50,7 +59,7 @@ const router = createBrowserRouter([
       {
         path: "planets",
         element: <PlanetsPage />,
-        loader: planetsLoader,
+        loader: () => planetsLoader(),
       },
       {
         path: "planets/:id",
@@ -67,8 +76,3 @@ const App = (): React.JSX.Element => {
 };
 
 export default App;
-
-// TODO:
-// Each options ->
-//   Page avec searchableList (refacto for réusability)
-//   + d'element avec lien vers /:id

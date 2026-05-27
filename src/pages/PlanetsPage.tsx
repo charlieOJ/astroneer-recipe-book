@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { fetchPlanets } from "../util/http";
 import { Await, useLoaderData } from "react-router-dom";
 import { PlanetType } from "../types/planetType";
 import Planet from "../components/planet/Planet";
@@ -32,7 +31,3 @@ const PlanetsPage = () => {
 };
 
 export default PlanetsPage;
-
-export const planetsLoader = async () => {
-  return await fetchPlanets();
-};

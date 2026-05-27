@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Await } from "react-router-dom";
 
-import { resourcesLoader } from "../../pages/PlanetPage";
+import { resourcesLoader } from "../../util/loaders";
 import { PlanetType } from "../../types/planetType";
 import { RESOURCES_BASE_URL } from "../../util/constants";
 
