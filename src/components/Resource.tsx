@@ -18,7 +18,7 @@ const Resource = ({ resource }: Props): React.JSX.Element => {
               src={RESOURCES_BASE_URL + resource.image}
               className="card-img-top rounded"
               alt={resource.name}
-              whileHover={{ scale: 1.2 }}
+              whileHover={{ scale: 1.1 }}
             />
           </div>
         )}

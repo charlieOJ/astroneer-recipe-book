@@ -18,7 +18,7 @@ const Planet = ({ planet }: Props): React.JSX.Element => {
               src={RESOURCES_BASE_URL + planet.image}
               className="card-img-top rounded"
               alt={planet.name}
-              whileHover={{ scale: 1.2 }}
+              whileHover={{ scale: 1.1 }}
             />
           </div>
         )}
