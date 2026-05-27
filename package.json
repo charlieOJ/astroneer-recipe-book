@@ -1,5 +1,6 @@
 {
-  "name": "react-astroneer-recipe-book",
+  "name": "astroneer-recipe-book",
+  "homepage": "https://charlieoj.github.io/astroneer-recipe-book/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +13,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "bootstrap": "^5.3.8",
+    "gh-pages": "^6.3.0",
     "motion": "^12.40.0",
     "react": "^19.2.6",
     "react-bootstrap": "^2.10.10",
@@ -22,6 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
