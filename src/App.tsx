@@ -1,11 +1,25 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
-import "./App.css";
+
+import {
+  itemsLoader,
+  itemLoaders,
+  resourcesLoader,
+  resourceLoaders,
+  planetsLoader,
+  planetLoaders,
+} from "./util/loaders";
 
 import RootPage from "./pages/RootPage";
-import HomePage, { itemsLoader } from "./pages/HomePage";
-import ItemPage, { itemLoaders } from "./pages/ItemPage";
-import ResourcePage, { resourceLoaders } from "./pages/ResourcePage";
-import PlanetPage, { planetLoaders } from "./pages/PlanetPage";
+import HomePage from "./pages/HomePage";
+
+import ItemsPage from "./pages/ItemsPage";
+import ItemPage from "./pages/ItemPage";
+
+import ResourcesPage from "./pages/ResourcesPage";
+import ResourcePage from "./pages/ResourcePage";
+
+import PlanetsPage from "./pages/PlanetsPage";
+import PlanetPage from "./pages/PlanetPage";
 
 import ErrorBlock from "./components/ErrorBlock";
 
@@ -17,7 +31,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
+        index: true,
         element: <HomePage />,
+      },
+      {
+        path: "items",
+        element: <ItemsPage />,
         loader: itemsLoader,
       },
       {
@@ -27,10 +46,20 @@ const router = createBrowserRouter([
         loader: itemLoaders,
       },
       {
+        path: "resources",
+        element: <ResourcesPage />,
+        loader: () => resourcesLoader(),
+      },
+      {
         path: "resources/:id",
         element: <ResourcePage />,
         id: "resource",
         loader: resourceLoaders,
+      },
+      {
+        path: "planets",
+        element: <PlanetsPage />,
+        loader: () => planetsLoader(),
       },
       {
         path: "planets/:id",

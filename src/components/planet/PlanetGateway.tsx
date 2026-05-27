@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import { PlanetType } from "../../types/planetType";
 import { ResourceType } from "../../types/resourceType";
 import { RESOURCES_BASE_URL } from "../../util/constants";
-import { toCapitalizeCase } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
@@ -24,10 +24,12 @@ const PlanetGateway = ({ planet, resources }: Props): React.JSX.Element => {
           <img
             src={RESOURCES_BASE_URL + resources.gateway.icon}
             alt={`${resources.gateway.name} gateway material`}
-            className="icon-40"
+            className="icon-30"
           />
 
-          {toCapitalizeCase(resources.gateway.name)}
+          <Link to={`/resources/${resources.gateway.id}`} className="text-decoration-none">
+            <span className="text-capitalize">{resources.gateway.name}</span>
+          </Link>
         </td>
       </tr>
     );

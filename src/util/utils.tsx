@@ -1,9 +1,7 @@
 import { ItemType } from "../types/itemType";
+import { PlanetType } from "../types/planetType";
 import { RecipeResourceType, RecipeTreeType } from "../types/recipeType";
 import { ResourceType } from "../types/resourceType";
-
-export const toCapitalizeCase = (string: string): string =>
-  string.charAt(0).toUpperCase() + string.slice(1);
 
 export const recipeTreeData = (
   resources: ResourceType[],
@@ -36,4 +34,56 @@ const getRecipeResource = (
   });
 
   return recipeResource;
+};
+
+export const resourceIds = (planet: PlanetType, gasIds: string[]): string[] => {
+  let resourceIds = [] as any;
+  if (planet.resources?.primary) {
+    resourceIds.push(planet.resources?.primary);
+  }
+  if (planet.resources?.secondary) {
+    resourceIds.push(planet.resources?.secondary);
+  }
+  if (planet.gateway.material) {
+    resourceIds.push(planet.gateway.material);
+  }
+  if (planet?.resources?.gases) {
+    resourceIds.push(gasIds);
+  }
+  return resourceIds.flat();
+};
+
+export const resourcesData = (
+  planet: PlanetType,
+  resources: ResourceType[],
+  gasIds: string[],
+): {
+  gateway?: ResourceType;
+  primary?: ResourceType;
+  secondary?: ResourceType;
+  gases?: ResourceType[];
+} => {
+  let resourcesData = {} as any;
+  resourcesData["gases"] = [] as any;
+
+  resources.forEach((r: ResourceType) => {
+    switch (r.id) {
+      case planet.gateway.material:
+        resourcesData["gateway"] = r;
+        break;
+      case planet.resources.primary:
+        resourcesData["primary"] = r;
+        break;
+      case planet.resources.secondary:
+        resourcesData["secondary"] = r;
+        break;
+      default:
+        gasIds.forEach((gasId: string) => {
+          if (r.id === gasId) resourcesData["gases"].push(r);
+        });
+        break;
+    }
+  });
+
+  return resourcesData;
 };

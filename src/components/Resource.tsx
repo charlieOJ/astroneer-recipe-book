@@ -1,34 +1,34 @@
 import { Link } from "react-router-dom";
-
-import { ItemType } from "../types/itemType";
-import { RESOURCES_BASE_URL } from "../util/constants";
 import { motion } from "motion/react";
 
+import { RESOURCES_BASE_URL } from "../util/constants";
+import { ResourceType } from "../types/resourceType";
+
 interface Props {
-  item: ItemType;
+  resource: ResourceType;
 }
 
-const Item = ({ item }: Props): React.JSX.Element => {
+const Resource = ({ resource }: Props): React.JSX.Element => {
   return (
-    <Link to={`/items/${item.id}`} className="text-decoration-none">
+    <Link to={`/resources/${resource.id}`} className="text-decoration-none">
       <div className="card h-100">
-        {item.image && (
+        {resource.image && (
           <div className="img-thumbnail p-3 border-0">
             <motion.img
-              src={RESOURCES_BASE_URL + item.image}
+              src={RESOURCES_BASE_URL + resource.image}
               className="card-img-top rounded"
-              alt={item.name}
+              alt={resource.name}
               whileHover={{ scale: 1.1 }}
             />
           </div>
         )}
 
         <div className="card-body d-flex align-items-center justify-content-center">
-          <h5 className="card-title">{item.name.toUpperCase()}</h5>
+          <h5 className="card-title">{resource.name.toUpperCase()}</h5>
         </div>
       </div>
     </Link>
   );
 };
 
-export default Item;
+export default Resource;

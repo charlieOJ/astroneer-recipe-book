@@ -1293,42 +1293,42 @@
     "id": "i135-t-other",
     "name": "resources",
     "size": "small",
-    "tier": "other"
+    "tier": 0
   },
   {
     "id": "i136-t-other",
     "name": "research items",
     "size": "medium",
-    "tier": "other"
+    "tier": 0
   },
   {
     "id": "i137-t-other",
     "name": "research sample",
     "size": "small",
-    "tier": "other"
+    "tier": 0
   },
   {
     "id": "i138-t-other",
     "name": "wreckage",
     "size": "varies",
-    "tier": "other"
+    "tier": 0
   },
   {
     "id": "i139-t-other",
     "name": "marbles",
     "size": "medium",
-    "tier": "other"
+    "tier": 0
   },
   {
     "id": "i140-t-other",
     "name": "terrain tool",
     "size": "small",
-    "tier": "other"
+    "tier": 0
   },
   {
     "id": "i141-t-other",
     "name": "backpack",
     "size": "small",
-    "tier": "other"
+    "tier": 0
   }
 ]

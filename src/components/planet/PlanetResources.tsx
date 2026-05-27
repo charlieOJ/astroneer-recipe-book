@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import { GasType, PlanetType } from "../../types/planetType";
 import { ResourceType } from "../../types/resourceType";
 import { RESOURCES_BASE_URL } from "../../util/constants";
-import { toCapitalizeCase } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
@@ -26,10 +26,12 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
           <img
             src={RESOURCES_BASE_URL + resources.primary.icon}
             alt={`${resources.primary.name} primary resource`}
-            className="icon-40"
+            className="icon-30"
           />
 
-          {toCapitalizeCase(resources.primary.name)}
+          <Link to={`/resources/${resources.primary.id}`} className="text-decoration-none">
+            <span className="text-capitalize">{resources.primary.name}</span>
+          </Link>
         </td>
       </tr>
     );
@@ -48,10 +50,12 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
           <img
             src={RESOURCES_BASE_URL + resources.secondary.icon}
             alt={`${resources.secondary.name} secondary resource`}
-            className="icon-40"
+            className="icon-30"
           />
 
-          {toCapitalizeCase(resources.secondary.name)}
+          <Link to={`/resources/${resources.secondary.id}`} className="text-decoration-none">
+            <span className="text-capitalize">{resources.secondary.name}</span>
+          </Link>
         </td>
       </tr>
     );
@@ -84,9 +88,12 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
           <img
             src={RESOURCES_BASE_URL + currentResource.icon}
             alt={`${currentResource.name} gas`}
-            className="icon-40"
+            className="icon-30"
           />
-          {toCapitalizeCase(currentResource.name)} ({gas.ppu} ppu)
+          <Link to={`/resources/${currentResource.id}`} className="text-decoration-none me-2">
+            <span className="text-capitalize">{currentResource.name}</span>
+          </Link>
+          ({gas.ppu} ppu)
         </td>
       </tr>
     );
