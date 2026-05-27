@@ -7,13 +7,14 @@ import { PlanetType } from "../types/planetType";
 import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
 import PlanetInfo from "../components/planet/PlanetInfo";
+import Loading from "../components/shared/Loading";
 
 const PlanetPage = (): React.JSX.Element => {
   const { planet } = useRouteLoaderData("planet");
 
   return (
     <div className="container">
-      <Suspense fallback={<p>Loading planet data...</p>}>
+      <Suspense fallback={<Loading text="Loading planet data..." />}>
         <Await resolve={planet}>
           {(loadedData: { planet: PlanetType }) => {
             const loadedPlanet = loadedData.planet;

@@ -4,6 +4,7 @@ import { Await, useLoaderData } from "react-router-dom";
 import { PlanetType } from "../types/planetType";
 import Planet from "../components/planet/Planet";
 import SearchableList from "../components/searchableList/SearchableList";
+import Loading from "../components/shared/Loading";
 
 const PlanetsPage = () => {
   const { planets } = useLoaderData();
@@ -12,7 +13,7 @@ const PlanetsPage = () => {
     <div className="container">
       <h1>Planets</h1>
 
-      <Suspense fallback={<p className="text-center">Loading planets...</p>}>
+      <Suspense fallback={<Loading text="Loading planets..." />}>
         <Await resolve={planets}>
           {(loadedIPlanets: PlanetType[]) => {
             return (

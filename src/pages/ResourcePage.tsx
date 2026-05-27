@@ -9,13 +9,14 @@ import RecipeTree from "../components/RecipeTree";
 import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
 import PlanetsList from "../components/PlanetsList";
+import Loading from "../components/shared/Loading";
 
 const ResourcePage = (): React.JSX.Element => {
   const { resource, resources } = useRouteLoaderData("resource");
 
   return (
     <div className="container">
-      <Suspense fallback={<p>Loading resource data...</p>}>
+      <Suspense fallback={<Loading text="Loading resource data..." />}>
         <Await resolve={resource}>
           {(loadedData: { resource: ResourceType }) => {
             const loadedResource = loadedData.resource;
@@ -35,7 +36,7 @@ const ResourcePage = (): React.JSX.Element => {
                 </DetailContent>
 
                 {loadedResource.recipe && (
-                  <Suspense fallback={<p>Loading full recipe...</p>}>
+                  <Suspense fallback={<Loading text="Loading full recipe..." />}>
                     <Await resolve={resources}>
                       {(loadedData: { resources: ResourceType[] }) => {
                         return (

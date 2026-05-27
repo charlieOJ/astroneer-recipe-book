@@ -5,6 +5,7 @@ import { PlanetType } from "../types/planetType";
 import { ResourceType } from "../types/resourceType";
 import { RESOURCES_BASE_URL } from "../util/constants";
 import { planetsLoader } from "../pages/ResourcePage";
+import Loading from "./shared/Loading";
 
 interface Props {
   resource: ResourceType;
@@ -15,7 +16,7 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
   if (resource.planets.length === 7) return <p>Available on all planets.</p>;
 
   return (
-    <Suspense fallback={<p>Loading planets ...</p>}>
+    <Suspense fallback={<Loading text="Loading planets ..." />}>
       <Await resolve={planetsLoader(resource.planets)}>
         {(loadData: any) => {
           const planets = loadData.planets;

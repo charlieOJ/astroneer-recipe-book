@@ -11,6 +11,7 @@ import PlanetPower from "./PlanetPower";
 import PlanetGateway from "./PlanetGateway";
 import PlanetInfoTitle from "./PlanetInfoTitle";
 import { resourceIds, resourcesData } from "../../util/utils";
+import Loading from "../shared/Loading";
 
 interface Props {
   planet: PlanetType;
@@ -22,7 +23,7 @@ const PlanetInfo = ({ planet }: Props): React.JSX.Element => {
   const gasIds = planet.resources?.gases?.map(gas => gas.id) || [];
 
   return (
-    <Suspense fallback={<p>Loading planets data...</p>}>
+    <Suspense fallback={<Loading text="Loading planets data..." />}>
       <Await resolve={resourcesLoader([...new Set(resourceIds(planet, gasIds))])}>
         {(loadedData: any) => {
           const resources = resourcesData(planet, loadedData.resources, gasIds);

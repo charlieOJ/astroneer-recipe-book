@@ -4,6 +4,7 @@ import { Await, useLoaderData } from "react-router-dom";
 import { ResourceType } from "../types/resourceType";
 import SearchableList from "../components/searchableList/SearchableList";
 import Resource from "../components/Resource";
+import Loading from "../components/shared/Loading";
 
 const ResourcesPage = () => {
   const { resources } = useLoaderData();
@@ -12,7 +13,7 @@ const ResourcesPage = () => {
     <div className="container">
       <h1>Resources</h1>
 
-      <Suspense fallback={<p className="text-center">Loading resources...</p>}>
+      <Suspense fallback={<Loading text="Loading resources..." />}>
         <Await resolve={resources}>
           {(loadedIResources: ResourceType[]) => {
             return (

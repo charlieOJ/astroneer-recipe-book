@@ -9,13 +9,14 @@ import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
 import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
+import Loading from "../components/shared/Loading";
 
 const ItemPage = (): React.JSX.Element => {
   const { item, resources } = useRouteLoaderData("item");
 
   return (
     <div className="container">
-      <Suspense fallback={<p>Loading item data...</p>}>
+      <Suspense fallback={<Loading text="Loading item data..." />}>
         <Await resolve={item}>
           {(loadedData: { item: ItemType }) => {
             const loadedItem = loadedData.item;
@@ -38,7 +39,7 @@ const ItemPage = (): React.JSX.Element => {
                 </DetailContent>
 
                 {loadedItem.recipe && (
-                  <Suspense fallback={<p>Loading item data...</p>}>
+                  <Suspense fallback={<Loading text="Loading item data..." />}>
                     <Await resolve={resources}>
                       {(loadedData: { resources: ResourceType[] }) => {
                         return <RecipeTree element={loadedItem} resources={loadedData.resources} />;

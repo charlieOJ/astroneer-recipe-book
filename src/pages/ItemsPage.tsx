@@ -6,6 +6,7 @@ import { ItemType } from "../types/itemType";
 
 import SearchableList from "../components/searchableList/SearchableList";
 import Item from "../components/Item";
+import Loading from "../components/shared/Loading";
 
 const ItemsPage = (): React.JSX.Element => {
   const { items } = useLoaderData();
@@ -14,7 +15,7 @@ const ItemsPage = (): React.JSX.Element => {
     <div className="container">
       <h2>Items</h2>
 
-      <Suspense fallback={<p className="text-center">Loading items...</p>}>
+      <Suspense fallback={<Loading text="Loading items..." />}>
         <Await resolve={items}>
           {(loadedItems: ItemType[]) => {
             return (
