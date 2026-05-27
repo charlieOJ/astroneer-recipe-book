@@ -2,7 +2,6 @@ import { Suspense } from "react";
 import { Await, useRouteLoaderData } from "react-router-dom";
 
 import { PRINTERS } from "../util/constants";
-import { toCapitalizeCase } from "../util/utils";
 import { fetchItem, fetchResources } from "../util/http";
 
 import RecipeTree from "../components/RecipeTree";
@@ -26,7 +25,10 @@ const ItemPage = (): React.JSX.Element => {
                 <DetailHeader element={loadedItem} />
 
                 <DetailContent element={loadedItem}>
-                  <p>Craft on : {toCapitalizeCase(PRINTERS[loadedItem.tier - 1])}</p>
+                  <p>
+                    Craft on :{" "}
+                    <span className="text-capitalize">{PRINTERS[loadedItem.tier - 1]}</span>
+                  </p>
                   {loadedItem.cost && (
                     <p>
                       Unlock cost :

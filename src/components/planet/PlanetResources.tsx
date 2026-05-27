@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { GasType, PlanetType } from "../../types/planetType";
 import { ResourceType } from "../../types/resourceType";
 import { RESOURCES_BASE_URL } from "../../util/constants";
-import { toCapitalizeCase } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
@@ -31,7 +30,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
           />
 
           <Link to={`/resources/${resources.primary.id}`} className="text-decoration-none">
-            {toCapitalizeCase(resources.primary.name)}
+            <span className="text-capitalize">{resources.primary.name}</span>
           </Link>
         </td>
       </tr>
@@ -55,7 +54,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
           />
 
           <Link to={`/resources/${resources.secondary.id}`} className="text-decoration-none">
-            {toCapitalizeCase(resources.secondary.name)}
+            <span className="text-capitalize">{resources.secondary.name}</span>
           </Link>
         </td>
       </tr>
@@ -92,7 +91,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
             className="icon-30"
           />
           <Link to={`/resources/${currentResource.id}`} className="text-decoration-none me-2">
-            {toCapitalizeCase(currentResource.name)}
+            <span className="text-capitalize">{currentResource.name}</span>
           </Link>
           ({gas.ppu} ppu)
         </td>

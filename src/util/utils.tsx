@@ -3,9 +3,6 @@ import { PlanetType } from "../types/planetType";
 import { RecipeResourceType, RecipeTreeType } from "../types/recipeType";
 import { ResourceType } from "../types/resourceType";
 
-export const toCapitalizeCase = (string: string): string =>
-  string.charAt(0).toUpperCase() + string.slice(1);
-
 export const recipeTreeData = (
   resources: ResourceType[],
   element: ItemType | ResourceType,

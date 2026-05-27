@@ -1,6 +1,5 @@
 import { PlanetType } from "../../types/planetType";
 import { RESOURCES_BASE_URL } from "../../util/constants";
-import { toCapitalizeCase } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
@@ -22,7 +21,7 @@ const PlanetDetail = ({ planet }: Props): React.JSX.Element => {
               className="me-2 icon-30"
             />
           )}
-          {toCapitalizeCase(planet.type)}
+          <span className="text-capitalize">{planet.type}</span>
         </td>
       </tr>
 

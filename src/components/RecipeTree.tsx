@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Accordion from "react-bootstrap/Accordion";
 
-import { recipeTreeData, toCapitalizeCase } from "../util/utils";
+import { recipeTreeData } from "../util/utils";
 import { OBTAIN_BY, RESOURCES_BASE_URL } from "../util/constants";
 import { ResourceType } from "../types/resourceType";
 import { ItemType } from "../types/itemType";
@@ -43,7 +43,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
                 />
                 <p className="m-0">
                   <Link to={`/resources/${resource?.id}`} className="text-decoration-none">
-                    <strong>{toCapitalizeCase(resource!.name)}</strong>
+                    <strong className="text-capitalize">{resource!.name}</strong>
                   </Link>{" "}
                   x{resourceData?.quantity ?? 1}
                   {obtainBy && (
@@ -77,7 +77,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
           <Accordion.Item eventKey="0">
             <Accordion.Header>Show full recipe tree</Accordion.Header>
             <Accordion.Body>
-              <h3>{toCapitalizeCase(itemRecipeData.name)}</h3>
+              <h3 className="text-capitalize">{itemRecipeData.name}</h3>
 
               <p>Create from : </p>
               {recipeTree(itemRecipeData)}

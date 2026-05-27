@@ -4,7 +4,6 @@ import { Await, Link } from "react-router-dom";
 import { PlanetType } from "../types/planetType";
 import { ResourceType } from "../types/resourceType";
 import { RESOURCES_BASE_URL } from "../util/constants";
-import { toCapitalizeCase } from "../util/utils";
 import { planetsLoader } from "../pages/ResourcePage";
 
 interface Props {
@@ -34,7 +33,7 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
                         className="me-2 icon-30"
                         alt={planet.name}
                       />
-                      {toCapitalizeCase(planet.name)}
+                      <span className="text-capitalize">{planet.name}</span>
                     </Link>
                   </div>
                 );

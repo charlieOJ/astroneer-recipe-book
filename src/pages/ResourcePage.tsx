@@ -3,7 +3,6 @@ import { Await, useRouteLoaderData } from "react-router-dom";
 
 import { OBTAIN_BY } from "../util/constants";
 import { fetchPlanets, fetchResource, fetchResources } from "../util/http";
-import { toCapitalizeCase } from "../util/utils";
 import { ResourceType } from "../types/resourceType";
 
 import RecipeTree from "../components/RecipeTree";
@@ -26,7 +25,10 @@ const ResourcePage = (): React.JSX.Element => {
                 <DetailHeader element={loadedResource} />
                 <DetailContent element={loadedResource}>
                   <p>
-                    Obtain by : {toCapitalizeCase(OBTAIN_BY[loadedResource?.obtainBy || 0].from)}
+                    Obtain by :{" "}
+                    <span className="text-capitalize">
+                      {OBTAIN_BY[loadedResource?.obtainBy || 0].from}
+                    </span>
                   </p>
 
                   <PlanetsList resource={loadedResource} />
