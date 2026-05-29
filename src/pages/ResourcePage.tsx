@@ -4,7 +4,7 @@ import { Await, useRouteLoaderData } from "react-router-dom";
 import { OBTAIN_BY } from "../util/constants";
 import { ResourceType } from "../types/resourceType";
 
-import RecipeTree from "../components/RecipeTree";
+import RecipeTree from "../components/recipeTree/RecipeTree";
 import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
 import PlanetsList from "../components/PlanetsList";

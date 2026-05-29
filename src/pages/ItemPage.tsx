@@ -3,7 +3,7 @@ import { Await, useRouteLoaderData } from "react-router-dom";
 
 import { PRINTERS } from "../util/constants";
 
-import RecipeTree from "../components/RecipeTree";
+import RecipeTree from "../components/recipeTree/RecipeTree";
 import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
 import DetailHeader from "../components/shared/DetailHeader";
