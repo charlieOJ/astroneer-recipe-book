@@ -3,17 +3,23 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
 import { OBTAIN_BY, RESOURCES_BASE_URL } from "../../util/constants";
+import { RecipeSubResourceType, RecipeTreeType } from "../../types/recipeType";
 
-const RecipeBranch = ({ recipe, id }: any) => {
+interface Props {
+  recipe: RecipeTreeType | RecipeSubResourceType;
+  id: string;
+}
+
+const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
   const [branchStatus, setBranchStatus] = useState<any>(false);
 
-  if (!recipe.recipeResource?.[id]) return null;
+  if (!recipe.recipeResource?.[id]) return <></>;
 
   const classes = branchStatus
     ? "bg-success-subtle border-success-subtle"
     : "bg-danger-subtle border-danger-subtle";
 
-  const onCheckResource = (e: any) => {
+  const onCheckResource = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBranchStatus(e.target.checked);
   };
 
