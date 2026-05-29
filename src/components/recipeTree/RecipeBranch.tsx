@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
-import { OBTAIN_BY, RESOURCES_BASE_URL } from "../../util/constants";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+
+import { OBTAIN_BY, RESOURCES_BASE_URL } from "../../util/constants";
 
 const RecipeBranch = ({ recipe, id }: any) => {
   const [branchStatus, setBranchStatus] = useState<any>(false);
@@ -17,13 +19,29 @@ const RecipeBranch = ({ recipe, id }: any) => {
 
   const resourceData = recipe.recipeResource[id];
   const resource = resourceData.resource;
+
   let obtainBy = null;
   let obtainByUrl = null;
-
   if (resource?.obtainBy) {
     obtainBy = " - obtain by ";
     obtainByUrl = OBTAIN_BY[resource?.obtainBy].slug;
   }
+
+  const variants = {
+    visible: {
+      opacity: 1,
+      height: "auto",
+      y: 0,
+      display: "block",
+    },
+    hidden: {
+      opacity: 0,
+      height: 0,
+      y: 10,
+      overflow: "hidden",
+      display: "none",
+    },
+  };
 
   return (
     <li className={`list-group-item border rounded p-1 ${classes}`}>
@@ -60,11 +78,17 @@ const RecipeBranch = ({ recipe, id }: any) => {
         </p>
       </div>
       {resourceData.recipeResource && (
-        <ul className={`d-flex flex-column gap-1 ${branchStatus ? "d-none" : ""}`}>
+        <motion.ul
+          initial="hidden"
+          animate={branchStatus ? "hidden" : "visible"}
+          variants={variants}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="d-flex flex-column gap-1"
+        >
           {Object.keys(resourceData.recipeResource).map((resourceId: string): React.JSX.Element => {
             return <RecipeBranch key={resourceId} recipe={resourceData} id={resourceId} />;
           })}
-        </ul>
+        </motion.ul>
       )}
     </li>
   );
