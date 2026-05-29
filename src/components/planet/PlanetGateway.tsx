@@ -27,7 +27,7 @@ const PlanetGateway = ({ planet, resources }: Props): React.JSX.Element => {
             className="icon-30"
           />
 
-          <Link to={`/resources/${resources.gateway.id}`} className="text-decoration-none">
+          <Link to={`/resources/${resources.gateway.slug}`} className="text-decoration-none">
             <span className="text-capitalize">{resources.gateway.name}</span>
           </Link>
         </td>

@@ -11,7 +11,7 @@ export const PRINTERS = [
 
 export const OBTAIN_BY = {
   mining: { from: "mining" },
-  smelting: { from: "smelting", id: "i81-t3" },
-  atmosphericCondenser: { from: "atmospheric condenser", id: "i84-t3" },
-  chemistryLab: { from: "chemistry lab", id: "i83-t3" },
+  smelting: { from: "smelting", id: "i81-t3", slug: 80 },
+  atmosphericCondenser: { from: "atmospheric condenser", id: "i84-t3", slug: 83 },
+  chemistryLab: { from: "chemistry lab", id: "i83-t3", slug: 82 },
 } as obtainByType;

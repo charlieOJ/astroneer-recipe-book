@@ -1,8 +1,5 @@
-import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import HomePageButton from "../components/HomePageButton";
-
-const MotionLink = motion(Link);
 
 const HomePage = (): React.JSX.Element => {
   return (

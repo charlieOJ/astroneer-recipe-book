@@ -2,83 +2,140 @@ import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
 import { PlanetType } from "../types/planetType";
 
+import { get, ref } from "firebase/database";
+import { db } from "../firebaseConfig";
+
 // Fetch resources
 export const fetchResources = async (
   ids?: string[],
-): Promise<{ resources: ResourceType[] } | ResponseType> => {
-  let url = "http://localhost:3001/resources/";
-  if (ids) url += ids;
+): Promise<{ resources: ResourceType[] } | { error: string } | ResponseType> => {
+  try {
+    const snapshot = await get(ref(db, "resources"));
+    if (snapshot.exists()) {
+      const response = snapshot.val();
 
-  const response = await fetch(url);
-  const data = await response.json();
+      const data = response.filter((resource: ResourceType, index: number) => {
+        resource.slug = index;
+        return (ids && ids.includes(resource.id)) || !ids;
+      });
 
-  if (!response.ok) {
-    throw new Response(JSON.stringify({ message: "Failed to fetch resources." }), { status: 500 });
+      return { resources: data };
+    } else {
+      return { error: "No resources found." };
+    }
+    // }
+  } catch (error) {
+    throw new Response(JSON.stringify({ message: error || "Failed to fetch resources." }), {
+      status: 500,
+    });
   }
-
-  return { resources: data.resources };
 };
 
 export const fetchResource = async (
   id: string,
-): Promise<{ resource: ResourceType } | ResponseType> => {
-  const response = await fetch(`http://localhost:3001/resource/${id}`);
-  const data = await response.json();
+): Promise<{ resource: ResourceType } | { error: string } | ResponseType> => {
+  try {
+    const snapshot = await get(ref(db, `resources/${id}`));
 
-  if (!response.ok) {
-    throw new Response(JSON.stringify({ message: "Failed to fetch resource." }), { status: 500 });
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+
+      return { resource: data };
+    } else {
+      return { error: "No resource found." };
+    }
+  } catch (error) {
+    throw new Response(JSON.stringify({ message: error || "Failed to fetch resource." }), {
+      status: 500,
+    });
   }
-
-  return { resource: data.resource };
 };
 
 // Fetch items
-export const fetchItems = async (): Promise<{ items: ItemType[] } | ResponseType> => {
-  const response = await fetch("http://localhost:3001/items");
-  const data = await response.json();
+export const fetchItems = async (): Promise<
+  { items: ItemType[] } | { error: string } | ResponseType
+> => {
+  try {
+    const snapshot = await get(ref(db, "items"));
 
-  if (!response.ok) {
-    throw new Response(JSON.stringify({ message: "Failed to fetch items." }), { status: 500 });
+    if (snapshot.exists()) {
+      const response = snapshot.val();
+      const data = response.map((item: ItemType, index: number) => {
+        item.slug = index;
+        return item;
+      });
+
+      return { items: data };
+    } else {
+      return { error: "No items found." };
+    }
+  } catch (error) {
+    throw new Response(JSON.stringify({ message: error || "Failed to fetch items." }), {
+      status: 500,
+    });
   }
-
-  return { items: data.items };
 };
 
-export const fetchItem = async (id: string): Promise<{ item: ItemType } | ResponseType> => {
-  const response = await fetch(`http://localhost:3001/item/${id}`);
-  const data = await response.json();
+export const fetchItem = async (
+  id: string,
+): Promise<{ item: ItemType } | { error: string } | ResponseType> => {
+  try {
+    const snapshot = await get(ref(db, `items/${id}`));
 
-  if (!response.ok) {
-    throw new Response(JSON.stringify({ message: "Failed to fetch item." }), { status: 500 });
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+
+      return { item: data };
+    } else {
+      return { error: "No item found." };
+    }
+  } catch (error) {
+    throw new Response(JSON.stringify({ message: error || "Failed to fetch item." }), {
+      status: 500,
+    });
   }
-
-  return { item: data.item };
 };
 
 // Fetch planets
 export const fetchPlanets = async (
   ids?: string[],
-): Promise<{ planets: PlanetType[] } | ResponseType> => {
-  let url = "http://localhost:3001/planets/";
-  if (ids) url += ids;
+): Promise<{ planets: PlanetType[] } | { error: string } | ResponseType> => {
+  try {
+    const snapshot = await get(ref(db, "planets"));
+    if (snapshot.exists()) {
+      const response = snapshot.val();
+      const data = response.filter((planet: PlanetType, index: number) => {
+        planet.slug = index;
+        return (ids && ids.includes(planet.id)) || !ids;
+      });
 
-  const response = await fetch(url);
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Response(JSON.stringify({ message: "Failed to fetch planets." }), { status: 500 });
+      return { planets: data };
+    } else {
+      return { error: "No planets found." };
+    }
+  } catch (error) {
+    throw new Response(JSON.stringify({ message: error || "Failed to fetch planets." }), {
+      status: 500,
+    });
   }
-
-  return { planets: data.planets };
 };
 
-export const fetchPlanet = async (id: string): Promise<{ planet: PlanetType } | ResponseType> => {
-  const response = await fetch(`http://localhost:3001/planet/${id}`);
-  const data = await response.json();
+export const fetchPlanet = async (
+  id: string,
+): Promise<{ planet: PlanetType } | { error: string } | ResponseType> => {
+  try {
+    const snapshot = await get(ref(db, `planets/${id}`));
 
-  if (!response.ok) {
-    throw new Response(JSON.stringify({ message: "Failed to fetch planet." }), { status: 500 });
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+
+      return { planet: data };
+    } else {
+      return { error: "No planet found." };
+    }
+  } catch (error) {
+    throw new Response(JSON.stringify({ message: error || "Failed to fetch planet." }), {
+      status: 500,
+    });
   }
-
-  return { planet: data.planet };
 };
