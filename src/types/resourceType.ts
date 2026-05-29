@@ -2,6 +2,7 @@ import { RecipeType } from "./recipeType";
 
 export interface ResourceType {
   id: string;
+  slug?: number;
   name: string;
   icon: string;
   image: string;

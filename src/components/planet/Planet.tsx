@@ -10,7 +10,7 @@ interface Props {
 
 const Planet = ({ planet }: Props): React.JSX.Element => {
   return (
-    <Link to={`/planets/${planet.id}`} className="text-decoration-none">
+    <Link to={`/planets/${planet.slug}`} className="text-decoration-none">
       <div className="card h-100">
         {planet.image && (
           <div className="img-thumbnail p-3 border-0">

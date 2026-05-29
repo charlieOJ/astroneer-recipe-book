@@ -28,7 +28,7 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
               {planets.map((planet: PlanetType) => {
                 return (
                   <div key={planet.id}>
-                    <Link to={`/planets/${planet.id}`} className="text-decoration-none">
+                    <Link to={`/planets/${planet.slug}`} className="text-decoration-none">
                       <img
                         src={RESOURCES_BASE_URL + planet.icon}
                         className="me-2 icon-30"

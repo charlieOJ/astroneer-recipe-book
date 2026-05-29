@@ -1,3 +1,3 @@
 export interface obtainByType {
-  [id: string]: { from: string; id?: string };
+  [id: string]: { from: string; id?: string; slug?: number };
 }

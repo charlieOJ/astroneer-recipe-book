@@ -27,7 +27,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
           let obtainByUrl = null;
           if (resource?.obtainBy) {
             obtainBy = " - obtain by ";
-            obtainByUrl = OBTAIN_BY[resource?.obtainBy].id;
+            obtainByUrl = OBTAIN_BY[resource?.obtainBy].slug;
           }
 
           return (
@@ -42,7 +42,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
                   alt={resource?.name}
                 />
                 <p className="m-0">
-                  <Link to={`/resources/${resource?.id}`} className="text-decoration-none">
+                  <Link to={`/resources/${resource?.slug}`} className="text-decoration-none">
                     <strong className="text-capitalize">{resource!.name}</strong>
                   </Link>{" "}
                   x{resourceData?.quantity ?? 1}

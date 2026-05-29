@@ -1,5 +1,6 @@
 export interface PlanetType {
   id: string;
+  slug?: number;
   name: string;
   icon: string;
   image: string;

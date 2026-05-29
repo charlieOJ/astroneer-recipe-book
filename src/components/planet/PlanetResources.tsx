@@ -29,7 +29,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
             className="icon-30"
           />
 
-          <Link to={`/resources/${resources.primary.id}`} className="text-decoration-none">
+          <Link to={`/resources/${resources.primary.slug}`} className="text-decoration-none">
             <span className="text-capitalize">{resources.primary.name}</span>
           </Link>
         </td>
@@ -53,7 +53,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
             className="icon-30"
           />
 
-          <Link to={`/resources/${resources.secondary.id}`} className="text-decoration-none">
+          <Link to={`/resources/${resources.secondary.slug}`} className="text-decoration-none">
             <span className="text-capitalize">{resources.secondary.name}</span>
           </Link>
         </td>
@@ -90,7 +90,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
             alt={`${currentResource.name} gas`}
             className="icon-30"
           />
-          <Link to={`/resources/${currentResource.id}`} className="text-decoration-none me-2">
+          <Link to={`/resources/${currentResource.slug}`} className="text-decoration-none me-2">
             <span className="text-capitalize">{currentResource.name}</span>
           </Link>
           ({gas.ppu} ppu)
