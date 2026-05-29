@@ -96,6 +96,7 @@ export const fetchItem = async (
   }
 };
 
+// Fetch planets
 export const fetchPlanets = async (
   ids?: string[],
 ): Promise<{ planets: PlanetType[] } | { error: string } | ResponseType> => {
