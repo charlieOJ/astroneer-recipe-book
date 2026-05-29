@@ -18,7 +18,7 @@ const SearchableList = ({
   const [search, setSearch] = useState<string>("");
   const [tiers, setTiers] = useState<number[]>([]);
 
-  const lastChange = useRef<number>(0);
+  const lastChange = useRef<any>(0);
 
   const searchResults = elements.filter((element: any) => {
     if (!searchParams.includes("tiers") || tiers.length === 0)

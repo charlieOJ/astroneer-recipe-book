@@ -14,10 +14,10 @@ const ResourcesPage = () => {
 
       <Suspense fallback={<Loading text="Loading resources..." />}>
         <Await resolve={resources}>
-          {(loadedIResources: ResourceType[]) => {
+          {(loadedResources: ResourceType[]) => {
             return (
               <SearchableList
-                elements={loadedIResources}
+                elements={loadedResources}
                 elementKeyFn={(resource: ResourceType) => resource.id}
               >
                 {(resource: ResourceType) => <Resource resource={resource} />}

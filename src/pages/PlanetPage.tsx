@@ -1,8 +1,6 @@
 import { Suspense } from "react";
 import { Await, useRouteLoaderData } from "react-router-dom";
 
-import { fetchPlanet, fetchResources } from "../util/http";
-
 import { PlanetType } from "../types/planetType";
 import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
