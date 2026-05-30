@@ -1,3 +1,4 @@
+import { ResourcePlanetsType } from "../types/resourceType";
 import {
   fetchItem,
   fetchItems,
@@ -49,7 +50,7 @@ const resourceLoader = async (id: string) => {
 };
 
 // Planets - Planet
-export const planetsLoader = async (planets?: string[]) => {
+export const planetsLoader = async (planets?: any | ResourcePlanetsType) => {
   if (planets) return await fetchPlanets(planets);
 
   return await fetchPlanets();

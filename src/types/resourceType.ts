@@ -9,5 +9,10 @@ export interface ResourceType {
   type: string;
   obtainBy?: string;
   recipe?: RecipeType[];
-  planets: string[];
+  planets: any | ResourcePlanetsType;
+}
+
+export interface ResourcePlanetsType {
+  primary: string;
+  secondary: string;
 }
