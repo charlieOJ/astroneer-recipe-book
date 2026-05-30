@@ -13,11 +13,13 @@ interface Props {
 
 const PlanetsList = ({ resource }: Props): React.JSX.Element => {
   if (!resource.planets) return <></>;
-  if (resource.planets.length === 7) return <p>Available on all planets.</p>;
+  if (Object.keys(resource.planets).length === 7) return <p>Available on all planets.</p>;
+
+  const planetIds = Object.values(resource.planets);
 
   return (
     <Suspense fallback={<Loading text="Loading planets ..." />}>
-      <Await resolve={planetsLoader(resource.planets)}>
+      <Await resolve={planetsLoader([...new Set(planetIds)])}>
         {(loadData: any) => {
           const planets = loadData.planets;
 
@@ -26,6 +28,12 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
               <h3>Found on the following planets :</h3>
 
               {planets.map((planet: PlanetType) => {
+                let foundWhere: string = "Mantle/Mountains";
+
+                if (planet.id === resource.planets.primary) {
+                  foundWhere = "Caves";
+                }
+
                 return (
                   <div key={planet.id}>
                     <Link to={`/planets/${planet.slug}`} className="text-decoration-none">
@@ -35,7 +43,8 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
                         alt={planet.name}
                       />
                       <span className="text-capitalize">{planet.name}</span>
-                    </Link>
+                    </Link>{" "}
+                    ({foundWhere})
                   </div>
                 );
               })}
