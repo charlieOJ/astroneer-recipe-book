@@ -15,6 +15,7 @@ const SearchableList = ({
   elementKeyFn,
   children,
 }: Props): React.JSX.Element => {
+  const [immediateSearch, setImmediateSearch] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [tiers, setTiers] = useState<number[]>([]);
 
@@ -31,7 +32,28 @@ const SearchableList = ({
     );
   });
 
+  const clearSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setSearch("");
+    setImmediateSearch("");
+    setTiers([]);
+  };
+
+  const renderClearFilters = (): React.JSX.Element => {
+    if (search === "" && tiers.length === 0) return <></>;
+
+    return (
+      <button
+        onClick={clearSearch}
+        className="btn btn-sm link-underline-opacity-0 link-underline-opacity-100-hover text-muted text-small"
+      >
+        <i className="fa-regular fa-circle-xmark"></i> Clear filters
+      </button>
+    );
+  };
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImmediateSearch(e.target.value);
     if (lastChange.current > 0) {
       clearTimeout(lastChange.current);
     }
@@ -50,47 +72,52 @@ const SearchableList = ({
 
   return (
     <div className="searchable-list">
-      <div className="input-group my-4">
-        <span className="input-group-text" id="basic-addon1">
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </span>
-        <input
-          type="search"
-          className="form-control"
-          placeholder="Search item"
-          aria-label="Search item"
-          aria-describedby="basic-addon1"
-          onChange={onChange}
-        />
-      </div>
+      <div className="my-3">
+        <h4>Filters {renderClearFilters()}</h4>
 
-      {searchParams.includes("tiers") && (
-        <div>
-          <h5>Tiers</h5>
-
-          <div>
-            <TierButton id={1} onChange={onChangeTiers}>
-              Tier 1
-            </TierButton>
-
-            <TierButton id={2} onChange={onChangeTiers}>
-              Tier 2
-            </TierButton>
-
-            <TierButton id={3} onChange={onChangeTiers}>
-              Tier 3
-            </TierButton>
-
-            <TierButton id={4} onChange={onChangeTiers}>
-              Tier 4
-            </TierButton>
-
-            <TierButton id={0} onChange={onChangeTiers}>
-              Other
-            </TierButton>
-          </div>
+        <div className="input-group my-3">
+          <span className="input-group-text" id="basic-addon1">
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <input
+            type="search"
+            className="form-control"
+            placeholder="Search item"
+            aria-label="Search item"
+            aria-describedby="basic-addon1"
+            onChange={onChange}
+            value={immediateSearch}
+          />
         </div>
-      )}
+
+        {searchParams.includes("tiers") && (
+          <div>
+            <h5>Tiers</h5>
+
+            <div className="my-3">
+              <TierButton id={1} onChange={onChangeTiers} isChecked={tiers.includes(1)}>
+                Backpack
+              </TierButton>
+
+              <TierButton id={2} onChange={onChangeTiers} isChecked={tiers.includes(2)}>
+                Small printer
+              </TierButton>
+
+              <TierButton id={3} onChange={onChangeTiers} isChecked={tiers.includes(3)}>
+                Medium printer
+              </TierButton>
+
+              <TierButton id={4} onChange={onChangeTiers} isChecked={tiers.includes(4)}>
+                Large printer
+              </TierButton>
+
+              <TierButton id={0} onChange={onChangeTiers} isChecked={tiers.includes(0)}>
+                Other
+              </TierButton>
+            </div>
+          </div>
+        )}
+      </div>
 
       <div className="row">
         {searchResults.map((element: any) => (

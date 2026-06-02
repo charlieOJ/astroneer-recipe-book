@@ -43,3 +43,7 @@ code {
 .error {
   height: 100vh;
 }
+
+.text-small {
+  font-size: 0.8rem;
+}
