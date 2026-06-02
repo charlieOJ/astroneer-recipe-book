@@ -28,10 +28,10 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
               <h3>Found on the following planets :</h3>
 
               {planets.map((planet: PlanetType) => {
-                let foundWhere: string = "Mantle/Mountains";
-
-                if (planet.id === resource.planets.primary) {
-                  foundWhere = "Caves";
+                let foundWhere: string = "";
+                if (resource.obtainBy !== "atmosphericCondenser") {
+                  foundWhere =
+                    planet.id === resource.planets.primary ? "Caves" : "Mantle/Mountains";
                 }
 
                 return (
@@ -44,7 +44,7 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
                       />
                       <span className="text-capitalize">{planet.name}</span>
                     </Link>{" "}
-                    ({foundWhere})
+                    {foundWhere && <span>({foundWhere})</span>}
                   </div>
                 );
               })}
