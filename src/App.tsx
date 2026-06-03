@@ -22,6 +22,7 @@ import PlanetsPage from "./pages/PlanetsPage";
 import PlanetPage from "./pages/PlanetPage";
 
 import ErrorBlock from "./components/ErrorBlock";
+// import NotFoundPage from "./pages/NotFoundPage";
 
 const router = createBrowserRouter(
   [
@@ -31,45 +32,64 @@ const router = createBrowserRouter(
       errorElement: <ErrorBlock />,
       children: [
         {
-          path: "",
-          index: true,
+          path: "/",
           element: <HomePage />,
         },
         {
-          path: "items",
-          element: <ItemsPage />,
-          loader: itemsLoader,
+          path: "/items",
+          children: [
+            {
+              index: true,
+              id: "items",
+              element: <ItemsPage />,
+              loader: itemsLoader,
+            },
+            {
+              path: ":id",
+              id: "item",
+              element: <ItemPage />,
+              loader: itemLoaders,
+            },
+          ],
         },
         {
-          path: "items/:id",
-          id: "item",
-          element: <ItemPage />,
-          loader: itemLoaders,
+          path: "/resources",
+          children: [
+            {
+              index: true,
+              element: <ResourcesPage />,
+              loader: () => resourcesLoader(),
+            },
+            {
+              path: ":id",
+              element: <ResourcePage />,
+              id: "resource",
+              loader: resourceLoaders,
+            },
+          ],
         },
         {
-          path: "resources",
-          element: <ResourcesPage />,
-          loader: () => resourcesLoader(),
-        },
-        {
-          path: "resources/:id",
-          element: <ResourcePage />,
-          id: "resource",
-          loader: resourceLoaders,
-        },
-        {
-          path: "planets",
-          element: <PlanetsPage />,
-          loader: () => planetsLoader(),
-        },
-        {
-          path: "planets/:id",
-          element: <PlanetPage />,
-          id: "planet",
-          loader: planetLoaders,
+          path: "/planets",
+          children: [
+            {
+              index: true,
+              element: <PlanetsPage />,
+              loader: () => planetsLoader(),
+            },
+            {
+              path: ":id",
+              element: <PlanetPage />,
+              id: "planet",
+              loader: planetLoaders,
+            },
+          ],
         },
       ],
     },
+    // {
+    //   path: "*",
+    //   element: <NotFoundPage />,
+    // },
   ],
   { basename: "/astroneer-recipe-book" },
 );
