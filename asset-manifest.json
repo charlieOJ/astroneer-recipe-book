@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/astroneer-recipe-book/static/css/main.f572ffc0.css",
-    "main.js": "/astroneer-recipe-book/static/js/main.6a7c1017.js",
+    "main.js": "/astroneer-recipe-book/static/js/main.a8749393.js",
     "static/js/453.5ae35534.chunk.js": "/astroneer-recipe-book/static/js/453.5ae35534.chunk.js",
     "static/media/bg2.png": "/astroneer-recipe-book/static/media/bg2.bd62c5f6a22e193db3d9.png",
     "index.html": "/astroneer-recipe-book/index.html",
     "main.f572ffc0.css.map": "/astroneer-recipe-book/static/css/main.f572ffc0.css.map",
-    "main.6a7c1017.js.map": "/astroneer-recipe-book/static/js/main.6a7c1017.js.map",
+    "main.a8749393.js.map": "/astroneer-recipe-book/static/js/main.a8749393.js.map",
     "453.5ae35534.chunk.js.map": "/astroneer-recipe-book/static/js/453.5ae35534.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f572ffc0.css",
-    "static/js/main.6a7c1017.js"
+    "static/js/main.a8749393.js"
   ]
 }
