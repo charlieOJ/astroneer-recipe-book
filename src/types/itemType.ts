@@ -6,7 +6,7 @@ export interface ItemType {
   name: string;
   icon?: string;
   image?: string;
-  tier: number;
+  tier: number[];
   recipe?: RecipeType[];
   cost?: number | string;
   type?: string;
