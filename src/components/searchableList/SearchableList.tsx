@@ -22,14 +22,13 @@ const SearchableList = ({
   const lastChange = useRef<any>(0);
 
   const searchResults = elements.filter((element: any) => {
-    if (!searchParams.includes("tiers") || tiers.length === 0)
-      return JSON.stringify(element.name).includes(search.toLowerCase());
+    if (searchParams.includes("tiers") && tiers.length > 0) {
+      const elemIsInTiersSearch =
+        element.tier.filter((item: number) => tiers.includes(item)).length > 0;
 
-    return (
-      tiers.length > 0 &&
-      tiers.includes(element.tier) &&
-      JSON.stringify(element.name).includes(search.toLowerCase())
-    );
+      return elemIsInTiersSearch && JSON.stringify(element.name).includes(search.toLowerCase());
+    }
+    return JSON.stringify(element.name).includes(search.toLowerCase());
   });
 
   const clearSearch = (e: React.MouseEvent<HTMLButtonElement>) => {

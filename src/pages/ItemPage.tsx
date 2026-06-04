@@ -26,8 +26,10 @@ const ItemPage = (): React.JSX.Element => {
 
                 <DetailContent element={loadedItem}>
                   <p>
-                    Craft on :{" "}
-                    <span className="text-capitalize">{PRINTERS[loadedItem.tier - 1]}</span>
+                    Craft on :
+                    <span className="text-capitalize ms-2">
+                      {loadedItem.tier.map((tier: number): string => PRINTERS[tier]).join(" / ")}
+                    </span>
                   </p>
                   {loadedItem.cost && (
                     <p>
