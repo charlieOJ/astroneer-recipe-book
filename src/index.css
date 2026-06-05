@@ -47,3 +47,12 @@ code {
 .text-small {
   font-size: 0.8rem;
 }
+
+.searchable-list .img-list {
+  height: 150px;
+}
+
+.searchable-list .img-list img {
+  max-height: "stretch";
+  max-width: "fit-content";
+}

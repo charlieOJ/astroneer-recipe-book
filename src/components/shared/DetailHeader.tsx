@@ -20,7 +20,7 @@ const DetailHeader = ({ element }: Props): React.JSX.Element => {
       </button>
 
       <h2 className="d-flex gap-3 align-items-center">
-        {icon && <img src={icon} className="icon-40" alt={element.name + " icon"} />}
+        {icon && <img src={icon} className="icon-30" alt={element.name + " icon"} />}
 
         {element.name.toUpperCase()}
       </h2>

@@ -2,19 +2,20 @@ import { useRef, useState } from "react";
 
 import TierButton from "./TierButton";
 import HazardButton from "./HazardButton";
+import ListElement from "./ListElement";
 
 interface Props {
   elements: any[];
+  elementPath: string;
   searchParams?: ("search" | "tiers" | "hazardTypes")[];
   elementKeyFn: (element: any) => string;
-  children: (element: any) => React.ReactNode;
 }
 
 const SearchableList = ({
   elements,
   searchParams = ["search"],
+  elementPath,
   elementKeyFn,
-  children,
 }: Props): React.JSX.Element => {
   const [immediateSearch, setImmediateSearch] = useState<string>("");
   const [search, setSearch] = useState<string>("");
@@ -175,7 +176,7 @@ const SearchableList = ({
       <div className="row">
         {searchResults.map((element: any) => (
           <div className="col-xs-12 col-md-3 my-3" key={elementKeyFn(element)}>
-            {children(element)}
+            <ListElement element={element} path={elementPath} />
           </div>
         ))}
       </div>

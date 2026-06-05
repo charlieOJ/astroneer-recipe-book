@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { Await, useLoaderData } from "react-router-dom";
 import { PlanetType } from "../types/planetType";
-import Planet from "../components/planet/Planet";
 import SearchableList from "../components/searchableList/SearchableList";
 import Loading from "../components/shared/Loading";
 
@@ -19,9 +18,8 @@ const PlanetsPage = () => {
               <SearchableList
                 elements={loadedIPlanets}
                 elementKeyFn={(planet: PlanetType) => planet.id}
-              >
-                {(planet: PlanetType) => <Planet planet={planet} />}
-              </SearchableList>
+                elementPath="planets"
+              />
             );
           }}
         </Await>
