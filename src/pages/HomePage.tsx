@@ -23,6 +23,7 @@ const HomePage = (): React.JSX.Element => {
             <HomePageButton link="resources">Resources</HomePageButton>
             <HomePageButton link="items">Items</HomePageButton>
             <HomePageButton link="planets">Planets</HomePageButton>
+            <HomePageButton link="hazards">Hazards</HomePageButton>
           </div>
         </motion.div>
       </AnimatePresence>
