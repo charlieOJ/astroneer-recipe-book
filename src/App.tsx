@@ -7,6 +7,8 @@ import {
   resourceLoaders,
   planetsLoader,
   planetLoaders,
+  hazardsLoader,
+  hazardLoaders,
 } from "./util/loaders";
 
 import RootPage from "./pages/RootPage";
@@ -20,6 +22,9 @@ import ResourcePage from "./pages/ResourcePage";
 
 import PlanetsPage from "./pages/PlanetsPage";
 import PlanetPage from "./pages/PlanetPage";
+
+import HazardsPage from "./pages/HazardsPage";
+import HazardPage from "./pages/HazardPage";
 
 import ErrorBlock from "./components/ErrorBlock";
 // import NotFoundPage from "./pages/NotFoundPage";
@@ -81,6 +86,22 @@ const router = createBrowserRouter(
               element: <PlanetPage />,
               id: "planet",
               loader: planetLoaders,
+            },
+          ],
+        },
+        {
+          path: "/hazards",
+          children: [
+            {
+              index: true,
+              element: <HazardsPage />,
+              loader: () => hazardsLoader(),
+            },
+            {
+              path: ":id",
+              element: <HazardPage />,
+              id: "hazard",
+              loader: hazardLoaders,
             },
           ],
         },

@@ -20,9 +20,15 @@ export interface PlanetType {
     icon: string;
     material: string;
   };
+  hazards: HazardInfoType[];
 }
 
 export interface GasType {
   id: string;
   ppu: number;
+}
+
+interface HazardInfoType {
+  id: string;
+  location: string;
 }

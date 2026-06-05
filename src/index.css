@@ -16,7 +16,7 @@ code {
 
 .main-bg {
   background: url("../public/bg2.png") no-repeat;
-  height: 90vh;
+  height: 120vh;
   width: 100%;
   background-size: cover;
 }
@@ -26,18 +26,18 @@ code {
 }
 
 .icon-30 {
-  width: 30px;
-  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
 }
 
 .icon-40 {
-  width: 40px;
-  height: 40px;
+  max-width: 40px;
+  max-height: 40px;
 }
 
 .icon-50 {
-  width: 50px;
-  height: 50px;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 .error {

@@ -19,10 +19,13 @@ const HomePage = (): React.JSX.Element => {
             </p>
           </div>
 
-          <div className="d-flex justify-content-around align-items-center">
-            <HomePageButton link="resources">Resources</HomePageButton>
-            <HomePageButton link="items">Items</HomePageButton>
-            <HomePageButton link="planets">Planets</HomePageButton>
+          <div className="row">
+            <div className="align-items-center d-flex flex-wrap justify-content-evenly">
+              <HomePageButton link="resources">Resources</HomePageButton>
+              <HomePageButton link="items">Items</HomePageButton>
+              <HomePageButton link="planets">Planets</HomePageButton>
+              <HomePageButton link="hazards">Hazards</HomePageButton>
+            </div>
           </div>
         </motion.div>
       </AnimatePresence>
