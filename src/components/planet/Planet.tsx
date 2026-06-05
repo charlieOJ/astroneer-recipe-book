@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
-import { RESOURCES_BASE_URL } from "../../util/constants";
+import images from "../../imagesConfig";
+
 import { PlanetType } from "../../types/planetType";
 
 interface Props {
@@ -9,13 +10,15 @@ interface Props {
 }
 
 const Planet = ({ planet }: Props): React.JSX.Element => {
+  const imageUrl = images[planet.name];
+
   return (
     <Link to={`/planets/${planet.slug}`} className="text-decoration-none">
       <div className="card h-100">
-        {planet.image && (
+        {imageUrl && (
           <div className="img-thumbnail p-3 border-0">
             <motion.img
-              src={RESOURCES_BASE_URL + planet.image}
+              src={imageUrl}
               className="card-img-top rounded"
               alt={planet.name}
               whileHover={{ scale: 1.1 }}

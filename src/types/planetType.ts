@@ -2,8 +2,6 @@ export interface PlanetType {
   id: string;
   slug?: number;
   name: string;
-  icon: string;
-  image: string;
   type: string;
   typeDescription: string;
   resources: {
@@ -17,7 +15,6 @@ export interface PlanetType {
   wind: string;
   gateway: {
     chamberPower: number;
-    icon: string;
     material: string;
   };
   hazards: HazardInfoType[];
