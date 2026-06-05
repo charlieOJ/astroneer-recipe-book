@@ -1,17 +1,39 @@
 {
   "files": {
-    "main.css": "/astroneer-recipe-book/static/css/main.f572ffc0.css",
-    "main.js": "/astroneer-recipe-book/static/js/main.6f3af0e7.js",
+    "main.css": "/astroneer-recipe-book/static/css/main.e99fba78.css",
+    "main.js": "/astroneer-recipe-book/static/js/main.62301a81.js",
     "static/js/453.5ae35534.chunk.js": "/astroneer-recipe-book/static/js/453.5ae35534.chunk.js",
     "static/media/bg2.png": "/astroneer-recipe-book/static/media/bg2.bd62c5f6a22e193db3d9.png",
-    "static/media/popcoral.png": "/astroneer-recipe-book/static/media/popcoral.a8be15bf00badfd5aa31.png",
+    "static/media/wheezeweed.png": "/astroneer-recipe-book/static/media/wheezeweed.306930a1df5b379d8224.png",
+    "static/media/lashleaf.png": "/astroneer-recipe-book/static/media/lashleaf.640dce7e020ef43e7fd6.png",
+    "static/media/bouncevine.png": "/astroneer-recipe-book/static/media/bouncevine.0194e969eefa78d0a3b3.png",
+    "static/media/daggeroot.png": "/astroneer-recipe-book/static/media/daggeroot.78e98eb244de33b3036e.png",
+    "static/media/boomalloon_seed.png": "/astroneer-recipe-book/static/media/boomalloon_seed.c8d0de3b6ebb7f4747d3.png",
+    "static/media/spewflower_seed.png": "/astroneer-recipe-book/static/media/spewflower_seed.be945990dc25eb17dc8e.png",
+    "static/media/bouncevine_seed.png": "/astroneer-recipe-book/static/media/bouncevine_seed.d943e5171f2effd424c0.png",
+    "static/media/thistlewhip.png": "/astroneer-recipe-book/static/media/thistlewhip.e1ea98570c6b1a97d6b1.png",
+    "static/media/thistlewhip_seed.png": "/astroneer-recipe-book/static/media/thistlewhip_seed.7f64d8c2f41c433f80d1.png",
+    "static/media/lashleaf_seed.png": "/astroneer-recipe-book/static/media/lashleaf_seed.abef8946ee8c9056f509.png",
+    "static/media/cataplant_seed.png": "/astroneer-recipe-book/static/media/cataplant_seed.e95c5c5321a59cdb6128.png",
+    "static/media/attactus_seed.png": "/astroneer-recipe-book/static/media/attactus_seed.91c43f06e8c8d99215f9.png",
+    "static/media/hibissine_seed.png": "/astroneer-recipe-book/static/media/hibissine_seed.0ab274d59d06580e0f01.png",
+    "static/media/spinelily.png": "/astroneer-recipe-book/static/media/spinelily.c0b609a0d2762d8493d1.png",
+    "static/media/spewflower.png": "/astroneer-recipe-book/static/media/spewflower.c0d8fceb764a0da4dc39.png",
+    "static/media/spinelily_seed.png": "/astroneer-recipe-book/static/media/spinelily_seed.b8eb65aa07824b98001d.png",
+    "static/media/wheezeweed_seed.png": "/astroneer-recipe-book/static/media/wheezeweed_seed.c5d04788ad8a79c44662.png",
+    "static/media/popcoral.png": "/astroneer-recipe-book/static/media/popcoral.86ed77024e94b634efbd.png",
+    "static/media/hibissine.png": "/astroneer-recipe-book/static/media/hibissine.ab11e6d5e3ab3e213a10.png",
+    "static/media/daggeroot_seed.png": "/astroneer-recipe-book/static/media/daggeroot_seed.d2bf1b1e4fa7fc080c62.png",
+    "static/media/cataplant.png": "/astroneer-recipe-book/static/media/cataplant.b39347a0328e4d1a02d2.png",
+    "static/media/boomalloon.png": "/astroneer-recipe-book/static/media/boomalloon.c267e2de2876695b2e4e.png",
+    "static/media/attactus.png": "/astroneer-recipe-book/static/media/attactus.2dc6f719c6d753991658.png",
     "index.html": "/astroneer-recipe-book/index.html",
-    "main.f572ffc0.css.map": "/astroneer-recipe-book/static/css/main.f572ffc0.css.map",
-    "main.6f3af0e7.js.map": "/astroneer-recipe-book/static/js/main.6f3af0e7.js.map",
+    "main.e99fba78.css.map": "/astroneer-recipe-book/static/css/main.e99fba78.css.map",
+    "main.62301a81.js.map": "/astroneer-recipe-book/static/js/main.62301a81.js.map",
     "453.5ae35534.chunk.js.map": "/astroneer-recipe-book/static/js/453.5ae35534.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f572ffc0.css",
-    "static/js/main.6f3af0e7.js"
+    "static/css/main.e99fba78.css",
+    "static/js/main.62301a81.js"
   ]
 }
