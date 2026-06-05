@@ -149,6 +149,7 @@ const SearchableList = ({
                 type={"defensive"}
                 onChange={onChangeHazards}
                 isChecked={hazards.includes("defensive")}
+                icon="leaf"
               >
                 Defensive
               </HazardButton>
@@ -157,6 +158,7 @@ const SearchableList = ({
                 type={"aggressive"}
                 onChange={onChangeHazards}
                 isChecked={hazards.includes("aggressive")}
+                icon="biohazard"
               >
                 Aggressive
               </HazardButton>
@@ -165,6 +167,7 @@ const SearchableList = ({
                 type={"other"}
                 onChange={onChangeHazards}
                 isChecked={hazards.includes("other")}
+                icon="skull"
               >
                 Other
               </HazardButton>
