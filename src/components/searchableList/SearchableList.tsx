@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 
 import TierButton from "./TierButton";
 import HazardButton from "./HazardButton";
-import { HazardType } from "../../types/hazardType";
 
 interface Props {
   elements: any[];
