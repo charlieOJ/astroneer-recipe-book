@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
 
 import TierButton from "./TierButton";
+import HazardButton from "./HazardButton";
+import { HazardType } from "../../types/hazardType";
 
 interface Props {
   elements: any[];
-  searchParams?: ("search" | "tiers")[];
+  searchParams?: ("search" | "tiers" | "hazardTypes")[];
   elementKeyFn: (element: any) => string;
   children: (element: any) => React.ReactNode;
 }
@@ -18,17 +20,31 @@ const SearchableList = ({
   const [immediateSearch, setImmediateSearch] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [tiers, setTiers] = useState<number[]>([]);
+  const [hazards, setHazards] = useState<("defensive" | "aggressive" | "other")[]>([]);
 
   const lastChange = useRef<any>(0);
 
   const searchResults = elements.filter((element: any) => {
-    if (searchParams.includes("tiers") && tiers.length > 0) {
-      const elemIsInTiersSearch =
-        element.tier.filter((item: number) => tiers.includes(item)).length > 0;
+    const isValid = JSON.stringify(element.name).includes(search.toLowerCase());
 
-      return elemIsInTiersSearch && JSON.stringify(element.name).includes(search.toLowerCase());
+    if (searchParams.length > 1) {
+      let elemIsInTiersSearch = false;
+      if (searchParams.includes("tiers") && tiers.length > 0) {
+        elemIsInTiersSearch =
+          element.tier.filter((item: number) => tiers.includes(item)).length > 0;
+        return isValid && elemIsInTiersSearch;
+      }
+
+      let elemIsInHazardsSearch = false;
+
+      if (searchParams.includes("hazardTypes") && hazards.length > 0) {
+        elemIsInHazardsSearch = hazards.includes(element.type);
+
+        return isValid && elemIsInHazardsSearch;
+      }
     }
-    return JSON.stringify(element.name).includes(search.toLowerCase());
+
+    return isValid;
   });
 
   const clearSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -36,10 +52,11 @@ const SearchableList = ({
     setSearch("");
     setImmediateSearch("");
     setTiers([]);
+    setHazards([]);
   };
 
   const renderClearFilters = (): React.JSX.Element => {
-    if (search === "" && tiers.length === 0) return <></>;
+    if (search === "" && tiers.length === 0 && hazards.length === 0) return <></>;
 
     return (
       <button
@@ -67,6 +84,12 @@ const SearchableList = ({
     setTiers((prevTiers: (number | "other")[]): any =>
       prevState ? prevTiers.filter(prevT => prevT !== id) : [...prevTiers, id],
     );
+  };
+
+  const onChangeHazards = (type: string, prevState: boolean) => {
+    setHazards((prevHazards: ("defensive" | "aggressive" | "other")[]): any => {
+      return prevState ? prevHazards.filter(prevH => prevH !== type) : [...prevHazards, type];
+    });
   };
 
   return (
@@ -113,6 +136,38 @@ const SearchableList = ({
               <TierButton id={0} onChange={onChangeTiers} isChecked={tiers.includes(0)}>
                 Other
               </TierButton>
+            </div>
+          </div>
+        )}
+
+        {searchParams.includes("hazardTypes") && (
+          <div>
+            <h5>Types</h5>
+
+            <div className="my-3">
+              <HazardButton
+                type={"defensive"}
+                onChange={onChangeHazards}
+                isChecked={hazards.includes("defensive")}
+              >
+                Defensive
+              </HazardButton>
+
+              <HazardButton
+                type={"aggressive"}
+                onChange={onChangeHazards}
+                isChecked={hazards.includes("aggressive")}
+              >
+                Aggressive
+              </HazardButton>
+
+              <HazardButton
+                type={"other"}
+                onChange={onChangeHazards}
+                isChecked={hazards.includes("other")}
+              >
+                Other
+              </HazardButton>
             </div>
           </div>
         )}
