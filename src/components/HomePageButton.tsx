@@ -12,7 +12,7 @@ const HomePageButton = ({ link, children }: Props) => {
   return (
     <MotionLink
       to={link}
-      className="btn btn-lg btn-light btn-outline-dark"
+      className="btn btn-lg btn-light btn-outline-dark mb-3"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0, transition: { ease: "easeOut" } }}
       whileHover={{ scale: 1.2 }}

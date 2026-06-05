@@ -40,7 +40,7 @@ const HazardPage = (): React.JSX.Element => {
                     </div>
                   )}
 
-                  <div className="col-xs-12 col-md-9">
+                  <div className={`col-xs-12 ${imageUrl && "col-md-9"}`}>
                     <div dangerouslySetInnerHTML={{ __html: description }}></div>
                   </div>
                 </div>

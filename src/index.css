@@ -16,7 +16,7 @@ code {
 
 .main-bg {
   background: url("../public/bg2.png") no-repeat;
-  height: 90vh;
+  height: 120vh;
   width: 100%;
   background-size: cover;
 }
