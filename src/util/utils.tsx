@@ -95,10 +95,25 @@ export const imageUrl = (
   element: ItemType | PlanetType | ResourceType | HazardType,
   suffix?: string,
 ) => {
-  if (suffix) return images[`${fileName(element)}_${suffix}`];
+  if (suffix) return images[`${fileName(element.name)}_${suffix}`];
 
-  return images[fileName(element)];
+  return images[fileName(element.name)];
 };
 
-const fileName = (element: ItemType | PlanetType | ResourceType | HazardType) =>
-  element.name.replaceAll(/-| /g, "_");
+export const iconItemUrl = (item: ItemType) => {
+  if (!item.type) return images[`${fileName(item.name)}_icon`];
+
+  return images[`${fileName(item.type)}_icon`];
+};
+
+const fileName = (str: string) => str.replaceAll(/-| /g, "_");
+
+export const addSlug = (elem: any, index: number) => {
+  elem.slug = index;
+  return elem;
+};
+
+export const addKind = (elem: any, type: "resource" | "item" | "planet" | "hazard") => {
+  elem.kind = type;
+  return elem;
+};
