@@ -4,4 +4,5 @@ export interface HazardType {
   description: string;
   type: "defensive" | "aggressive";
   slug?: number;
+  kind?: "hazard";
 }

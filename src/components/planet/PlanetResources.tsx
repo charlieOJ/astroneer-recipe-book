@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { GasType, PlanetType } from "../../types/planetType";
 import { ResourceType } from "../../types/resourceType";
-import { RESOURCES_BASE_URL } from "../../util/constants";
+import { imageUrl } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
@@ -16,6 +16,8 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
   const renderPrimaryResource = (): React.JSX.Element => {
     if (!resources.primary) return <></>;
 
+    const icon = imageUrl(resources.primary, "icon");
+
     return (
       <tr>
         <td className="row-title">
@@ -23,11 +25,13 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
         </td>
 
         <td>
-          <img
-            src={RESOURCES_BASE_URL + resources.primary.icon}
-            alt={`${resources.primary.name} primary resource`}
-            className="icon-30"
-          />
+          {icon && (
+            <img
+              src={icon}
+              alt={`${resources.primary.name} primary resource`}
+              className="icon-30"
+            />
+          )}
 
           <Link to={`/resources/${resources.primary.slug}`} className="text-decoration-none">
             <span className="text-capitalize">{resources.primary.name}</span>
@@ -40,6 +44,8 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
   const renderSecondaryResource = (): React.JSX.Element => {
     if (!resources.secondary) return <></>;
 
+    const icon = imageUrl(resources.secondary, "icon");
+
     return (
       <tr>
         <td className="row-title">
@@ -47,11 +53,13 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
         </td>
 
         <td>
-          <img
-            src={RESOURCES_BASE_URL + resources.secondary.icon}
-            alt={`${resources.secondary.name} secondary resource`}
-            className="icon-30"
-          />
+          {icon && (
+            <img
+              src={icon}
+              alt={`${resources.secondary.name} secondary resource`}
+              className="icon-30"
+            />
+          )}
 
           <Link to={`/resources/${resources.secondary.slug}`} className="text-decoration-none">
             <span className="text-capitalize">{resources.secondary.name}</span>
@@ -82,14 +90,12 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
     const currentResource = resources.gases?.find((r: ResourceType) => r.id === gas.id);
     if (!currentResource) return <></>;
 
+    const icon = imageUrl(currentResource, "icon");
+
     return (
       <tr key={gas.id}>
         <td>
-          <img
-            src={RESOURCES_BASE_URL + currentResource.icon}
-            alt={`${currentResource.name} gas`}
-            className="icon-30"
-          />
+          {icon && <img src={icon} alt={`${currentResource.name} gas`} className="icon-30" />}
           <Link to={`/resources/${currentResource.slug}`} className="text-decoration-none me-2">
             <span className="text-capitalize">{currentResource.name}</span>
           </Link>

@@ -3,8 +3,9 @@ import { Await, Link } from "react-router-dom";
 
 import { PlanetType } from "../types/planetType";
 import { ResourceType } from "../types/resourceType";
-import { RESOURCES_BASE_URL } from "../util/constants";
 import { planetsLoader } from "../util/loaders";
+import { imageUrl } from "../util/utils";
+
 import Loading from "./shared/Loading";
 
 interface Props {
@@ -33,15 +34,12 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
                   foundWhere =
                     planet.id === resource.planets.primary ? "Caves" : "Mantle/Mountains";
                 }
+                const icon = imageUrl(planet, "icon");
 
                 return (
                   <div key={planet.id}>
                     <Link to={`/planets/${planet.slug}`} className="text-decoration-none">
-                      <img
-                        src={RESOURCES_BASE_URL + planet.icon}
-                        className="me-2 icon-30"
-                        alt={planet.name}
-                      />
+                      {icon && <img src={icon} className="me-2 icon-30" alt={planet.name} />}
                       <span className="text-capitalize">{planet.name}</span>
                     </Link>{" "}
                     {foundWhere && <span>({foundWhere})</span>}

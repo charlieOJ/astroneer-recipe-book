@@ -1,11 +1,13 @@
 import { PlanetType } from "../../types/planetType";
-import { RESOURCES_BASE_URL } from "../../util/constants";
+import { imageUrl } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
 }
 
 const PlanetDetail = ({ planet }: Props): React.JSX.Element => {
+  const icon = imageUrl(planet, "icon");
+
   return (
     <>
       <tr>
@@ -14,13 +16,7 @@ const PlanetDetail = ({ planet }: Props): React.JSX.Element => {
         </td>
 
         <td colSpan={2}>
-          {planet.icon && (
-            <img
-              src={RESOURCES_BASE_URL + planet.icon}
-              alt={planet.name}
-              className="me-2 icon-30"
-            />
-          )}
+          {icon && <img src={icon} alt={`${planet.name} icon`} className="me-2 icon-30" />}
           <span className="text-capitalize">{planet.type}</span>
         </td>
       </tr>

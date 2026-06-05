@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+
 import { PlanetType } from "../../types/planetType";
 import { ResourceType } from "../../types/resourceType";
-import { RESOURCES_BASE_URL } from "../../util/constants";
+import { imageUrl } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
@@ -14,6 +15,8 @@ const PlanetGateway = ({ planet, resources }: Props): React.JSX.Element => {
   const renderGatewayResource = (): React.JSX.Element => {
     if (!resources.gateway) return <></>;
 
+    const icon = imageUrl(resources.gateway);
+
     return (
       <tr>
         <td>
@@ -21,11 +24,13 @@ const PlanetGateway = ({ planet, resources }: Props): React.JSX.Element => {
         </td>
 
         <td>
-          <img
-            src={RESOURCES_BASE_URL + resources.gateway.icon}
-            alt={`${resources.gateway.name} gateway material`}
-            className="icon-30"
-          />
+          {icon && (
+            <img
+              src={icon}
+              alt={`${resources.gateway.name} gateway material`}
+              className="icon-30"
+            />
+          )}
 
           <Link to={`/resources/${resources.gateway.slug}`} className="text-decoration-none">
             <span className="text-capitalize">{resources.gateway.name}</span>

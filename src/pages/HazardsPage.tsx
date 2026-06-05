@@ -5,7 +5,6 @@ import { HazardType } from "../types/hazardType";
 
 import Loading from "../components/shared/Loading";
 import SearchableList from "../components/searchableList/SearchableList";
-import Hazard from "../components/Hazard";
 
 const HazardsPage = (): React.JSX.Element => {
   const { hazards } = useLoaderData();
@@ -22,9 +21,8 @@ const HazardsPage = (): React.JSX.Element => {
                 elements={loadedHazards}
                 searchParams={["search", "hazardTypes"]}
                 elementKeyFn={(hazard: HazardType) => hazard.id}
-              >
-                {(hazard: HazardType) => <Hazard hazard={hazard} />}
-              </SearchableList>
+                elementPath="hazards"
+              />
             );
           }}
         </Await>

@@ -4,7 +4,6 @@ import { Await, useLoaderData } from "react-router-dom";
 import { ItemType } from "../types/itemType";
 
 import SearchableList from "../components/searchableList/SearchableList";
-import Item from "../components/Item";
 import Loading from "../components/shared/Loading";
 
 const ItemsPage = (): React.JSX.Element => {
@@ -22,9 +21,8 @@ const ItemsPage = (): React.JSX.Element => {
                 elements={loadedItems}
                 searchParams={["search", "tiers"]}
                 elementKeyFn={(item: ItemType) => item.id}
-              >
-                {(item: ItemType) => <Item item={item} />}
-              </SearchableList>
+                elementPath="items"
+              />
             );
           }}
         </Await>

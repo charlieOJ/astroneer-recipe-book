@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
+
 import { ItemType } from "../../types/itemType";
 import { ResourceType } from "../../types/resourceType";
 import { PlanetType } from "../../types/planetType";
-import { RESOURCES_BASE_URL } from "../../util/constants";
+import { iconItemUrl, imageUrl } from "../../util/utils";
 
 interface Props {
   element: ItemType | ResourceType | PlanetType;
@@ -10,6 +11,7 @@ interface Props {
 
 const DetailHeader = ({ element }: Props): React.JSX.Element => {
   const navigate = useNavigate();
+  const icon = element.kind === "item" ? iconItemUrl(element) : imageUrl(element, "icon");
 
   return (
     <div className="align-items-center d-flex">
@@ -18,9 +20,7 @@ const DetailHeader = ({ element }: Props): React.JSX.Element => {
       </button>
 
       <h2 className="d-flex gap-3 align-items-center">
-        {element.icon && (
-          <img src={RESOURCES_BASE_URL + element.icon} className="icon-40" alt={element.name} />
-        )}
+        {icon && <img src={icon} className="icon-30" alt={element.name + " icon"} />}
 
         {element.name.toUpperCase()}
       </h2>

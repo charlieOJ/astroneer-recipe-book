@@ -5,6 +5,7 @@ import { HazardType } from "../types/hazardType";
 
 import { get, ref } from "firebase/database";
 import { db } from "../firebaseConfig";
+import { addKind, addSlug } from "./utils";
 
 // Fetch resources
 export const fetchResources = async (
@@ -16,7 +17,9 @@ export const fetchResources = async (
       const response = snapshot.val();
 
       const data = response.filter((resource: ResourceType, index: number) => {
-        resource.slug = index;
+        resource = addSlug(resource, index);
+        resource = addKind(resource, "resource");
+
         return (ids && ids.includes(resource.id)) || !ids;
       });
 
@@ -39,7 +42,8 @@ export const fetchResource = async (
     const snapshot = await get(ref(db, `resources/${id}`));
 
     if (snapshot.exists()) {
-      const data = snapshot.val();
+      const response = snapshot.val();
+      const data = addKind(response, "resource");
 
       return { resource: data };
     } else {
@@ -62,7 +66,8 @@ export const fetchItems = async (): Promise<
     if (snapshot.exists()) {
       const response = snapshot.val();
       const data = response.map((item: ItemType, index: number) => {
-        item.slug = index;
+        item = addSlug(item, index);
+        item = addKind(item, "item");
         return item;
       });
 
@@ -84,7 +89,8 @@ export const fetchItem = async (
     const snapshot = await get(ref(db, `items/${id}`));
 
     if (snapshot.exists()) {
-      const data = snapshot.val();
+      const response = snapshot.val();
+      const data = addKind(response, "item");
 
       return { item: data };
     } else {
@@ -106,7 +112,8 @@ export const fetchPlanets = async (
     if (snapshot.exists()) {
       const response = snapshot.val();
       const data = response.filter((planet: PlanetType, index: number) => {
-        planet.slug = index;
+        planet = addSlug(planet, index);
+        planet = addKind(planet, "planet");
         return (ids && ids.includes(planet.id)) || !ids;
       });
 
@@ -128,7 +135,8 @@ export const fetchPlanet = async (
     const snapshot = await get(ref(db, `planets/${id}`));
 
     if (snapshot.exists()) {
-      const data = snapshot.val();
+      const response = snapshot.val();
+      const data = addKind(response, "planet");
 
       return { planet: data };
     } else {
@@ -150,7 +158,8 @@ export const fetchHazards = async (
     if (snapshot.exists()) {
       const response = snapshot.val();
       const data = response.filter((hazard: HazardType, index: number) => {
-        hazard.slug = index;
+        hazard = addSlug(hazard, index);
+        hazard = addKind(hazard, "hazard");
         return (ids && ids.includes(hazard.id)) || !ids;
       });
 
@@ -172,7 +181,8 @@ export const fetchHazard = async (
     const snapshot = await get(ref(db, `hazards/${id}`));
 
     if (snapshot.exists()) {
-      const data = snapshot.val();
+      const response = snapshot.val();
+      const data = addKind(response, "hazard");
 
       return { hazard: data };
     } else {

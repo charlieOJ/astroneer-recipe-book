@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import images from "../../imagesConfig";
+
 import { HazardType } from "../../types/hazardType";
+import { imageUrl } from "../../util/utils";
 
 const PlanetFlora = ({ planet, hazards }: any): React.JSX.Element => {
   const renderHazards = (): React.JSX.Element => {
@@ -12,13 +13,13 @@ const PlanetFlora = ({ planet, hazards }: any): React.JSX.Element => {
   const renderHazard = (hazard: HazardType): React.JSX.Element => {
     if (!hazard) return <></>;
 
-    const imageUrl = images[hazard.name];
+    const image = imageUrl(hazard);
     const location = planet.hazards.find((h: HazardType) => h.id === hazard.id).location;
 
     return (
       <tr key={hazard.id}>
         <td className="row-title">
-          {imageUrl && <img src={imageUrl} alt={`${hazard.name}`} className="icon-50" />}
+          {image && <img src={image} alt={`${hazard.name}`} className="icon-50" />}
         </td>
 
         <td>

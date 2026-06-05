@@ -1,11 +1,10 @@
 import { Suspense } from "react";
 import { Await, useNavigate, useRouteLoaderData } from "react-router-dom";
 
-import images from "../imagesConfig";
-
 import { HazardType } from "../types/hazardType";
 
 import Loading from "../components/shared/Loading";
+import { imageUrl } from "../util/utils";
 
 const HazardPage = (): React.JSX.Element => {
   const { hazard } = useRouteLoaderData("hazard");
@@ -18,8 +17,8 @@ const HazardPage = (): React.JSX.Element => {
           {(loadedData: { hazard: HazardType }) => {
             const loadedHazard = loadedData.hazard;
             const description = loadedHazard.description.replace(/\n/g, "<br/>");
-            const imageUrl = images[loadedHazard.name];
-            const seedImageUrl = images[`${loadedHazard.name}_seed`];
+            const image = imageUrl(loadedHazard);
+            const seedImage = imageUrl(loadedHazard, "seed");
 
             return (
               <>
@@ -34,22 +33,22 @@ const HazardPage = (): React.JSX.Element => {
                 </div>
 
                 <div className="row mb-3">
-                  {imageUrl && (
+                  {image && (
                     <div className="border-0 col-xs-12 col-md-3">
-                      <img src={imageUrl} className="w-100" alt={loadedHazard.name} />
+                      <img src={image} className="w-100" alt={loadedHazard.name} />
                     </div>
                   )}
 
-                  <div className={`col-xs-12 ${imageUrl && "col-md-9"}`}>
+                  <div className={`col-xs-12 ${image && "col-md-9"}`}>
                     <div dangerouslySetInnerHTML={{ __html: description }}></div>
                   </div>
                 </div>
 
-                {seedImageUrl && (
+                {seedImage && (
                   <div className="row my-3">
                     <h4 className="col-xs-12">Seed</h4>
                     <div className="border-0 col-xs-12 col-md-3">
-                      <img src={seedImageUrl} className="w-75" alt={`${loadedHazard.name} seed`} />
+                      <img src={seedImage} className="w-75" alt={`${loadedHazard.name} seed`} />
                     </div>
                   </div>
                 )}
