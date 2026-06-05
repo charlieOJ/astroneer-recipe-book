@@ -1,3 +1,6 @@
+import images from "../imagesConfig";
+import { HazardType } from "../types/hazardType";
+
 import { ItemType } from "../types/itemType";
 import { PlanetType } from "../types/planetType";
 import { RecipeResourceType, RecipeTreeType } from "../types/recipeType";
@@ -87,3 +90,15 @@ export const resourcesData = (
 
   return resourcesData;
 };
+
+export const imageUrl = (
+  element: ItemType | PlanetType | ResourceType | HazardType,
+  suffix?: string,
+) => {
+  if (suffix) return images[`${fileName(element)}_${suffix}`];
+
+  return images[fileName(element)];
+};
+
+const fileName = (element: ItemType | PlanetType | ResourceType | HazardType) =>
+  element.name.replaceAll(/-| /g, "_");

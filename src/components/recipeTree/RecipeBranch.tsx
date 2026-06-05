@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
-import images from "../../imagesConfig";
-import { OBTAIN_BY } from "../../util/constants";
 import { RecipeSubResourceType, RecipeTreeType } from "../../types/recipeType";
+import { OBTAIN_BY } from "../../util/constants";
+import { imageUrl } from "../../util/utils";
 
 interface Props {
   recipe: RecipeTreeType | RecipeSubResourceType;
@@ -14,25 +14,9 @@ interface Props {
 const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
   const [branchStatus, setBranchStatus] = useState<any>(false);
 
-  if (!recipe.recipeResource?.[id]) return <></>;
-
   const classes = branchStatus
     ? "bg-success-subtle border-success-subtle"
     : "bg-danger-subtle border-danger-subtle";
-
-  const onCheckResource = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setBranchStatus(e.target.checked);
-  };
-
-  const resourceData = recipe.recipeResource[id];
-  const resource = resourceData.resource;
-
-  let obtainBy = null;
-  let obtainByUrl = null;
-  if (resource?.obtainBy) {
-    obtainBy = " - obtain by ";
-    obtainByUrl = OBTAIN_BY[resource?.obtainBy].slug;
-  }
 
   const variants = {
     visible: {
@@ -50,8 +34,22 @@ const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
     },
   };
 
-  const resourceName = resource.name.replaceAll(" ", "_");
-  const imageUrl = images[resourceName];
+  const onCheckResource = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setBranchStatus(e.target.checked);
+  };
+
+  if (!recipe.recipeResource?.[id]) return <></>;
+
+  const resourceData = recipe.recipeResource[id];
+  const resource = resourceData.resource;
+  const image = imageUrl(resource);
+
+  let obtainBy = null;
+  let obtainByUrl = null;
+  if (resource?.obtainBy) {
+    obtainBy = " - obtain by ";
+    obtainByUrl = OBTAIN_BY[resource?.obtainBy].slug;
+  }
 
   return (
     <li className={`list-group-item border rounded p-1 ${classes}`}>
@@ -66,7 +64,7 @@ const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
           />
         </div>
 
-        {imageUrl && <img src={imageUrl} className="icon-50" alt={resource?.name} />}
+        {image && <img src={image} className="icon-50" alt={resource?.name} />}
 
         <p className="m-0">
           <Link to={`/resources/${resource?.slug}`} className="text-decoration-none">

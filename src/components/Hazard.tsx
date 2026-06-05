@@ -2,26 +2,25 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
 import { HazardType } from "../types/hazardType";
-
-import images from "../imagesConfig";
+import { imageUrl } from "../util/utils";
 
 interface Props {
   hazard: HazardType;
 }
 
 const Hazard = ({ hazard }: Props): React.JSX.Element => {
-  const imageUrl = images[hazard.name];
+  const image = imageUrl(hazard);
 
   return (
     <Link to={`/hazards/${hazard.slug}`} className="text-decoration-none">
       <div className="card h-100">
-        {imageUrl && (
+        {image && (
           <div
             className="img-thumbnail m-3 border-0 d-flex align-items-center justify-content-center"
             style={{ height: "150px" }}
           >
             <motion.img
-              src={imageUrl}
+              src={image}
               className="card-img-top rounded"
               style={{ maxHeight: "stretch", maxWidth: "fit-content" }}
               alt={hazard.name}

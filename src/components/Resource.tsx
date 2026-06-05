@@ -1,24 +1,23 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
-import images from "../imagesConfig";
 import { ResourceType } from "../types/resourceType";
+import { imageUrl } from "../util/utils";
 
 interface Props {
   resource: ResourceType;
 }
 
 const Resource = ({ resource }: Props): React.JSX.Element => {
-  const resourceName = resource.name.replaceAll(" ", "_");
-  const imageUrl = images[resourceName];
+  const image = imageUrl(resource);
 
   return (
     <Link to={`/resources/${resource.slug}`} className="text-decoration-none">
       <div className="card h-100">
-        {imageUrl && (
+        {image && (
           <div className="img-thumbnail p-3 border-0">
             <motion.img
-              src={imageUrl}
+              src={image}
               className="card-img-top rounded"
               alt={resource.name}
               whileHover={{ scale: 1.1 }}

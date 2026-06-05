@@ -1,12 +1,9 @@
 import { Suspense } from "react";
 import { Await } from "react-router-dom";
 
-import images from "../../imagesConfig";
-
 import { PlanetType } from "../../types/planetType";
-
 import { hazardsLoader, resourcesLoader } from "../../util/loaders";
-import { resourceIds, resourcesData } from "../../util/utils";
+import { imageUrl, resourceIds, resourcesData } from "../../util/utils";
 
 import Loading from "../shared/Loading";
 
@@ -40,7 +37,7 @@ const PlanetInfo = ({ planet }: Props): React.JSX.Element => {
           <Await resolve={resourcesLoader([...new Set(resourceIds(planet, gasIds))])}>
             {(loadedData: any) => {
               const resources = resourcesData(planet, loadedData.resources, gasIds);
-              const imageUrl = images[`${planet.name}_gateway`];
+              const gatewayIcon = imageUrl(planet, "gateway");
 
               return (
                 <>
@@ -48,9 +45,9 @@ const PlanetInfo = ({ planet }: Props): React.JSX.Element => {
                   <PlanetResources planet={planet} resources={resources} />
 
                   <PlanetInfo.Title>
-                    {imageUrl && (
+                    {gatewayIcon && (
                       <img
-                        src={imageUrl}
+                        src={gatewayIcon}
                         alt={`${planet.name} gateway symbol`}
                         className="me-2 icon-30"
                       />

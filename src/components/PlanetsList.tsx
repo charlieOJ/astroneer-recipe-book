@@ -1,12 +1,11 @@
 import { Suspense } from "react";
 import { Await, Link } from "react-router-dom";
 
-import images from "../imagesConfig";
-
 import { PlanetType } from "../types/planetType";
 import { ResourceType } from "../types/resourceType";
-
 import { planetsLoader } from "../util/loaders";
+import { imageUrl } from "../util/utils";
+
 import Loading from "./shared/Loading";
 
 interface Props {
@@ -30,19 +29,17 @@ const PlanetsList = ({ resource }: Props): React.JSX.Element => {
               <h3>Found on the following planets :</h3>
 
               {planets.map((planet: PlanetType) => {
-                const imageUrl = images[`${planet.name}_icon`];
                 let foundWhere: string = "";
                 if (resource.obtainBy !== "atmosphericCondenser") {
                   foundWhere =
                     planet.id === resource.planets.primary ? "Caves" : "Mantle/Mountains";
                 }
+                const icon = imageUrl(planet, "icon");
 
                 return (
                   <div key={planet.id}>
                     <Link to={`/planets/${planet.slug}`} className="text-decoration-none">
-                      {imageUrl && (
-                        <img src={imageUrl} className="me-2 icon-30" alt={planet.name} />
-                      )}
+                      {icon && <img src={icon} className="me-2 icon-30" alt={planet.name} />}
                       <span className="text-capitalize">{planet.name}</span>
                     </Link>{" "}
                     {foundWhere && <span>({foundWhere})</span>}

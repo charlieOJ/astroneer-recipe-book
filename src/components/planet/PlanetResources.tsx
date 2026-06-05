@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { GasType, PlanetType } from "../../types/planetType";
 import { ResourceType } from "../../types/resourceType";
-import images from "../../imagesConfig";
+import { imageUrl } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
@@ -16,8 +16,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
   const renderPrimaryResource = (): React.JSX.Element => {
     if (!resources.primary) return <></>;
 
-    const resourceName = resources.primary.name.replaceAll(" ", "_");
-    const imageUrl = images[`${resourceName}_icon`];
+    const icon = imageUrl(resources.primary, "icon");
 
     return (
       <tr>
@@ -26,9 +25,9 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
         </td>
 
         <td>
-          {imageUrl && (
+          {icon && (
             <img
-              src={imageUrl}
+              src={icon}
               alt={`${resources.primary.name} primary resource`}
               className="icon-30"
             />
@@ -45,8 +44,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
   const renderSecondaryResource = (): React.JSX.Element => {
     if (!resources.secondary) return <></>;
 
-    const resourceName = resources.secondary.name.replaceAll(" ", "_");
-    const imageUrl = images[`${resourceName}_icon`];
+    const icon = imageUrl(resources.secondary, "icon");
 
     return (
       <tr>
@@ -55,9 +53,9 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
         </td>
 
         <td>
-          {imageUrl && (
+          {icon && (
             <img
-              src={imageUrl}
+              src={icon}
               alt={`${resources.secondary.name} secondary resource`}
               className="icon-30"
             />
@@ -92,15 +90,12 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
     const currentResource = resources.gases?.find((r: ResourceType) => r.id === gas.id);
     if (!currentResource) return <></>;
 
-    const resourceName = currentResource.name.replaceAll(" ", "_");
-    const imageUrl = images[`${resourceName}_icon`];
+    const icon = imageUrl(currentResource, "icon");
 
     return (
       <tr key={gas.id}>
         <td>
-          {imageUrl && (
-            <img src={imageUrl} alt={`${currentResource.name} gas`} className="icon-30" />
-          )}
+          {icon && <img src={icon} alt={`${currentResource.name} gas`} className="icon-30" />}
           <Link to={`/resources/${currentResource.slug}`} className="text-decoration-none me-2">
             <span className="text-capitalize">{currentResource.name}</span>
           </Link>
