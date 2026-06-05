@@ -53,6 +53,6 @@ code {
 }
 
 .searchable-list .img-list img {
-  max-height: "stretch";
-  max-width: "fit-content";
+  max-height: stretch;
+  max-width: fit-content;
 }

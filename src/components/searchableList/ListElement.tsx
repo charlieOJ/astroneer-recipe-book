@@ -19,7 +19,7 @@ const ListElement = ({ element, path }: Props): React.JSX.Element => {
     <Link to={`/${path}/${element.slug}`} className="text-decoration-none">
       <div className="card h-100">
         {image && (
-          <div className="img-list img-thumbnail p-3 border-0">
+          <div className="img-list img-thumbnail m-3 border-0 d-flex align-items-center justify-content-center">
             <motion.img
               src={image}
               className="card-img-top rounded"
