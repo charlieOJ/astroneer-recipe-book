@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ItemType } from "../../types/itemType";
 import { ResourceType } from "../../types/resourceType";
 import { PlanetType } from "../../types/planetType";
-import { imageUrl } from "../../util/utils";
+import { iconItemUrl, imageUrl } from "../../util/utils";
 
 interface Props {
   element: ItemType | ResourceType | PlanetType;
@@ -11,7 +11,7 @@ interface Props {
 
 const DetailHeader = ({ element }: Props): React.JSX.Element => {
   const navigate = useNavigate();
-  const icon = imageUrl(element, "icon");
+  const icon = element.kind === "item" ? iconItemUrl(element) : imageUrl(element, "icon");
 
   return (
     <div className="align-items-center d-flex">

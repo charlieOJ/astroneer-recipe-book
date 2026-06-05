@@ -9,4 +9,5 @@ export interface ItemType {
   cost?: number | string;
   type?: string;
   size?: string;
+  kind?: "item";
 }

@@ -18,6 +18,7 @@ export interface PlanetType {
     material: string;
   };
   hazards: HazardInfoType[];
+  kind?: "planet";
 }
 
 export interface GasType {

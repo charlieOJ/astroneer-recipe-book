@@ -8,6 +8,7 @@ export interface ResourceType {
   obtainBy?: string;
   recipe?: RecipeType[];
   planets: any | ResourcePlanetsType;
+  kind?: "resource";
 }
 
 export interface ResourcePlanetsType {
