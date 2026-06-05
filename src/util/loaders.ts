@@ -6,13 +6,11 @@ import {
   fetchPlanets,
   fetchResource,
   fetchResources,
+  fetchHazards,
+  fetchHazard,
 } from "./http";
 
 // Loaders
-export const itemsLoader = async () => {
-  return await fetchItems();
-};
-
 export const itemLoaders = async ({ params }: { params: any }) => {
   return {
     item: await itemLoader(params.id),
@@ -33,7 +31,17 @@ export const planetLoaders = async ({ params }: { params: any }) => {
   };
 };
 
+export const hazardLoaders = async ({ params }: { params: any }) => {
+  return {
+    hazard: await hazardLoader(params.id),
+  };
+};
+
 // Item - Items
+export const itemsLoader = async () => {
+  return await fetchItems();
+};
+
 const itemLoader = async (id: string) => {
   return await fetchItem(id);
 };
@@ -58,4 +66,15 @@ export const planetsLoader = async (planets?: any | ResourcePlanetsType) => {
 
 const planetLoader = async (id: string) => {
   return await fetchPlanet(id);
+};
+
+// Hazards - Hazard
+export const hazardsLoader = async (ids?: string[]) => {
+  if (ids) return await fetchHazards(ids);
+
+  return await fetchHazards();
+};
+
+export const hazardLoader = async (id: string) => {
+  return await fetchHazard(id);
 };

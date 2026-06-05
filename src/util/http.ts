@@ -1,6 +1,7 @@
 import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
 import { PlanetType } from "../types/planetType";
+import { HazardType } from "../types/hazardType";
 
 import { get, ref } from "firebase/database";
 import { db } from "../firebaseConfig";
@@ -135,6 +136,50 @@ export const fetchPlanet = async (
     }
   } catch (error) {
     throw new Response(JSON.stringify({ message: error || "Failed to fetch planet." }), {
+      status: 500,
+    });
+  }
+};
+
+// Fetch hazards
+export const fetchHazards = async (
+  ids?: string[],
+): Promise<{ hazards: HazardType[] } | { error: string } | ResponseType> => {
+  try {
+    const snapshot = await get(ref(db, "hazards"));
+    if (snapshot.exists()) {
+      const response = snapshot.val();
+      const data = response.filter((hazard: HazardType, index: number) => {
+        hazard.slug = index;
+        return (ids && ids.includes(hazard.id)) || !ids;
+      });
+
+      return { hazards: data };
+    } else {
+      return { error: "No hazards found." };
+    }
+  } catch (error) {
+    throw new Response(JSON.stringify({ message: error || "Failed to fetch hazards." }), {
+      status: 500,
+    });
+  }
+};
+
+export const fetchHazard = async (
+  id: string,
+): Promise<{ hazard: HazardType } | { error: string } | ResponseType> => {
+  try {
+    const snapshot = await get(ref(db, `hazards/${id}`));
+
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+
+      return { hazard: data };
+    } else {
+      return { error: "No hazard found." };
+    }
+  } catch (error) {
+    throw new Response(JSON.stringify({ message: error || "Failed to fetch hazard." }), {
       status: 500,
     });
   }
