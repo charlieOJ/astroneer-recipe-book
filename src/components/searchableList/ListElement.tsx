@@ -30,7 +30,9 @@ const ListElement = ({ element, path }: Props): React.JSX.Element => {
         )}
 
         <div className="card-body d-flex align-items-center justify-content-center">
-          <h5 className="card-title">{element.name.toUpperCase()}</h5>
+          <p className="card-title fs-6 fw-semibold m-0 text-center">
+            {element.name.toUpperCase()}
+          </p>
         </div>
       </div>
     </Link>
