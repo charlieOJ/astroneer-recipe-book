@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
-import { OBTAIN_BY, RESOURCES_BASE_URL } from "../../util/constants";
+import images from "../../imagesConfig";
+import { OBTAIN_BY } from "../../util/constants";
 import { RecipeSubResourceType, RecipeTreeType } from "../../types/recipeType";
 
 interface Props {
@@ -49,6 +50,9 @@ const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
     },
   };
 
+  const resourceName = resource.name.replaceAll(" ", "_");
+  const imageUrl = images[resourceName];
+
   return (
     <li className={`list-group-item border rounded p-1 ${classes}`}>
       <div className="d-flex align-items-center">
@@ -62,7 +66,7 @@ const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
           />
         </div>
 
-        <img src={RESOURCES_BASE_URL + resource?.image} className="icon-50" alt={resource?.name} />
+        {imageUrl && <img src={imageUrl} className="icon-50" alt={resource?.name} />}
 
         <p className="m-0">
           <Link to={`/resources/${resource?.slug}`} className="text-decoration-none">
