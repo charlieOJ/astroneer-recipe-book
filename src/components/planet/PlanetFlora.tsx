@@ -9,11 +9,11 @@ interface Props {
   hazards: HazardType[];
 }
 
-const PlanetFlora = ({ planet, hazards }: Props): React.JSX.Element | React.JSX.Element[] => {
-  const renderHazards = (): React.JSX.Element | React.JSX.Element[] => {
+const PlanetFlora = ({ planet, hazards }: Props): React.JSX.Element => {
+  const renderHazards = (): React.JSX.Element => {
     if (!hazards) return <></>;
 
-    return hazards.map((hazard: HazardType) => renderHazard(hazard));
+    return <>{hazards.map((hazard: HazardType) => renderHazard(hazard))}</>;
   };
 
   const renderHazard = (hazard: HazardType): React.JSX.Element => {
