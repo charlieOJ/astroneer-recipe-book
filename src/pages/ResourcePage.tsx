@@ -1,5 +1,4 @@
-import { Suspense } from "react";
-import { Await, useRouteLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { OBTAIN_BY } from "../util/constants";
 import { ResourceType } from "../types/resourceType";
@@ -9,47 +8,35 @@ import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
 import PlanetsList from "../components/PlanetsList";
 import Loading from "../components/shared/Loading";
+import { useDataContext } from "../context/DataContext";
 
 const ResourcePage = (): React.JSX.Element => {
-  const { resource, resources } = useRouteLoaderData("resource");
+  const { id } = useParams<any>();
+  const { resources, loading } = useDataContext();
+
+  if (!id) return <></>;
+  if (loading)
+    return (
+      <div className="container">
+        <Loading text="Loading resource info..." />
+      </div>
+    );
+
+  const resource: ResourceType = resources[parseInt(id)];
 
   return (
     <div className="container">
-      <Suspense fallback={<Loading text="Loading resource data..." />}>
-        <Await resolve={resource}>
-          {(loadedData: { resource: ResourceType }) => {
-            const loadedResource = loadedData.resource;
+      <DetailHeader element={resource} />
+      <DetailContent element={resource}>
+        <p>
+          Obtain by :{" "}
+          <span className="text-capitalize">{OBTAIN_BY[resource?.obtainBy || 0].from}</span>
+        </p>
 
-            return (
-              <>
-                <DetailHeader element={loadedResource} />
-                <DetailContent element={loadedResource}>
-                  <p>
-                    Obtain by :{" "}
-                    <span className="text-capitalize">
-                      {OBTAIN_BY[loadedResource?.obtainBy || 0].from}
-                    </span>
-                  </p>
+        <PlanetsList resource={resource} />
+      </DetailContent>
 
-                  <PlanetsList resource={loadedResource} />
-                </DetailContent>
-
-                {loadedResource.recipe && (
-                  <Suspense fallback={<Loading text="Loading full recipe..." />}>
-                    <Await resolve={resources}>
-                      {(loadedData: { resources: ResourceType[] }) => {
-                        return (
-                          <RecipeTree element={loadedResource} resources={loadedData.resources} />
-                        );
-                      }}
-                    </Await>
-                  </Suspense>
-                )}
-              </>
-            );
-          }}
-        </Await>
-      </Suspense>
+      {resource.recipe && <RecipeTree element={resource} resources={resources} />}
     </div>
   );
 };

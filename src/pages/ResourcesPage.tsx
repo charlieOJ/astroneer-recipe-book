@@ -1,29 +1,28 @@
-import { Suspense } from "react";
-import { Await, useLoaderData } from "react-router-dom";
 import { ResourceType } from "../types/resourceType";
+import { useDataContext } from "../context/DataContext";
+
 import SearchableList from "../components/searchableList/SearchableList";
 import Loading from "../components/shared/Loading";
 
 const ResourcesPage = () => {
-  const { resources } = useLoaderData();
+  const { resources, loading } = useDataContext();
+
+  if (loading)
+    return (
+      <div className="container">
+        <Loading text="Loading resources..." />
+      </div>
+    );
 
   return (
     <div className="container">
       <h1>Resources</h1>
 
-      <Suspense fallback={<Loading text="Loading resources..." />}>
-        <Await resolve={resources}>
-          {(loadedResources: ResourceType[]) => {
-            return (
-              <SearchableList
-                elements={loadedResources}
-                elementKeyFn={(resource: ResourceType) => resource.id}
-                elementPath="resources"
-              />
-            );
-          }}
-        </Await>
-      </Suspense>
+      <SearchableList
+        elements={resources}
+        elementKeyFn={(resource: ResourceType) => resource.id}
+        elementPath="resources"
+      />
     </div>
   );
 };

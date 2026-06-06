@@ -1,11 +1,8 @@
-import { Suspense } from "react";
-import { Await } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { PlanetType } from "../../types/planetType";
-import { hazardsLoader, resourcesLoader } from "../../util/loaders";
-import { imageUrl, resourceIds, resourcesData } from "../../util/utils";
-
-import Loading from "../shared/Loading";
+import { useDataContext } from "../../context/DataContext";
+import { imageUrl, resourcesData } from "../../util/utils";
 
 import PlanetDetail from "./PlanetDetail";
 import PlanetResources from "./PlanetResources";
@@ -14,15 +11,18 @@ import PlanetGateway from "./PlanetGateway";
 import PlanetInfoTitle from "./PlanetInfoTitle";
 import PlanetFlora from "./PlanetFlora";
 
-interface Props {
-  planet: PlanetType;
-}
+const PlanetInfo = (): React.JSX.Element => {
+  const { id } = useParams<any>();
+  const { planets, resources } = useDataContext();
 
-const PlanetInfo = ({ planet }: Props): React.JSX.Element => {
+  if (!id) return <></>;
+
+  const planet: PlanetType = planets[parseInt(id)];
   if (Object.keys(planet?.resources).length === 0) return <></>;
 
   const gasIds = planet.resources?.gases?.map(gas => gas.id) || [];
-  const hazardIds = planet.hazards.map(hazard => hazard.id) || [];
+  const planetResources = resourcesData(planet, resources, gasIds);
+  const gatewayIcon = imageUrl(planet, "gateway");
 
   return (
     <table className="table table-borderless planet">
@@ -33,46 +33,19 @@ const PlanetInfo = ({ planet }: Props): React.JSX.Element => {
         <PlanetInfo.Title>Power</PlanetInfo.Title>
         <PlanetPower planet={planet} />
 
-        <Suspense fallback={<Loading text="Loading planet resources data..." isOnTable={true} />}>
-          <Await resolve={resourcesLoader([...new Set(resourceIds(planet, gasIds))])}>
-            {(loadedData: any) => {
-              const resources = resourcesData(planet, loadedData.resources, gasIds);
-              const gatewayIcon = imageUrl(planet, "gateway");
+        <PlanetInfo.Title>Resources</PlanetInfo.Title>
+        <PlanetResources planet={planet} resources={planetResources} />
 
-              return (
-                <>
-                  <PlanetInfo.Title>Resources</PlanetInfo.Title>
-                  <PlanetResources planet={planet} resources={resources} />
+        <PlanetInfo.Title>
+          {gatewayIcon && (
+            <img src={gatewayIcon} alt={`${planet.name} gateway symbol`} className="me-2 icon-30" />
+          )}
+          Gateway
+        </PlanetInfo.Title>
+        <PlanetGateway planet={planet} resources={planetResources} />
 
-                  <PlanetInfo.Title>
-                    {gatewayIcon && (
-                      <img
-                        src={gatewayIcon}
-                        alt={`${planet.name} gateway symbol`}
-                        className="me-2 icon-30"
-                      />
-                    )}
-                    Gateway
-                  </PlanetInfo.Title>
-                  <PlanetGateway planet={planet} resources={resources} />
-                </>
-              );
-            }}
-          </Await>
-        </Suspense>
-
-        <Suspense fallback={<Loading text="Loading planet hazards data..." isOnTable={true} />}>
-          <Await resolve={hazardsLoader(hazardIds)}>
-            {(loadedData: any) => {
-              return (
-                <>
-                  <PlanetInfo.Title>Flora</PlanetInfo.Title>
-                  <PlanetFlora planet={planet} hazards={loadedData.hazards} />
-                </>
-              );
-            }}
-          </Await>
-        </Suspense>
+        <PlanetInfo.Title>Flora</PlanetInfo.Title>
+        <PlanetFlora planet={planet} />
       </tbody>
     </table>
   );
