@@ -26,7 +26,7 @@ export interface GasType {
   ppu: number;
 }
 
-interface HazardInfoType {
+export interface HazardInfoType {
   id: string;
   location: string;
 }

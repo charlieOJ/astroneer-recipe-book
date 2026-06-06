@@ -2,19 +2,25 @@ import { Link } from "react-router-dom";
 
 import { HazardType } from "../../types/hazardType";
 import { imageUrl } from "../../util/utils";
+import { HazardInfoType, PlanetType } from "../../types/planetType";
 
-const PlanetFlora = ({ planet, hazards }: any): React.JSX.Element => {
+interface Props {
+  planet: PlanetType;
+  hazards: HazardType[];
+}
+
+const PlanetFlora = ({ planet, hazards }: Props): React.JSX.Element => {
   const renderHazards = (): React.JSX.Element => {
     if (!hazards) return <></>;
 
-    return hazards.map((hazard: HazardType) => renderHazard(hazard));
+    return <>{hazards.map((hazard: HazardType) => renderHazard(hazard))}</>;
   };
 
   const renderHazard = (hazard: HazardType): React.JSX.Element => {
     if (!hazard) return <></>;
 
     const image = imageUrl(hazard);
-    const location = planet.hazards.find((h: HazardType) => h.id === hazard.id).location;
+    const planetHazard = planet.hazards.find((h: HazardInfoType) => h.id === hazard.id);
 
     return (
       <tr key={hazard.id}>
@@ -26,7 +32,7 @@ const PlanetFlora = ({ planet, hazards }: any): React.JSX.Element => {
           <Link to={`/hazards/${hazard.slug}`} className="text-decoration-none me-2">
             <span className="text-capitalize">{hazard.name}</span>
           </Link>
-          ({location})
+          ({planetHazard!.location})
         </td>
       </tr>
     );
