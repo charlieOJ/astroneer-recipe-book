@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 
 import { HazardType } from "../../types/hazardType";
-import { imageUrl } from "../../util/utils";
+import { HazardInfoType, PlanetType } from "../../types/planetType";
 import { useDataContext } from "../../context/DataContext";
-import { HazardInfoType } from "../../types/planetType";
+import { imageUrl } from "../../util/utils";
 
-const PlanetFlora = ({ planet }: any): React.JSX.Element => {
+interface Props {
+  planet: PlanetType;
+}
+const PlanetFlora = ({ planet }: Props): React.JSX.Element => {
   const { hazards } = useDataContext();
 
   const renderHazards = (): React.JSX.Element => {
@@ -26,6 +29,7 @@ const PlanetFlora = ({ planet }: any): React.JSX.Element => {
     if (!currentHazard) return <></>;
 
     const image = imageUrl(currentHazard);
+    const planetHazard = planet.hazards.find((h: HazardInfoType) => h.id === hazard.id);
 
     return (
       <tr key={hazard.id}>
@@ -37,7 +41,7 @@ const PlanetFlora = ({ planet }: any): React.JSX.Element => {
           <Link to={`/hazards/${currentHazard.slug}`} className="text-decoration-none me-2">
             <span className="text-capitalize">{currentHazard.name}</span>
           </Link>
-          ({hazard.location})
+          ({planetHazard!.location})
         </td>
       </tr>
     );
