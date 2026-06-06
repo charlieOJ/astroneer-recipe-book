@@ -29,19 +29,14 @@ const ListElement = ({ element, path }: Props): React.JSX.Element => {
         badges[0] = { class: "info", text: element.type };
         break;
       case "hazard":
-        switch (element.type) {
-          case "aggressive":
-            badges[0] = { class: "danger" };
-            break;
-          case "defensive":
-            badges[0] = { class: "success" };
-            break;
-
-          default:
-            badges[0] = { class: "secondary" };
-
-            break;
+        if (element.type === "aggressive") {
+          badges[0] = { class: "danger" };
+        } else if (element.type === "defensive") {
+          badges[0] = { class: "success" };
+        } else {
+          badges[0] = { class: "secondary" };
         }
+
         badges[0] = { ...badges[0], text: element.type };
         break;
     }

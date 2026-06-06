@@ -9,6 +9,7 @@ import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
 import Loading from "../components/shared/Loading";
 import { useDataContext } from "../context/DataContext";
+import ErrorBlock from "../components/ErrorBlock";
 
 const ItemPage = (): React.JSX.Element => {
   const { id } = useParams<any>();
@@ -16,15 +17,14 @@ const ItemPage = (): React.JSX.Element => {
     items,
     resources,
     loading,
-  }: { items: ItemType[]; resources: ResourceType[]; loading: boolean } = useDataContext();
+    error,
+  }: { items: ItemType[]; resources: ResourceType[]; loading: boolean; error: string | null } =
+    useDataContext();
 
   if (!id) return <></>;
-  if (loading)
-    return (
-      <div className="container">
-        <Loading text="Loading hazard info..." />
-      </div>
-    );
+  if (loading) return <Loading text="Loading item info..." needContainer={true} />;
+  if (error)
+    return <ErrorBlock title="Something went wrong" message={error} needContainer={true} />;
 
   const item: ItemType = items[parseInt(id)];
 

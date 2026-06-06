@@ -9,20 +9,27 @@ import DetailContent from "../components/shared/DetailContent";
 import PlanetsList from "../components/PlanetsList";
 import Loading from "../components/shared/Loading";
 import { useDataContext } from "../context/DataContext";
+import ErrorBlock from "../components/ErrorBlock";
 
 const ResourcePage = (): React.JSX.Element => {
   const { id } = useParams<any>();
-  const { resources, loading } = useDataContext();
+  const { resources, loading, error } = useDataContext();
 
   if (!id) return <></>;
-  if (loading)
-    return (
-      <div className="container">
-        <Loading text="Loading resource info..." />
-      </div>
-    );
+  if (loading) return <Loading text="Loading resource info..." needContainer={true} />;
+  if (error)
+    return <ErrorBlock title="Something went wrong" message={error} needContainer={true} />;
 
   const resource: ResourceType = resources[parseInt(id)];
+
+  if (!resource)
+    return (
+      <ErrorBlock
+        title="Something went wrong"
+        message="This resource do not exist."
+        needContainer={true}
+      />
+    );
 
   return (
     <div className="container">

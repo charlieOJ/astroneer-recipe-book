@@ -7,20 +7,20 @@ import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
 import PlanetInfo from "../components/planet/PlanetInfo";
 import Loading from "../components/shared/Loading";
+import ErrorBlock from "../components/ErrorBlock";
 
 const PlanetPage = (): React.JSX.Element => {
   const { id } = useParams<any>();
-  const { planets, loading } = useDataContext();
+  const { planets, loading, error } = useDataContext();
 
   if (!id) return <></>;
-  if (loading)
-    return (
-      <div className="container">
-        <Loading text="Loading planet info..." />
-      </div>
-    );
+  if (loading) return <Loading text="Loading planet info..." needContainer={true} />;
+  if (error)
+    return <ErrorBlock title="Something went wrong" message={error} needContainer={true} />;
 
   const planet: PlanetType = planets[parseInt(id)];
+
+  if (!planet) return <ErrorBlock title="Oups !" message="No planet for this id." />;
 
   return (
     <div className="container">

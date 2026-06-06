@@ -5,19 +5,17 @@ import { useDataContext } from "../context/DataContext";
 import { imageUrl } from "../util/utils";
 
 import Loading from "../components/shared/Loading";
+import ErrorBlock from "../components/ErrorBlock";
 
 const HazardPage = (): React.JSX.Element => {
   const { id } = useParams<any>();
   const navigate = useNavigate();
-  const { hazards, loading } = useDataContext();
+  const { hazards, loading, error } = useDataContext();
 
   if (!id) return <></>;
-  if (loading)
-    return (
-      <div className="container">
-        <Loading text="Loading hazard info..." />
-      </div>
-    );
+  if (loading) return <Loading text="Loading hazard info..." needContainer={true} />;
+  if (error)
+    return <ErrorBlock title="Something went wrong" message={error} needContainer={true} />;
 
   const hazard: HazardType = hazards[parseInt(id)];
   const description = hazard.description.replace(/\n/g, "<br />");

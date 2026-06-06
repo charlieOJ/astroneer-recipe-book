@@ -15,7 +15,6 @@ import PlanetPage from "./pages/PlanetPage";
 import HazardsPage from "./pages/HazardsPage";
 import HazardPage from "./pages/HazardPage";
 
-import ErrorBlock from "./components/ErrorBlock";
 import DataProvider from "./context/DataContext";
 // import NotFoundPage from "./pages/NotFoundPage";
 
@@ -24,7 +23,6 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: <RootPage />,
-      errorElement: <ErrorBlock />,
       children: [
         {
           path: "/",
