@@ -1,8 +1,7 @@
 {
   "files": {
-    "main.css": "/astroneer-recipe-book/static/css/main.9462e2da.css",
-    "main.js": "/astroneer-recipe-book/static/js/main.2f96f632.js",
-    "static/js/453.32d45519.chunk.js": "/astroneer-recipe-book/static/js/453.32d45519.chunk.js",
+    "main.css": "/astroneer-recipe-book/static/css/main.6213734e.css",
+    "main.js": "/astroneer-recipe-book/static/js/main.a9b76297.js",
     "static/media/bg2.png": "/astroneer-recipe-book/static/media/bg2.bd62c5f6a22e193db3d9.png",
     "static/media/sylva.png": "/astroneer-recipe-book/static/media/sylva.2a045030d2b5ab7679ad.png",
     "static/media/vesania.png": "/astroneer-recipe-book/static/media/vesania.84050c5760fca892ac5e.png",
@@ -274,12 +273,11 @@
     "static/media/canister_icon.png": "/astroneer-recipe-book/static/media/canister_icon.24ea43092edb56a398e9.png",
     "static/media/soil_icon.png": "/astroneer-recipe-book/static/media/soil_icon.bec1d963ac78e0635935.png",
     "index.html": "/astroneer-recipe-book/index.html",
-    "main.9462e2da.css.map": "/astroneer-recipe-book/static/css/main.9462e2da.css.map",
-    "main.2f96f632.js.map": "/astroneer-recipe-book/static/js/main.2f96f632.js.map",
-    "453.32d45519.chunk.js.map": "/astroneer-recipe-book/static/js/453.32d45519.chunk.js.map"
+    "main.6213734e.css.map": "/astroneer-recipe-book/static/css/main.6213734e.css.map",
+    "main.a9b76297.js.map": "/astroneer-recipe-book/static/js/main.a9b76297.js.map"
   },
   "entrypoints": [
-    "static/css/main.9462e2da.css",
-    "static/js/main.2f96f632.js"
+    "static/css/main.6213734e.css",
+    "static/js/main.a9b76297.js"
   ]
 }
