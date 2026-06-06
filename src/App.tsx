@@ -1,16 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
 
-import {
-  itemsLoader,
-  itemLoaders,
-  resourcesLoader,
-  resourceLoaders,
-  planetsLoader,
-  planetLoaders,
-  hazardsLoader,
-  hazardLoaders,
-} from "./util/loaders";
-
 import RootPage from "./pages/RootPage";
 import HomePage from "./pages/HomePage";
 
@@ -26,7 +15,7 @@ import PlanetPage from "./pages/PlanetPage";
 import HazardsPage from "./pages/HazardsPage";
 import HazardPage from "./pages/HazardPage";
 
-import ErrorBlock from "./components/ErrorBlock";
+import DataProvider from "./context/DataContext";
 // import NotFoundPage from "./pages/NotFoundPage";
 
 const router = createBrowserRouter(
@@ -34,7 +23,6 @@ const router = createBrowserRouter(
     {
       path: "/",
       element: <RootPage />,
-      errorElement: <ErrorBlock />,
       children: [
         {
           path: "/",
@@ -45,15 +33,11 @@ const router = createBrowserRouter(
           children: [
             {
               index: true,
-              id: "items",
               element: <ItemsPage />,
-              loader: itemsLoader,
             },
             {
               path: ":id",
-              id: "item",
               element: <ItemPage />,
-              loader: itemLoaders,
             },
           ],
         },
@@ -63,13 +47,10 @@ const router = createBrowserRouter(
             {
               index: true,
               element: <ResourcesPage />,
-              loader: () => resourcesLoader(),
             },
             {
               path: ":id",
               element: <ResourcePage />,
-              id: "resource",
-              loader: resourceLoaders,
             },
           ],
         },
@@ -79,13 +60,10 @@ const router = createBrowserRouter(
             {
               index: true,
               element: <PlanetsPage />,
-              loader: () => planetsLoader(),
             },
             {
               path: ":id",
               element: <PlanetPage />,
-              id: "planet",
-              loader: planetLoaders,
             },
           ],
         },
@@ -95,13 +73,10 @@ const router = createBrowserRouter(
             {
               index: true,
               element: <HazardsPage />,
-              loader: () => hazardsLoader(),
             },
             {
               path: ":id",
               element: <HazardPage />,
-              id: "hazard",
-              loader: hazardLoaders,
             },
           ],
         },
@@ -116,7 +91,11 @@ const router = createBrowserRouter(
 );
 
 const App = (): React.JSX.Element => {
-  return <RouterProvider router={router} />;
+  return (
+    <DataProvider>
+      <RouterProvider router={router} />
+    </DataProvider>
+  );
 };
 
 export default App;

@@ -1,58 +1,50 @@
-import { Suspense } from "react";
-import { Await, useRouteLoaderData } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { PRINTERS } from "../util/constants";
+import { ItemType } from "../types/itemType";
 
 import RecipeTree from "../components/recipeTree/RecipeTree";
-import { ItemType } from "../types/itemType";
 import { ResourceType } from "../types/resourceType";
 import DetailHeader from "../components/shared/DetailHeader";
 import DetailContent from "../components/shared/DetailContent";
 import Loading from "../components/shared/Loading";
+import { useDataContext } from "../context/DataContext";
+import ErrorBlock from "../components/ErrorBlock";
 
 const ItemPage = (): React.JSX.Element => {
-  const { item, resources } = useRouteLoaderData("item");
+  const { id } = useParams<any>();
+  const {
+    items,
+    resources,
+    loading,
+    error,
+  }: { items: ItemType[]; resources: ResourceType[]; loading: boolean; error: string | null } =
+    useDataContext();
+
+  if (!id) return <></>;
+  if (loading) return <Loading text="Loading item info..." needContainer={true} />;
+  if (error)
+    return <ErrorBlock title="Something went wrong" message={error} needContainer={true} />;
+
+  const item: ItemType = items[parseInt(id)];
 
   return (
     <div className="container">
-      <Suspense fallback={<Loading text="Loading item data..." />}>
-        <Await resolve={item}>
-          {(loadedData: { item: ItemType }) => {
-            const loadedItem = loadedData.item;
+      <DetailHeader element={item} />
 
-            return (
-              <>
-                <DetailHeader element={loadedItem} />
+      <DetailContent element={item}>
+        <p>
+          Craft on :
+          <span className="text-capitalize ms-2">
+            {item.tier.map((tier: number): string => PRINTERS[tier]).join(" / ")}
+          </span>
+        </p>
+        {item.cost && (
+          <p>Unlock cost :{item.cost === "unlock" ? " unlock" : ` ${item.cost} Bytes`}</p>
+        )}
+      </DetailContent>
 
-                <DetailContent element={loadedItem}>
-                  <p>
-                    Craft on :
-                    <span className="text-capitalize ms-2">
-                      {loadedItem.tier.map((tier: number): string => PRINTERS[tier]).join(" / ")}
-                    </span>
-                  </p>
-                  {loadedItem.cost && (
-                    <p>
-                      Unlock cost :
-                      {loadedItem.cost === "unlock" ? " unlock" : ` ${loadedItem.cost} Bytes`}
-                    </p>
-                  )}
-                </DetailContent>
-
-                {loadedItem.recipe && (
-                  <Suspense fallback={<Loading text="Loading item data..." />}>
-                    <Await resolve={resources}>
-                      {(loadedData: { resources: ResourceType[] }) => {
-                        return <RecipeTree element={loadedItem} resources={loadedData.resources} />;
-                      }}
-                    </Await>
-                  </Suspense>
-                )}
-              </>
-            );
-          }}
-        </Await>
-      </Suspense>
+      {item.recipe && <RecipeTree element={item} resources={resources} />}
     </div>
   );
 };

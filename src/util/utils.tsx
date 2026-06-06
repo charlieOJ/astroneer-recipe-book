@@ -108,12 +108,25 @@ export const iconItemUrl = (item: ItemType) => {
 
 const fileName = (str: string) => str.replaceAll(/-| /g, "_");
 
-export const addSlug = (elem: any, index: number) => {
+const addSlug = (elem: any, index: number): PlanetType | ItemType | ResourceType | HazardType => {
   elem.slug = index;
   return elem;
 };
 
-export const addKind = (elem: any, type: "resource" | "item" | "planet" | "hazard") => {
+const addKind = (
+  elem: any,
+  type: "resource" | "item" | "planet" | "hazard",
+): PlanetType | ItemType | ResourceType | HazardType => {
   elem.kind = type;
+  return elem;
+};
+
+export const addSlugAndKind = (
+  elem: PlanetType | ItemType | ResourceType | HazardType,
+  index: number,
+  kind: "planet" | "resource" | "item" | "hazard",
+): PlanetType | ItemType | ResourceType | HazardType => {
+  elem = addSlug(elem, index);
+  elem = addKind(elem, kind);
   return elem;
 };

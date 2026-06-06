@@ -1,36 +1,45 @@
 import { Link } from "react-router-dom";
 
 import { HazardType } from "../../types/hazardType";
-import { imageUrl } from "../../util/utils";
 import { HazardInfoType, PlanetType } from "../../types/planetType";
+import { useDataContext } from "../../context/DataContext";
+import { imageUrl } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
-  hazards: HazardType[];
 }
+const PlanetFlora = ({ planet }: Props): React.JSX.Element => {
+  const { hazards } = useDataContext();
 
-const PlanetFlora = ({ planet, hazards }: Props): React.JSX.Element => {
   const renderHazards = (): React.JSX.Element => {
-    if (!hazards) return <></>;
-
-    return <>{hazards.map((hazard: HazardType) => renderHazard(hazard))}</>;
+    return (
+      <>
+        {planet.hazards.map((planetHazard: HazardInfoType) => {
+          const currentHazard = hazards.find((h: HazardType) => h.id === planetHazard.id) || null;
+          return renderHazard(planetHazard, currentHazard);
+        })}
+      </>
+    );
   };
 
-  const renderHazard = (hazard: HazardType): React.JSX.Element => {
-    if (!hazard) return <></>;
+  const renderHazard = (
+    hazard: HazardInfoType,
+    currentHazard: HazardType | null,
+  ): React.JSX.Element => {
+    if (!currentHazard) return <></>;
 
-    const image = imageUrl(hazard);
+    const image = imageUrl(currentHazard);
     const planetHazard = planet.hazards.find((h: HazardInfoType) => h.id === hazard.id);
 
     return (
       <tr key={hazard.id}>
         <td className="row-title">
-          {image && <img src={image} alt={`${hazard.name}`} className="icon-50" />}
+          {image && <img src={image} alt={`${currentHazard.name}`} className="icon-50" />}
         </td>
 
         <td>
-          <Link to={`/hazards/${hazard.slug}`} className="text-decoration-none me-2">
-            <span className="text-capitalize">{hazard.name}</span>
+          <Link to={`/hazards/${currentHazard.slug}`} className="text-decoration-none me-2">
+            <span className="text-capitalize">{currentHazard.name}</span>
           </Link>
           ({planetHazard!.location})
         </td>

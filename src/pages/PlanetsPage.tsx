@@ -1,29 +1,28 @@
-import { Suspense } from "react";
-import { Await, useLoaderData } from "react-router-dom";
 import { PlanetType } from "../types/planetType";
+import { useDataContext } from "../context/DataContext";
+
 import SearchableList from "../components/searchableList/SearchableList";
 import Loading from "../components/shared/Loading";
+import ErrorBlock from "../components/ErrorBlock";
 
 const PlanetsPage = () => {
-  const { planets } = useLoaderData();
+  const { planets, loading, error } = useDataContext();
+
+  if (loading) return <Loading text="Loading planets..." needContainer={true} />;
 
   return (
     <div className="container">
       <h1>Planets</h1>
 
-      <Suspense fallback={<Loading text="Loading planets..." />}>
-        <Await resolve={planets}>
-          {(loadedIPlanets: PlanetType[]) => {
-            return (
-              <SearchableList
-                elements={loadedIPlanets}
-                elementKeyFn={(planet: PlanetType) => planet.id}
-                elementPath="planets"
-              />
-            );
-          }}
-        </Await>
-      </Suspense>
+      {error ? (
+        <ErrorBlock title="Something went wrong" message={error} />
+      ) : (
+        <SearchableList
+          elements={planets}
+          elementKeyFn={(planet: PlanetType) => planet.id}
+          elementPath="planets"
+        />
+      )}
     </div>
   );
 };

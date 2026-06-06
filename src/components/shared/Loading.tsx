@@ -1,13 +1,16 @@
 interface Props {
   text: string;
   isOnTable?: boolean;
+  needContainer?: boolean;
 }
 
-const Loading = ({ text, isOnTable = false }: Props) => {
+const Loading = ({ text, isOnTable = false, needContainer = false }: Props) => {
   const renderLoading = (
-    <div className="d-flex align-items-center">
-      <div className="spinner-border" role="status"></div>
-      <span className="ms-2">{text}</span>
+    <div className={`${needContainer && "container"}`}>
+      <div className="d-flex align-items-center">
+        <div className="spinner-border" role="status"></div>
+        <span className="ms-2">{text}</span>
+      </div>
     </div>
   );
 

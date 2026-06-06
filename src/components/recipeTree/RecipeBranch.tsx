@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 
 import { RecipeSubResourceType, RecipeTreeType } from "../../types/recipeType";
+import { ItemType } from "../../types/itemType";
+import { useDataContext } from "../../context/DataContext";
 import { OBTAIN_BY } from "../../util/constants";
 import { imageUrl } from "../../util/utils";
 
@@ -12,6 +14,7 @@ interface Props {
 }
 
 const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
+  const { items } = useDataContext();
   const [branchStatus, setBranchStatus] = useState<any>(false);
 
   const classes = branchStatus
@@ -34,11 +37,11 @@ const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
     },
   };
 
+  if (!recipe.recipeResource?.[id]) return <></>;
+
   const onCheckResource = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBranchStatus(e.target.checked);
   };
-
-  if (!recipe.recipeResource?.[id]) return <></>;
 
   const resourceData = recipe.recipeResource[id];
   const resource = resourceData.resource;
@@ -47,8 +50,11 @@ const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
   let obtainBy = null;
   let obtainByUrl = null;
   if (resource?.obtainBy) {
+    const resourceObtainBy = resource?.obtainBy;
+    const obtainResource = items.find((r: ItemType) => OBTAIN_BY[resourceObtainBy].id === r.id);
+
     obtainBy = " - obtain by ";
-    obtainByUrl = OBTAIN_BY[resource?.obtainBy].slug;
+    obtainByUrl = obtainResource?.slug;
   }
 
   return (
@@ -85,6 +91,7 @@ const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
           )}
         </p>
       </div>
+
       {resourceData.recipeResource && (
         <motion.ul
           initial="hidden"
