@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "name": "Astroneer Recipe Book"
+  },
+  "homepage": {
+    "title": "Welcome to the Astroneer recipe book",
+    "text": "Looking for a specific item, but you don't know who to craft it ? Annoy to look where you can find this resource or if you need to craft it ? Finally a place to know it all in one click !",
+    "btn_resources": "Resources",
+    "btn_planets": "Planets",
+    "btn_items": "Items",
+    "btn_hazards": "Hazards"
+  },
+  "resources_page": {
+    "title": "Resources",
+    "loading_msg": "Loading resources..."
+  }
+}

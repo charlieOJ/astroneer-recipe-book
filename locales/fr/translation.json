@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "name": "Astroneer Livre de Recette"
+  },
+  "homepage": {
+    "title": "Bienvenue dans le livre de recette d'Astroneer",
+    "text": "Vous recherchez un item specifique, mais vous ne savez pas comment le faire ? Vous en avez marre de rechercher où trouver, comment faire tell ou telle resource ? Voilà enfin une place pour tout savoir d'un coup !",
+    "btn_resources": "Ressources",
+    "btn_planets": "Planètes",
+    "btn_items": "Objets",
+    "btn_hazards": "Dangers"
+  },
+  "resources_page": {
+    "title": "Ressources",
+    "loading_msg": "Charge les ressources..."
+  }
+}
