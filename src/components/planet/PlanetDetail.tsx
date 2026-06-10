@@ -43,7 +43,12 @@ const PlanetDetail = ({ planet }: Props): React.JSX.Element => {
         <td className="row-title">
           <b>{t("planet_page.details.difficulty")}</b>
         </td>
-        <td>{t(`planet_page.difficulty_levels.${nameNoSpace(planet.difficulty)}`)}</td>
+        <td>
+          {I18n(
+            `planet_page.difficulty_levels.${nameNoSpace(planet.difficulty)}`,
+            planet.difficulty,
+          )}
+        </td>
       </tr>
     </>
   );
