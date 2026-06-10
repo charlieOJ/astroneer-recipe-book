@@ -1,0 +1,428 @@
+{
+  "navbar": {
+    "name": "Astroneer Livre de Recette"
+  },
+  "homepage": {
+    "title": "Bienvenue dans le livre de recette d'Astroneer",
+    "text": "Vous recherchez un item specifique, mais vous ne savez pas comment le faire ? Vous en avez marre de rechercher où trouver, comment faire tell ou telle resource ? Voilà enfin une place pour tout savoir d'un coup !",
+    "btn_resources": "Ressources",
+    "btn_planets": "Planètes",
+    "btn_items": "Objets",
+    "btn_hazards": "Dangers"
+  },
+  "planets_list": {
+    "all": "Disponible sur toutes les planètes.",
+    "title": "Disponible sur les planètes suivantes:",
+    "caves": "Caves",
+    "mountains": "Manteau/Montagnes"
+  },
+  "loading": {
+    "item": {
+      "msg_one": "Chargement de l'objet...",
+      "msg_many": "Chargement des objets..."
+    },
+    "planet": {
+      "msg_one": "Chargement de la planète...",
+      "msg_many": "Chargement des planètes..."
+    },
+    "resource": {
+      "msg_one": "Chargement de la ressource...",
+      "msg_many": "Chargement des ressources..."
+    },
+    "hazard": {
+      "msg_one": "Chargement du danger...",
+      "msg_many": "Chargement des dangers..."
+    }
+  },
+  "obtain_by": {
+    "text": "obtenu via",
+    "mining": "extraction minière",
+    "smelting": "four",
+    "atmosphericCondenser": "condensateur atmosphérique",
+    "chemistryLab": "labo de chimie"
+  },
+  "printers": {
+    "1": "Sac à dos",
+    "2": "Petite imprimante",
+    "3": "Moyenne imprimante",
+    "4": "Grande imprimante",
+    "0": "Autre"
+  },
+  "searchable_list": {
+    "filters": {
+      "title": "filtres",
+      "clear": "Effacer les filtres",
+      "search_placeholder": {
+        "planet": "rechercher une planète",
+        "resource": "rechercher une resource",
+        "item": "rechercher un objet",
+        "hazard": "rechercher un danger"
+      },
+      "tiers": {
+        "title": "tiers"
+      },
+      "hazards_type": {
+        "title": "type",
+        "defensive": "Défensif",
+        "aggressive": "Agressif",
+        "other": "Autre"
+      }
+    }
+  },
+  "resources_page": {
+    "title": "Ressources",
+    "loading_msg": "Chargement des ressources..."
+  },
+  "resource": {
+    "soil": "terre",
+    "resin": "résine",
+    "quartz": "quartz",
+    "compound": "composite",
+    "organic": "organique",
+    "wolframite": "wolframite",
+    "clay": "argile",
+    "hematite": "hematite",
+    "malachite": "malachite",
+    "laterite": "laterite",
+    "ammonium": "ammonium",
+    "graphite": "graphote",
+    "titanite": "titanite",
+    "lithium": "lithium",
+    "astronium": "astronium",
+    "sphalerite": "sphalerite",
+    "glass": "verre",
+    "carbon": "carbonne",
+    "tungsten": "tungsten",
+    "ceramic": "céramique",
+    "iron": "fer",
+    "copper": "cuivre",
+    "aluminum": "aluminium",
+    "titanium": "titanium",
+    "zinc": "zinc",
+    "methane": "méthane",
+    "sulfur": "soufre",
+    "argon": "argon",
+    "hydrogen": "hydrogène",
+    "nitrogen": "nitrogène",
+    "helium": "hélium",
+    "silicone": "silicone",
+    "rubber": "caoutchouc",
+    "plastic": "plastique",
+    "explosive_powder": "poudre explosive",
+    "steel": "acier",
+    "tungsten_carbide": "carbure de tungstene",
+    "aluminum_alloy": "alliage d'aluminium",
+    "hydrazine": "hydrazine",
+    "graphene": "graphène",
+    "diamond": "diamand",
+    "titanium_alloy": "alliage de titane",
+    "nanocarbon_alloy": "alliage de nano-carbone",
+    "scrap": "ferraille",
+    "exo_chip": "puce exo"
+  },
+  "resource_type": {
+    "natural": "naturelle",
+    "refined": "raffinée",
+    "atmospheric": "atmosphérique",
+    "composite": "composite",
+    "other": "autre"
+  },
+  "planets_page": {
+    "title": "Planètes",
+    "loading_msg": "Chargement des planètes..."
+  },
+  "planet_page": {
+    "detail_title": "Détails",
+    "power_title": "Énergie",
+    "resources_title": "Ressources",
+    "gateway_title": "Porte",
+    "flora_title": "Flore",
+    "details": {
+      "type": {
+        "title": "Type",
+        "terran": {
+          "text": "terran",
+          "description": "Planète typique luxuriante, semblable à la Terre, avec des plaines, des montagnes, des collines boisées et des canyons gris-bleu."
+        },
+        "terran_moon": {
+          "text": "lune terran",
+          "description": "Marqué de cratères, grands et petits. Les montagnes occasionnelles légèrement surélevées espacées entre le paysage gris."
+        },
+        "arid": {
+          "text": "aride",
+          "description": "Dunes sèches et poussiéreuses, flore typique d'un désert. Mesas et plaines plates se mêlaient aux dunes."
+        },
+        "exotic": {
+          "text": "exotique",
+          "description": "Collines densément boisées, forte abondance de plantes."
+        },
+        "exotic_moon": {
+          "text": "lune exotic",
+          "description": "Peu boisé, avec des canyons et des cratères marquant la surface."
+        },
+        "tundra": {
+          "text": "toundra",
+          "description": "Froid et glacé, avec de petits points chauds de vie, entouré de grands glaciers, avec des pentes abruptes vers les plaines glacées en contrebas."
+        },
+        "radiated": {
+          "text": "irradier",
+          "description": "Des friches toxiques, avec des canyons jaune foncé et de hautes montagnes ressemblant à du fromage suisse. Abondance de plantes dangereuses et absence de ressources primaires ou secondaires."
+        }
+      },
+      "day_night_cycle": "Cycle jour/nuit",
+      "difficulty": "Difficulté"
+    },
+    "power": {
+      "sun": "Soleil",
+      "wind": "Vent"
+    },
+    "gases": "Gaz",
+    "gateway": {
+      "power_title": "Puissance requise",
+      "material_title": "Resource"
+    },
+    "flora": {
+      "caves": "caves",
+      "surface": "surface",
+      "underground": "sous terre",
+      "anywhere": "n'importe où",
+      "mantle_and_below": "manteau et en-dessous",
+      "surface_and_caves": "surface et caves"
+    },
+    "difficulty_levels": {
+      "very_low": "très bas",
+      "low": "bas",
+      "very_high": "très haut",
+      "high": "haut",
+      "very_hard": "très difficile",
+      "hard": "difficile"
+    }
+  },
+  "recipe_tree": {
+    "accordion_text": "Afficher la recette complète"
+  },
+  "hazards_page": {
+    "title": "Dangers",
+    "loading_msg": "Chargement des dangers..."
+  },
+  "hazard": {
+    "seed": "Graine",
+    "popcoral": {
+      "name": "Corailexplosif",
+      "description": "Les popcoraux sont des plantes de couleur lavande avec des taches rouges recouvrant la tête.<br/>Popcoral peut être trouvé sur toutes les planètes dans les grottes et à la surface de Glacio et Atrox.<br/>Popcoral ne fera aucun mal au joueur à moins d'être déraciné, ce qui provoquera une explosion violente du popcoral, endommageant tous les joueurs à proximité et les tuant éventuellement s'ils sont trop près lorsqu'il explose."
+    },
+    "daggeroot": {
+      "name": "Racinedague",
+      "description": "La racine de poignard ressemble au popcoral mais avec des têtes plus circulaires et des taches rouges en bas et en haut si elles sont petites.<br/>Les Daggeroots peuvent être trouvés sur toutes les planètes du manteau et en dessous, ainsi qu'à la surface et dans les grottes de Desolo et Atrox.<br/>S'approcher trop près du Daggeroot les amènera à libérer des pointes dangereuses autour d'eux pour poignarder le joueur, ce qui peut très facilement tuer le joueur en seulement deux coups."
+    },
+    "wheezeweed": {
+      "description": "Les Wheezeweeds sont de grandes plantes rondes et jaunes avec des taches rouges géantes de forme irrégulière trouvées à la surface d'Atrox et de Calidor.<br/>Lorsque le joueur s'approche d'eux, ils produisent un sifflement et commencent à trembler. Si le joueur s'approche trop près, il s'étend rapidement, le faisant reculer d'une bonne distance."
+    },
+    "spinelily": {
+      "name": "Lystranchant",
+      "description": "Les spinelilies sont des nénuphars hérissés qui peuvent se former en petits groupes, trouvés à la surface de Calidor et d'Atrox.<br/>Lorsqu'un joueur marche dessus, il le lance en l'air et peut causer des dégâts supplémentaires s'il est lancé trop haut. Les spinelilies ont différentes variantes, certaines ayant des taches rouges tandis que d'autres ont de grandes pointes rouges au-dessus."
+    },
+    "lashleaf": {
+      "name": "Fouetfeuille",
+      "description": "Les feuilles de cils sont une flore à deux feuilles avec une feuille rose en forme de langue au milieu, que l'on trouve sur Vesania et Novus.<br/>Lorsque le joueur marche dessus, il le lance dans les airs extrêmement haut, provoquant potentiellement des dégâts de chute mortels. Les feuilles de cils domestiques tourneront de 90 degrés dans le sens inverse des aiguilles d'une montre lorsqu'elles auront fini de pousser."
+    },
+    "bouncevine": {
+      "name": "Vignerebondissante",
+      "description": "Les bouncevines sont des plantes vertes aux vignes rouges, que l'on trouve sur les montagnes de Sylva.<br/>Lorsqu'on marche dessus, le joueur est lancé dans les airs, mais pas très haut. Le joueur peut être lancé suffisamment haut pour être tué par des dégâts de chute, bien que cela soit très peu probable."
+    },
+    "thistlewhip": {
+      "name": "Fouetchardon",
+      "description": "Les crapets sont des plantes à base violette avec une longue vigne orange à extrémité bulbeuse, que l'on trouve à la surface de Vesania et Novus.<br/>Lorsqu'on s'approche, la vigne tremble et produit du pollen en guise d'avertissement. Si le joueur se rapproche, il fouettera le joueur avec la vigne, le faisant tomber et lui infligeant des dégâts modérés."
+    },
+    "hibissine": {
+      "name": "Sifflerampante",
+      "description": "Les hibissines sont une flore verte enroulée bordée d'une rangée de « trous » qui émettent parfois des bouffées de gaz vert.<br/>Ils se génèrent sous terre sur toutes les planètes, devenant plus courants à mesure que le joueur est plus profond. Lorsqu'il est approché, un Hissbine émettra un nuage lent et homing de gaz nocif sur le joueur qui suivra le joueur et disparaîtra après quelques secondes.<br/>Il existe trois variétés : Normal, Vibrant et Dull. Les nuages acides de ces variétés infligent différentes quantités de dégâts, Normal Hissbines étant le moins mortel et Dull le plus dangereux. Les planètes plus difficiles ont des Hissbines plus dangereuses."
+    },
+    "boomalloon": {
+      "name": "Boombalon",
+      "description": "Les Boomalloons sont une flore ronde, bleue et violette qui se génère à la surface et dans les grottes de Glacio.<br/>Si le joueur s'approche d'un boomalloon, celui-ci commencera à souffler rapidement jusqu'à ce que le joueur recule. Si le joueur s'approche trop près, il explose avec un nuage d'acide. Avant d'exploser, ils libèrent une brume verte qui peut être utilisée pour savoir quand ils vont exploser. Ils sont relativement similaires à Popcoral, mais ceux-ci nécessitent seulement que le joueur soit à proximité pour exploser. Ils ont une hitbox qui permet de détecter si le joueur est suffisamment proche pour qu'il explose, mais cette hitbox a des propriétés plutôt étranges. La hitbox empêchera les joueurs d'interagir avec des éléments qu'elle contient, comme scanner des échantillons de recherche ou y déposer des objets. Les boomalloons peuvent exploser en toute sécurité simplement en s'approchant lentement d'eux, car leur rayon de déclenchement est plus grand que leur rayon d'explosion. Les graines de boomalloon mettent environ une minute et 20 secondes à pousser. Ils exploseront également lorsqu’ils seront déracinés."
+    },
+    "cataplant": {
+      "name": "Cataplante",
+      "description": "Les cataplantes sont des plantes qui possèdent un appendice contenant un orbe rouge, la base étant colorée en fonction de la variété.<br/>Si le joueur se met à portée, il commencera rapidement à forcer une bulle d'air à travers sa base jusqu'au bout, lançant l'orbe rouge sur le joueur. Après quelques secondes, l'orbe explosera, créant un nuage de gaz s'il s'agit d'une cataplante nocive et provoquant une explosion dangereuse s'il s'agit d'une cataplante volatile. Le Cataplant continuera à lancer des orbes jusqu'à ce que le joueur s'éloigne ou soit mort. De tels orbes traversent parfois le terrain ou dévient des pentes, protégeant ainsi le joueur de l'attaque. Des cataplantes nocives peuvent être trouvées à la surface et dans les grottes de Vesania et Novus, tandis que des cataplantes volatiles peuvent être trouvées sur Glacio et Atrox en groupes allant jusqu'à trois. Si une plante cata volatile vous tue, certains de vos objets peuvent être détruits.<br/>Les cataplants volatils peuvent être amenés à se détruire eux-mêmes et peuvent également être exploités pour briser les caches EXO."
+    },
+    "attactus": {
+      "description": "Les Attacti, pluriel d'Attactus, sont des flores qui se génèrent à la surface et sous terre, les Attacti épineux se générant à la surface de Calidor et les Attacti volatils à la surface d'Atrox.<br/>Si le joueur se met à portée, il s'activera et commencera à cracher des projectiles mortels sur le joueur. Lorsque le projectile entre en collision avec le terrain, il « piquera » sans danger s'il s'agit d'un Attactus épineux, ou donnera une petite explosion et détruira une petite partie du sol s'il s'agit d'un Attactus volatil.<br/>L'explosion d'un Volatile Attacti peut également détruire des véhicules, rendant les Volatile Attacti assez dangereux pour les rovers ou les navettes."
+    },
+    "spewflower": {
+      "name": "Fleurcrachante",
+      "description": "Les fleurs de crachat élégantes et nocives sont des flores qui se génèrent respectivement sur Atrox, avec des fleurs de crachat élégantes apparaissant à la surface tandis que des fleurs de crachat nocives apparaissent dans les grottes.<br/>Lorsqu'ils sont approchés par le joueur, ils rétractent immédiatement leur feuille en forme de parapluie et commencent à cracher un nuage de poison dans un rayon jusqu'à ce que le joueur meure ou s'éloigne de la plante. Le joueur peut se tenir au bord du nuage de poison pour observer le Spewflower en action. Les nuages de poison des fleurs à bec nocives font considérablement plus de dégâts que ceux des fleurs à bec élégantes. Une fois déracinées, les fleurs de crachat élégantes laisseront tomber 1 à 2 coquilles de galastéropodes."
+    },
+    "geysers": {
+      "name": "Geysers",
+      "description": "Les geysers sont des évents de vapeur chaude qui apparaissent à la surface de Desolo, Vesania, Novus et Glacio. Lorsque le joueur entre en eux, ils seront lancés dans les airs. Bien que le geyser lui-même ne cause que des dommages mineurs au joueur, des dégâts de chute supplémentaires pourraient finir par être mortels si le joueur ne fait pas attention. Comme la flore, les geysers peuvent être détruits en les déterrant, même s’ils ne laissent rien tomber."
+    },
+    "fall_damage": {
+      "name": "Dégâts de chute",
+      "description": "Les dégâts de chute sont un danger passif auquel les joueurs doivent faire attention. Si un joueur ne fait pas attention, il pourrait tomber d'une falaise ou d'un trou, une flore dangereuse causant également des dégâts de chute en projetant le joueur en l'air. Les dommages causés par les chutes peuvent être annulés grâce à l'utilisation d'un jet de secours à combustible solide ou d'un jet pack d'hydrazine. L'une des meilleures façons d'éviter les dégâts de chute est de glisser le long des parois des falaises ou des cavernes, car le jeu ne considère les dégâts de chute que si vous atterrissez directement sans aucun angle."
+    },
+    "suffocation": {
+      "name": "Suffocation",
+      "description": "Lorsque le joueur manque d'oxygène, il commence à suffoquer, ce qui peut entraîner la mort. Par conséquent, lors de l'exploration, le joueur doit s'assurer qu'il dispose d'un approvisionnement suffisant ou d'un accès à une source d'oxygène, c'est-à-dire un véhicule ou un abri. Pour étendre leur portée, les joueurs peuvent utiliser l'Oxygénateur et une ligne de Tethers. Des réservoirs d'oxygène ou des filtres à oxygène supplémentaires peuvent permettre au joueur d'opérer plus loin de son réseau d'attaches pendant une durée limitée. Un oxygénateur portable doté d’un générateur d’énergie approprié, tel qu’une petite éolienne, peut réduire le risque d’étouffement."
+    }
+  },
+  "items_page": {
+    "title": "Objets",
+    "loading_msg": "Chargement des objets..."
+  },
+  "item": {
+    "small_printer": "petite imprimante",
+    "packager": "emballeur",
+    "leveling_block": "bloc de terrain plat",
+    "tethers": "rallonges",
+    "oxygen_filters": "filtres d'oxygène",
+    "oxygen_tank": "réservoir d'oxygène",
+    "portable_oxygenator": "oxygénateur portable",
+    "small_canister": "petite bonbonne",
+    "beacon": "balise",
+    "worklight": "éclairage",
+    "glowsticks": "bâtons lumineux",
+    "floodlight": "projecteur",
+    "small_generator": "petit générateur",
+    "power_cells": "piles",
+    "small_solar_panel": "solaire (petit)",
+    "small_wind_turbine": "éolienne (petite)",
+    "small_battery": "batterie (petite)",
+    "boost_mod": "accessoire booster",
+    "wide_mod": "module large",
+    "narrow_mod": "module étroit",
+    "inhibitor_mod": "inhibiteur",
+    "alignment_mod": "mod alignement",
+    "drill_mod_1": "module de foret 1",
+    "drill_mod_2": "module de foret 2",
+    "drill_mod_3": "module de foret 3",
+    "dynamite": "dynamite",
+    "fireworks": "feux d'artifice",
+    "small_camera": "petit appareil photo",
+    "small_trumpet_horn": "petit klaxon trompette",
+    "small_squeaker_horn": "petit klaxon trompette",
+    "holographic_figurine": "figurine holographique",
+    "stone_figurine": "figurine",
+    "terrain_analyzer": "analyse de terrain",
+    "probe_scanner": "scanner de sonde",
+    "solid_fuel_jump_jet": "réacteur à carburant solide",
+    "hydrazine_jet_pack": "réacteur à hydrazine",
+    "hoverboard": "hoverboard",
+    "qt_rtg": "GTR mini",
+    "medium_printer": "imprimante moyenne",
+    "oxygenator": "oxygénateur",
+    "medium_shredder": "broyeur moyen",
+    "field_shelter": "abri mobile",
+    "auto_arm": "bras auto",
+    "medium_resource_canister": "bonbonne de ressources moyennes",
+    "medium_fluid_&_soil_canister": "bonbonne de fluide moyen & sol",
+    "medium_gas_canister": "bonbonne de gaz moyen",
+    "power_sensor": "capteur d'alim.",
+    "storage_sensor": "capteur de stockage",
+    "battery_sensor": "capteur de batterie",
+    "button_repeater": "répéteur de bouton",
+    "proximity_repeater": "répéteur de proximité",
+    "delay_repeater": "répéteur de retard",
+    "count_repeater": "répéteur de compte",
+    "power_extenders": "rallonges",
+    "power_switch": "interrupteur",
+    "splitter": "répartiteur",
+    "medium_generator": "générateur (moyen)",
+    "medium_solar_panel": "solaire (moyen)",
+    "medium_wind_turbine": "éolienne (moyenne)",
+    "medium_battery": "batterie (moyenne)",
+    "rtg": "GTR",
+    "medium_platform_a": "plateforme moyenne A",
+    "medium_platform_b": "plateforme moyenne B",
+    "medium_platform_c": "plateforme moyenne C",
+    "tall_platform": "plateforme élevée",
+    "medium_t_platform": "plateforme moyenne en T",
+    "medium_storage": "plateforme moyenne empilée",
+    "medium_storage_silo": "stockage (moyen)",
+    "tall_storage": "stockage élevé",
+    "rover_seat": "siège de rover",
+    "tractor": "tracteur",
+    "trailer": "remorque",
+    "medium_buggy_horn": "klaxon à buggy moyen",
+    "winch": "treuil",
+    "paver": "finisseur",
+    "drill_strength_1": "puissance de foret 1",
+    "drill_strength_2": "puissance de foret 2",
+    "drill_strength_3": "puissance de foret 3",
+    "solid_fuel_thruster": "propulseur à carburant solide",
+    "hydrazine_thruster": "propulseur d'hydrazine",
+    "rail_post_bundle": "pack de postes d'aiguillage",
+    "tall_rail_post_bundle": "pack de postes d'aiguillage longs",
+    "rail_junction_bundle": "pack de noeuds ferroviaires",
+    "large_printer": "imprimante (grande)",
+    "smelting_furnace": "four de fusion",
+    "soil_centrifuge": "centrifugeuse de terre",
+    "chemistry_lab": "labo de chimie",
+    "atmospheric_condenser": "condensateur atmosphérique",
+    "research_chamber": "salle de recherche",
+    "exo_request_platform": "platforme de requête EXO",
+    "trade_platform": "plate-forme d'échange",
+    "large_shredder": "grand broyeur",
+    "large_solar_panel": "grand panneau solaire",
+    "large_wind_turbine": "grande éolienne",
+    "large_battery": "grande batterie",
+    "large_platform_a": "grande plateforme A",
+    "large_platform b": "grande plateforme B",
+    "large_platform c": "grande plateforme C",
+    "large_t_platform": "grande plateforme en T",
+    "large_curved_platform": "grande plateforme incurvée",
+    "large_extended_platform": "grande plateforme étendue",
+    "large_stacked_platform": "grande plateforme empilée",
+    "large_resource_canister": "grande bonbonne de ressources",
+    "large_storage": "stockage (grand)",
+    "large_storage_silo_a": "grand silo de stockage  A",
+    "large_storage_silo_b": "grand silo de stockage  B",
+    "large_active_storage": "grand stockage actif",
+    "large_gas_canister": "grande bonbonne de gaz",
+    "large fluid & soil canister": "grande bonbonne de fluides & de sol",
+    "large_rover_seat": "siège de grand rover",
+    "medium_rover": "rover (moyen)",
+    "crane": "grue",
+    "large_fog_horn": "grande corne de brume",
+    "large rover seat b": "siège de grand rover B",
+    "large_starship_horn": "grand klaxon de navette",
+    "rail_engine": "locomotive",
+    "rail_car": "wagon",
+    "vtol": "décollage à la verticale",
+    "recreational_sphere": "sphère récréative",
+    "shelter": "abri",
+    "auto_extractor": "extracteur auto",
+    "extra_large_shredder": "broyeur extra grand",
+    "solar_array": "panneaux solaires",
+    "xl_wind_turbine": "éolienne XL",
+    "medium_sensor_arch": "arc à capteur moyenne",
+    "xl_sensor_arch": "arc à capteur XL",
+    "xl_sensor_canopy": "auvent à capteur XL",
+    "large_sensor_ring": "grand anneau à capteur",
+    "large_sensor_hoop_a": "grand arceau à capteur A",
+    "large_sensor_hoop_b": "grand arceau à capteur B",
+    "xl_sensor_hoop_a": "arceau à capteur XL A",
+    "xl_sensor_hoop_b": "arceau à capteur XL B",
+    "extra_large_platform_a": "plateforme extra grande A",
+    "extra_large_platform_b": "plateforme extra grande B",
+    "extra_large_platform_c": "plateforme extra grande C",
+    "extra_large_curved_platform": "très grande plateforme incurvée",
+    "xl_extended_platform": "plateforme étendue XL",
+    "figurine_platform": "plateforme à figurines",
+    "extra_large_storage": "stockage (extra grand)",
+    "extra_large_resource_canister": "énorme bombonne de resources",
+    "large_rover": "rover (grand)",
+    "landing_pad": "aire d'atterrissage",
+    "small_shuttle": "petite navette",
+    "medium_shuttle": "navette moyenne",
+    "large_shuttle": "navette (grande)",
+    "rail_station": "gare ferroviaire",
+    "resources": "ressources",
+    "research_items": "objets de recherches",
+    "research_sample": "échantillon de recherche",
+    "wreckage": "feraille",
+    "marbles": "sphère récréative",
+    "terrain_tool": "outil de terrain",
+    "backpack": "sac à dos"
+  }
+}
