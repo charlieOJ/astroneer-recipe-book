@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { PlanetType } from "../../types/planetType";
 
 interface Props {
@@ -5,22 +7,24 @@ interface Props {
 }
 
 const PlanetPower = ({ planet }: Props): React.JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <>
       <tr>
         <td className="row-title">
-          <b>Sun</b>
+          <b>{t("planet_page.power.sun")}</b>
         </td>
 
-        <td>{planet.sun}</td>
+        <td>{t(`planet_page.difficulty_levels.${planet.sun.replaceAll(/-| /g, "_")}`)}</td>
       </tr>
 
       <tr>
         <td>
-          <b>Wind</b>
+          <b>{t("planet_page.power.wind")}</b>
         </td>
 
-        <td>{planet.wind}</td>
+        <td>{t(`planet_page.difficulty_levels.${planet.wind.replaceAll(/-| /g, "_")}`)}</td>
       </tr>
     </>
   );

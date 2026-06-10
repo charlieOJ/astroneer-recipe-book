@@ -1,9 +1,10 @@
-import { Link, useHref } from "react-router-dom";
+import { Link, useHref, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { motion } from "motion/react";
 import { Dropdown } from "react-bootstrap";
+import { motion } from "motion/react";
 
 const Header = (): React.JSX.Element => {
+  const { lng } = useParams();
   const { t, i18n } = useTranslation();
   const basename = useHref("/");
 
@@ -28,7 +29,7 @@ const Header = (): React.JSX.Element => {
   return (
     <header className="d-flex flex-wrap justify-content-center pt-3 mb-4 border-bottom pb-1">
       <Link
-        to="/"
+        to={`/${lng ? lng + "/" : ""}`}
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
       >
         <motion.img

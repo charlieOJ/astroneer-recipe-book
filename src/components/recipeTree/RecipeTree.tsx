@@ -1,9 +1,11 @@
 import Accordion from "react-bootstrap/Accordion";
+import { useTranslation } from "react-i18next";
 
-import { recipeTreeData } from "../../util/utils";
 import { ResourceType } from "../../types/resourceType";
 import { ItemType } from "../../types/itemType";
 import { RecipeSubResourceType, RecipeTreeType } from "../../types/recipeType";
+import { I18n, recipeTreeData } from "../../util/utils";
+
 import RecipeBranch from "./RecipeBranch";
 
 interface Props {
@@ -12,6 +14,7 @@ interface Props {
 }
 
 const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
+  const { t } = useTranslation();
   const itemRecipeData = recipeTreeData(resources, element) as RecipeTreeType;
 
   const recipeTree = (recipe: RecipeTreeType | RecipeSubResourceType): React.JSX.Element => {
@@ -35,11 +38,12 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
       <div className="col-xs-12 mb-3">
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="0">
-            <Accordion.Header>Show full recipe tree</Accordion.Header>
+            <Accordion.Header>{t("recipe_tree.accordion_text")}</Accordion.Header>
             <Accordion.Body>
-              <h3 className="text-capitalize">{itemRecipeData.name}</h3>
+              <h3 className="text-capitalize">
+                {I18n(`resource.${itemRecipeData.name}`, itemRecipeData.name)}
+              </h3>
 
-              <p>Create from : </p>
               {recipeTree(itemRecipeData)}
             </Accordion.Body>
           </Accordion.Item>

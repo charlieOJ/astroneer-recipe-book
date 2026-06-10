@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { ItemType } from "../types/itemType";
 import { useDataContext } from "../context/DataContext";
 
@@ -6,13 +8,14 @@ import Loading from "../components/shared/Loading";
 import ErrorBlock from "../components/ErrorBlock";
 
 const ItemsPage = (): React.JSX.Element => {
+  const { t } = useTranslation();
   const { items, loading, error } = useDataContext();
 
-  if (loading) return <Loading text="Loading items..." needContainer={true} />;
+  if (loading) return <Loading text={t("loading.item.msg_many")} needContainer={true} />;
 
   return (
     <div className="container">
-      <h2>Items</h2>
+      <h2>{t("items_page.title")}</h2>
 
       {error ? (
         <ErrorBlock title="Something went wrong" message={error} />

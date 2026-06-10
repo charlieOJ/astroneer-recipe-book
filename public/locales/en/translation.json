@@ -1,0 +1,134 @@
+{
+  "navbar": {
+    "name": "Astroneer Recipe Book"
+  },
+  "homepage": {
+    "title": "Welcome to the Astroneer recipe book",
+    "text": "Looking for a specific item, but you don't know who to craft it ? Annoy to look where you can find this resource or if you need to craft it ? Finally a place to know it all in one click !",
+    "btn_resources": "Resources",
+    "btn_planets": "Planets",
+    "btn_items": "Items",
+    "btn_hazards": "Hazards"
+  },
+  "planets_list": {
+    "all": "Available on all planets.",
+    "title": "Found on the following planets :",
+    "caves": "Caves",
+    "mountains": "Mantle/Mountains"
+  },
+  "loading": {
+    "item": {
+      "msg_one": "Loading item...",
+      "msg_many": "Loading items..."
+    },
+    "planet": {
+      "msg_one": "Loading planet...",
+      "msg_many": "Loading planets..."
+    },
+    "resource": {
+      "msg_one": "Loading resource...",
+      "msg_many": "Loading resources..."
+    },
+    "hazard": {
+      "msg_one": "Loading hazard...",
+      "msg_many": "Loading hazards..."
+    }
+  },
+  "obtain_by": {
+    "text": "obtain by",
+    "mining": "mining",
+    "smelting": "smelting",
+    "atmosphericCondenser": "atmospheric condenser",
+    "chemistryLab": "chemistry lab"
+  },
+  "printers": {
+    "1": "Backpack",
+    "2": "Small printer",
+    "3": "Medium printer",
+    "4": "Large printer",
+    "0": "Other"
+  },
+  "searchable_list": {
+    "filters": {
+      "title": "filters",
+      "clear": "Clear filters",
+      "search_placeholder": {
+        "planet": "search a planet",
+        "resource": "search a resource",
+        "item": "search an item",
+        "hazard": "search a hazard"
+      },
+      "tiers": {
+        "title": "tiers",
+        "printer_1": "Backpack",
+        "printer_2": "Small printer",
+        "printer_3": "Medium printer",
+        "printer_4": "Large printer",
+        "printer_0": "Other"
+      },
+      "hazards_type": {
+        "title": "type",
+        "defensive": "Defensive",
+        "aggressive": "Aggressive",
+        "other": "Other"
+      }
+    }
+  },
+  "resources_page": {
+    "title": "Resources"
+  },
+  "planets_page": {
+    "title": "Planets"
+  },
+  "planet_page": {
+    "detail_title": "Details",
+    "power_title": "Power",
+    "resources_title": "Resources",
+    "gateway_title": "Gateway",
+    "flora_title": "Flora",
+    "details": {
+      "type": {
+        "title": "Type"
+      },
+      "day_night_cycle": "Day/night cycle",
+      "difficulty": "Difficulty"
+    },
+    "power": {
+      "sun": "Sun",
+      "wind": "Wind"
+    },
+    "gases": "Gases",
+    "gateway": {
+      "power_title": "Chamber power required",
+      "material_title": "Engine material"
+    },
+    "flora": {
+      "caves": "caves",
+      "surface": "surface",
+      "underground": "underground",
+      "anywhere": "anywhere",
+      "mantle_and_below": "mantle and below",
+      "surface_and_caves": "surface and caves"
+    },
+    "difficulty_levels": {
+      "very_low": "very low",
+      "low": "low",
+      "very_high": "very high",
+      "high": "high",
+      "very_hard": "very hard",
+      "hard": "hard"
+    }
+  },
+  "recipe_tree": {
+    "accordion_text": "Show full recipe tree"
+  },
+  "hazards_page": {
+    "title": "Hazards"
+  },
+  "hazard": {
+    "seed": "Seed"
+  },
+  "items_page": {
+    "title": "Items"
+  }
+}

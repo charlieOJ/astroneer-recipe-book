@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
 
 import { RecipeSubResourceType, RecipeTreeType } from "../../types/recipeType";
 import { ItemType } from "../../types/itemType";
+
 import { useDataContext } from "../../context/DataContext";
 import { OBTAIN_BY } from "../../util/constants";
-import { imageUrl } from "../../util/utils";
+import { I18n, imageUrl } from "../../util/utils";
 
 interface Props {
   recipe: RecipeTreeType | RecipeSubResourceType;
@@ -14,6 +16,8 @@ interface Props {
 }
 
 const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
+  const { lng } = useParams();
+  const { t } = useTranslation();
   const { items } = useDataContext();
   const [branchStatus, setBranchStatus] = useState<any>(false);
 
@@ -49,12 +53,14 @@ const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
 
   let obtainBy = null;
   let obtainByUrl = null;
+  let obtainFrom = null;
   if (resource?.obtainBy) {
     const resourceObtainBy = resource?.obtainBy;
     const obtainResource = items.find((r: ItemType) => OBTAIN_BY[resourceObtainBy].id === r.id);
 
-    obtainBy = " - obtain by ";
+    obtainBy = ` - ${t("obtain_by.text")} `;
     obtainByUrl = obtainResource?.slug;
+    obtainFrom = t(`obtain_by.${resource?.obtainBy}`);
   }
 
   return (
@@ -66,26 +72,40 @@ const RecipeBranch = ({ recipe, id }: Props): React.JSX.Element => {
             type="checkbox"
             checked={branchStatus}
             onChange={onCheckResource}
-            aria-label={`${resource.name}`}
+            aria-label={I18n(`resource.${resource.name}`, resource.name)}
           />
         </div>
 
-        {image && <img src={image} className="icon-50" alt={resource?.name} />}
+        {image && (
+          <img
+            src={image}
+            className="icon-50"
+            alt={I18n(`resource.${resource.name}`, resource.name)}
+          />
+        )}
 
         <p className="m-0">
-          <Link to={`/resources/${resource?.slug}`} className="text-decoration-none">
-            <strong className="text-capitalize">{resource!.name}</strong>
+          <Link
+            to={`/${lng ? lng + "/" : ""}resources/${resource?.slug}`}
+            className="text-decoration-none"
+          >
+            <strong className="text-capitalize">
+              {I18n(`resource.${resource.name}`, resource.name)}
+            </strong>
           </Link>{" "}
           x{resourceData?.quantity ?? 1}
           {obtainBy && (
             <>
               {obtainBy}
               {obtainByUrl ? (
-                <Link to={`/items/${obtainByUrl}`} className="text-decoration-none">
-                  <strong>{OBTAIN_BY[resource?.obtainBy ?? 0].from}</strong>
+                <Link
+                  to={`/${lng ? lng + "/" : ""}items/${obtainByUrl}`}
+                  className="text-decoration-none"
+                >
+                  <strong>{obtainFrom}</strong>
                 </Link>
               ) : (
-                <strong>{OBTAIN_BY[resource?.obtainBy ?? 0].from}</strong>
+                <strong>{obtainFrom}</strong>
               )}
             </>
           )}

@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import TierButton from "./TierButton";
 import HazardButton from "./HazardButton";
@@ -17,12 +18,13 @@ const SearchableList = ({
   elementPath,
   elementKeyFn,
 }: Props): React.JSX.Element => {
+  const { t } = useTranslation();
+  const lastChange = useRef<any>(0);
+
   const [immediateSearch, setImmediateSearch] = useState<string>("");
   const [search, setSearch] = useState<string>("");
   const [tiers, setTiers] = useState<number[]>([]);
   const [hazards, setHazards] = useState<("defensive" | "aggressive" | "other")[]>([]);
-
-  const lastChange = useRef<any>(0);
 
   const searchResults = elements.filter((element: any) => {
     const isValid = JSON.stringify(element.name).includes(search.toLowerCase());
@@ -63,7 +65,7 @@ const SearchableList = ({
         onClick={clearSearch}
         className="btn btn-sm link-underline-opacity-0 link-underline-opacity-100-hover text-muted text-small"
       >
-        <i className="fa-regular fa-circle-xmark"></i> Clear filters
+        <i className="fa-regular fa-circle-xmark"></i> {t("searchable_list.filters.clear")}
       </button>
     );
   };
@@ -95,7 +97,9 @@ const SearchableList = ({
   return (
     <div className="searchable-list">
       <div className="my-3">
-        <h4>Filters {renderClearFilters()}</h4>
+        <h4 className="text-capitalize">
+          {t("searchable_list.filters.title")} {renderClearFilters()}
+        </h4>
 
         <div className="input-group my-3">
           <span className="input-group-text" id="basic-addon1">
@@ -104,7 +108,7 @@ const SearchableList = ({
           <input
             type="search"
             className="form-control"
-            placeholder="Search item"
+            placeholder={`${t(`searchable_list.filters.search_placeholder.${elements[0].kind}`)}`}
             aria-label="Search item"
             aria-describedby="basic-addon1"
             onChange={onChange}
@@ -114,63 +118,49 @@ const SearchableList = ({
 
         {searchParams.includes("tiers") && (
           <div>
-            <h5>Tiers</h5>
+            <h5 className="text-capitalize">{t("searchable_list.filters.tiers.title")}</h5>
 
             <div className="my-3">
-              <TierButton id={1} onChange={onChangeTiers} isChecked={tiers.includes(1)}>
-                Backpack
-              </TierButton>
-
-              <TierButton id={2} onChange={onChangeTiers} isChecked={tiers.includes(2)}>
-                Small printer
-              </TierButton>
-
-              <TierButton id={3} onChange={onChangeTiers} isChecked={tiers.includes(3)}>
-                Medium printer
-              </TierButton>
-
-              <TierButton id={4} onChange={onChangeTiers} isChecked={tiers.includes(4)}>
-                Large printer
-              </TierButton>
-
-              <TierButton id={0} onChange={onChangeTiers} isChecked={tiers.includes(0)}>
-                Other
-              </TierButton>
+              {[1, 2, 3, 4, 0].map((printer: number) => {
+                return (
+                  <TierButton
+                    key={printer}
+                    id={printer}
+                    onChange={onChangeTiers}
+                    isChecked={tiers.includes(printer)}
+                  >
+                    {t(`printers.${printer}`)}
+                  </TierButton>
+                );
+              })}
             </div>
           </div>
         )}
 
         {searchParams.includes("hazardTypes") && (
           <div>
-            <h5>Types</h5>
+            <h5 className="text-capitalize">{t("searchable_list.filters.hazards_type.title")}</h5>
 
             <div className="my-3">
-              <HazardButton
-                type={"defensive"}
-                onChange={onChangeHazards}
-                isChecked={hazards.includes("defensive")}
-                icon="leaf"
-              >
-                Defensive
-              </HazardButton>
+              {[
+                { name: "defensive", icon: "leaf" },
+                { name: "aggressive", icon: "biohazard" },
+                { name: "other", icon: "skull" },
+              ].map((type: any) => {
+                const hazardType = type.name;
 
-              <HazardButton
-                type={"aggressive"}
-                onChange={onChangeHazards}
-                isChecked={hazards.includes("aggressive")}
-                icon="biohazard"
-              >
-                Aggressive
-              </HazardButton>
-
-              <HazardButton
-                type={"other"}
-                onChange={onChangeHazards}
-                isChecked={hazards.includes("other")}
-                icon="skull"
-              >
-                Other
-              </HazardButton>
+                return (
+                  <HazardButton
+                    key={hazardType}
+                    type={hazardType}
+                    onChange={onChangeHazards}
+                    isChecked={hazards.includes(hazardType)}
+                    icon={type.icon}
+                  >
+                    {t(`searchable_list.filters.hazards_type.${hazardType}`)}
+                  </HazardButton>
+                );
+              })}
             </div>
           </div>
         )}
