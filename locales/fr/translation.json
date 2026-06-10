@@ -195,7 +195,9 @@
       "very_high": "très haut",
       "high": "haut",
       "very_hard": "très difficile",
-      "hard": "difficile"
+      "hard": "difficile",
+      "easy": "facile",
+      "medium": "moyen"
     }
   },
   "recipe_tree": {
