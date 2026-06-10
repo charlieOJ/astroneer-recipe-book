@@ -1,4 +1,6 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n";
 
 import RootPage from "./pages/RootPage";
 import HomePage from "./pages/HomePage";
@@ -16,20 +18,21 @@ import HazardsPage from "./pages/HazardsPage";
 import HazardPage from "./pages/HazardPage";
 
 import DataProvider from "./context/DataContext";
+import { Suspense } from "react";
 // import NotFoundPage from "./pages/NotFoundPage";
 
 const router = createBrowserRouter(
   [
     {
-      path: "/",
+      path: "/:lng?",
       element: <RootPage />,
       children: [
         {
-          path: "/",
+          index: true,
           element: <HomePage />,
         },
         {
-          path: "/items",
+          path: "items",
           children: [
             {
               index: true,
@@ -42,7 +45,7 @@ const router = createBrowserRouter(
           ],
         },
         {
-          path: "/resources",
+          path: "resources",
           children: [
             {
               index: true,
@@ -55,7 +58,7 @@ const router = createBrowserRouter(
           ],
         },
         {
-          path: "/planets",
+          path: "planets",
           children: [
             {
               index: true,
@@ -68,7 +71,7 @@ const router = createBrowserRouter(
           ],
         },
         {
-          path: "/hazards",
+          path: "hazards",
           children: [
             {
               index: true,
@@ -85,16 +88,20 @@ const router = createBrowserRouter(
     // {
     //   path: "*",
     //   element: <NotFoundPage />,
-    // },
+    // }
   ],
   { basename: "/astroneer-recipe-book" },
 );
 
 const App = (): React.JSX.Element => {
   return (
-    <DataProvider>
-      <RouterProvider router={router} />
-    </DataProvider>
+    <I18nextProvider i18n={i18n}>
+      <Suspense fallback={<div>Chargement des traductions...</div>}>
+        <DataProvider>
+          <RouterProvider router={router} />
+        </DataProvider>
+      </Suspense>
+    </I18nextProvider>
   );
 };
 

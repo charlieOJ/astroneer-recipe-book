@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import { GasType, PlanetType } from "../../types/planetType";
 import { ResourceType } from "../../types/resourceType";
-import { imageUrl } from "../../util/utils";
+
+import { I18n, imageUrl } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
@@ -13,28 +16,29 @@ interface Props {
 }
 
 const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
+  const { t } = useTranslation();
+  const { lng } = useParams();
+
   const renderPrimaryResource = (): React.JSX.Element => {
     if (!resources.primary) return <></>;
 
     const icon = imageUrl(resources.primary, "icon");
+    const elemName = I18n(`resource.${resources.primary.name}`, resources.primary.name);
 
     return (
       <tr>
         <td className="row-title">
-          <b>Caves</b>
+          <b>{t("planets_list.caves")}</b>
         </td>
 
         <td>
-          {icon && (
-            <img
-              src={icon}
-              alt={`${resources.primary.name} primary resource`}
-              className="icon-30"
-            />
-          )}
+          {icon && <img src={icon} alt={`${elemName} primary resource`} className="icon-30" />}
 
-          <Link to={`/resources/${resources.primary.slug}`} className="text-decoration-none">
-            <span className="text-capitalize">{resources.primary.name}</span>
+          <Link
+            to={`/${lng ? lng + "/" : ""}resources/${resources.primary.slug}`}
+            className="text-decoration-none"
+          >
+            <span className="text-capitalize">{elemName}</span>
           </Link>
         </td>
       </tr>
@@ -45,24 +49,22 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
     if (!resources.secondary) return <></>;
 
     const icon = imageUrl(resources.secondary, "icon");
+    const elemName = I18n(`resource.${resources.secondary.name}`, resources.secondary.name);
 
     return (
       <tr>
         <td className="row-title">
-          <b>Mantle/Mountains</b>
+          <b>{t("planets_list.mountains")}</b>
         </td>
 
         <td>
-          {icon && (
-            <img
-              src={icon}
-              alt={`${resources.secondary.name} secondary resource`}
-              className="icon-30"
-            />
-          )}
+          {icon && <img src={icon} alt={`${elemName} secondary resource`} className="icon-30" />}
 
-          <Link to={`/resources/${resources.secondary.slug}`} className="text-decoration-none">
-            <span className="text-capitalize">{resources.secondary.name}</span>
+          <Link
+            to={`/${lng ? lng + "/" : ""}resources/${resources.secondary.slug}`}
+            className="text-decoration-none"
+          >
+            <span className="text-capitalize">{elemName}</span>
           </Link>
         </td>
       </tr>
@@ -77,7 +79,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
       <>
         <tr>
           <td rowSpan={resources.gases.length + 1 || 1} className="row-title">
-            <b>Gases</b>
+            <b>{t("planet_page.gases")}</b>
           </td>
         </tr>
 
@@ -91,13 +93,17 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
     if (!currentResource) return <></>;
 
     const icon = imageUrl(currentResource, "icon");
+    const resourceName = I18n(`resource.${currentResource.name}`, currentResource.name);
 
     return (
       <tr key={gas.id}>
         <td>
-          {icon && <img src={icon} alt={`${currentResource.name} gas`} className="icon-30" />}
-          <Link to={`/resources/${currentResource.slug}`} className="text-decoration-none me-2">
-            <span className="text-capitalize">{currentResource.name}</span>
+          {icon && <img src={icon} alt={`${resourceName} gas`} className="icon-30" />}
+          <Link
+            to={`/${lng ? lng + "/" : ""}resources/${currentResource.slug}`}
+            className="text-decoration-none me-2"
+          >
+            <span className="text-capitalize">{resourceName}</span>
           </Link>
           ({gas.ppu} ppu)
         </td>

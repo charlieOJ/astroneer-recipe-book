@@ -1,6 +1,9 @@
-import images from "../imagesConfig";
-import { HazardType } from "../types/hazardType";
+import i18n from "../i18n";
+import type { TOptions } from "i18next";
 
+import images from "../imagesConfig";
+
+import { HazardType } from "../types/hazardType";
 import { ItemType } from "../types/itemType";
 import { PlanetType } from "../types/planetType";
 import { RecipeResourceType, RecipeTreeType } from "../types/recipeType";
@@ -91,22 +94,22 @@ export const resourcesData = (
   return resourcesData;
 };
 
+export const nameNoSpace = (str: string) => str.replaceAll(/-| /g, "_");
+
 export const imageUrl = (
   element: ItemType | PlanetType | ResourceType | HazardType,
   suffix?: string,
 ) => {
-  if (suffix) return images[`${fileName(element.name)}_${suffix}`];
+  if (suffix) return images[`${nameNoSpace(element.name)}_${suffix}`];
 
-  return images[fileName(element.name)];
+  return images[nameNoSpace(element.name)];
 };
 
 export const iconItemUrl = (item: ItemType) => {
-  if (!item.type) return images[`${fileName(item.name)}_icon`];
+  if (!item.type) return images[`${nameNoSpace(item.name)}_icon`];
 
-  return images[`${fileName(item.type)}_icon`];
+  return images[`${nameNoSpace(item.type)}_icon`];
 };
-
-const fileName = (str: string) => str.replaceAll(/-| /g, "_");
 
 const addSlug = (elem: any, index: number): PlanetType | ItemType | ResourceType | HazardType => {
   elem.slug = index;
@@ -129,4 +132,13 @@ export const addSlugAndKind = (
   elem = addSlug(elem, index);
   elem = addKind(elem, kind);
   return elem;
+};
+
+export const I18n = (tKey: string, fallbackValue: string, options?: TOptions) => {
+  return i18n.t(nameNoSpace(tKey.toLowerCase()), {
+    lng: i18n.language,
+    fallbackLng: false,
+    defaultValue: fallbackValue,
+    ...options,
+  });
 };

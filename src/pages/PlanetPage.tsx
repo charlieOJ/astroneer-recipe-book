@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { PlanetType } from "../types/planetType";
+
 import { useDataContext } from "../context/DataContext";
 
 import DetailHeader from "../components/shared/DetailHeader";
@@ -11,16 +13,21 @@ import ErrorBlock from "../components/ErrorBlock";
 
 const PlanetPage = (): React.JSX.Element => {
   const { id } = useParams<any>();
+  const { t } = useTranslation();
   const { planets, loading, error } = useDataContext();
 
   if (!id) return <></>;
-  if (loading) return <Loading text="Loading planet info..." needContainer={true} />;
-  if (error)
-    return <ErrorBlock title="Something went wrong" message={error} needContainer={true} />;
+  if (loading) return <Loading text={t("loading.planet.msg_one")} needContainer={true} />;
+  if (error || !planets[parseInt(id)])
+    return (
+      <ErrorBlock
+        title="Something went wrong"
+        message={error || "No planet for this id."}
+        needContainer={true}
+      />
+    );
 
   const planet: PlanetType = planets[parseInt(id)];
-
-  if (!planet) return <ErrorBlock title="Oups !" message="No planet for this id." />;
 
   return (
     <div className="container">
