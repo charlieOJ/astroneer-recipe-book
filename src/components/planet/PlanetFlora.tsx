@@ -1,17 +1,15 @@
 import { Link, useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 
 import { HazardType } from "../../types/hazardType";
 import { HazardInfoType, PlanetType } from "../../types/planetType";
 
 import { useDataContext } from "../../context/DataContext";
-import { I18n, imageUrl } from "../../util/utils";
+import { I18n, imageUrl, nameNoSpace } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
 }
 const PlanetFlora = ({ planet }: Props): React.JSX.Element => {
-  const { t } = useTranslation();
   const { lng } = useParams();
   const { hazards } = useDataContext();
 
@@ -23,7 +21,7 @@ const PlanetFlora = ({ planet }: Props): React.JSX.Element => {
 
     const image = imageUrl(currentHazard);
     const planetHazard = planet.hazards.find((h: HazardInfoType) => h.id === hazard.id);
-    const hazardName = I18n(`hazard.${currentHazard.name}`, currentHazard.name);
+    const hazardName = I18n(`hazard.${currentHazard.name}.name`, currentHazard.name);
 
     return (
       <tr key={hazard.id}>
@@ -39,10 +37,7 @@ const PlanetFlora = ({ planet }: Props): React.JSX.Element => {
             <span className="text-capitalize">{hazardName}</span>
           </Link>
           (
-          {I18n(
-            `planet_page.flora.${planetHazard!.location.replaceAll(/-| /g, "_")}`,
-            planetHazard!.location,
-          )}
+          {I18n(`planet_page.flora.${nameNoSpace(planetHazard!.location)}`, planetHazard!.location)}
           )
         </td>
       </tr>

@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import { PlanetType } from "../../types/planetType";
-import { I18n, imageUrl } from "../../util/utils";
+import { I18n, imageUrl, nameNoSpace } from "../../util/utils";
 
 interface Props {
   planet: PlanetType;
@@ -43,7 +43,7 @@ const PlanetDetail = ({ planet }: Props): React.JSX.Element => {
         <td className="row-title">
           <b>{t("planet_page.details.difficulty")}</b>
         </td>
-        <td>{t(`planet_page.difficulty_levels.${planet.difficulty.replaceAll(/-| /g, "_")}`)}</td>
+        <td>{t(`planet_page.difficulty_levels.${nameNoSpace(planet.difficulty)}`)}</td>
       </tr>
     </>
   );

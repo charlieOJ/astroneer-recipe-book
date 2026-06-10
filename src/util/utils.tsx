@@ -94,7 +94,7 @@ export const resourcesData = (
   return resourcesData;
 };
 
-const nameNoSpace = (str: string) => str.replaceAll(/-| /g, "_");
+export const nameNoSpace = (str: string) => str.replaceAll(/-| /g, "_");
 
 export const imageUrl = (
   element: ItemType | PlanetType | ResourceType | HazardType,
