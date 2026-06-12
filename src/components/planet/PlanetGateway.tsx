@@ -30,7 +30,7 @@ const PlanetGateway = ({ planet, resources }: Props): React.JSX.Element => {
         </td>
 
         <td>
-          {icon && <img src={icon} alt={`${elemName} gateway material`} className="icon-30" />}
+          {icon && <img src={icon} alt={`${elemName} gateway material`} className="icon-30 me-2" />}
 
           <Link
             to={`/${lng ? lng + "/" : ""}resources/${resources.gateway.slug}`}
