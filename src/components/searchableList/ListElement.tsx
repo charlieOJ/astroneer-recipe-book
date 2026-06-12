@@ -31,7 +31,7 @@ const ListElement = ({ element, path }: Props): React.JSX.Element => {
 
     switch (element.kind) {
       case "item":
-        element.tier.map((tr: number, index: number) => {
+        element.tier.forEach((tr: number, index: number) => {
           badges[index] = {
             class: "secondary",
             text: t(`printers.${tr}`),
