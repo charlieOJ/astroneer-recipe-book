@@ -20,7 +20,7 @@ const Header = (): React.JSX.Element => {
   const changeLang = (lang: string) => {
     i18n.changeLanguage(lang);
     const regex = new RegExp(
-      `(${basename}\/fr\/)|(${basename}\/en\/)|(${basename}\/)|(${basename})`,
+      `(${basename}\\/fr\\/)|(${basename}\\/en\\/)|(${basename}\\/)|(${basename})`,
       "gi",
     );
 
