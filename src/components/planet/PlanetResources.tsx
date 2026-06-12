@@ -32,7 +32,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
         </td>
 
         <td>
-          {icon && <img src={icon} alt={`${elemName} primary resource`} className="icon-30" />}
+          {icon && <img src={icon} alt={`${elemName} primary resource`} className="icon-30 me-2" />}
 
           <Link
             to={`/${lng ? lng + "/" : ""}resources/${resources.primary.slug}`}
@@ -58,7 +58,9 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
         </td>
 
         <td>
-          {icon && <img src={icon} alt={`${elemName} secondary resource`} className="icon-30" />}
+          {icon && (
+            <img src={icon} alt={`${elemName} secondary resource`} className="icon-30 me-2" />
+          )}
 
           <Link
             to={`/${lng ? lng + "/" : ""}resources/${resources.secondary.slug}`}
@@ -98,7 +100,7 @@ const PlanetResources = ({ planet, resources }: Props): React.JSX.Element => {
     return (
       <tr key={gas.id}>
         <td>
-          {icon && <img src={icon} alt={`${resourceName} gas`} className="icon-30" />}
+          {icon && <img src={icon} alt={`${resourceName} gas`} className="icon-30 me-2" />}
           <Link
             to={`/${lng ? lng + "/" : ""}resources/${currentResource.slug}`}
             className="text-decoration-none me-2"

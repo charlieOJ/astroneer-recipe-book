@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
 
+import ThemeColorProvider from "./context/ThemeContext";
+
 import RootPage from "./pages/RootPage";
 import HomePage from "./pages/HomePage";
 
@@ -97,9 +99,11 @@ const App = (): React.JSX.Element => {
   return (
     <I18nextProvider i18n={i18n}>
       <Suspense fallback={<div>Chargement des traductions...</div>}>
-        <DataProvider>
-          <RouterProvider router={router} />
-        </DataProvider>
+        <ThemeColorProvider>
+          <DataProvider>
+            <RouterProvider router={router} />
+          </DataProvider>
+        </ThemeColorProvider>
       </Suspense>
     </I18nextProvider>
   );

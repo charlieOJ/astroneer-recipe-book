@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Dropdown } from "react-bootstrap";
 import { motion } from "motion/react";
 
+import ThemeSwitch from "./ThemeSwitch";
+
 const Header = (): React.JSX.Element => {
   const { lng } = useParams();
   const { t, i18n } = useTranslation();
@@ -18,7 +20,7 @@ const Header = (): React.JSX.Element => {
   const changeLang = (lang: string) => {
     i18n.changeLanguage(lang);
     const regex = new RegExp(
-      `(${basename}\/fr\/)|(${basename}\/en\/)|(${basename}\/)|(${basename})`,
+      `(${basename}\\/fr\\/)|(${basename}\\/en\\/)|(${basename}\\/)|(${basename})`,
       "gi",
     );
 
@@ -45,19 +47,23 @@ const Header = (): React.JSX.Element => {
         <span className="ms-2">{t("navbar.name")}</span>
       </Link>
 
-      <Dropdown className="text-end">
-        <Dropdown.Toggle variant="light" id="dropdown-lang">
-          {i18n.language.toUpperCase()}
-        </Dropdown.Toggle>
+      <div className="text-end d-flex align-items-center">
+        <ThemeSwitch />
 
-        <Dropdown.Menu>
-          {languages.map((locale: string) => (
-            <Dropdown.Item key={locale} as="button" onClick={() => changeLang(locale)}>
-              {locale.toUpperCase()}
-            </Dropdown.Item>
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
+        <Dropdown>
+          <Dropdown.Toggle variant="light" id="dropdown-lang" size="sm">
+            {i18n.language.toUpperCase()}
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            {languages.map((locale: string) => (
+              <Dropdown.Item key={locale} as="button" onClick={() => changeLang(locale)}>
+                {locale.toUpperCase()}
+              </Dropdown.Item>
+            ))}
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
     </header>
   );
 };

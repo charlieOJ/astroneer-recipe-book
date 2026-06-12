@@ -41,7 +41,7 @@ const RecipeTree = ({ element, resources }: Props): React.JSX.Element => {
             <Accordion.Header>{t("recipe_tree.accordion_text")}</Accordion.Header>
             <Accordion.Body>
               <h3 className="text-capitalize">
-                {I18n(`resource.${itemRecipeData.name}`, itemRecipeData.name)}
+                {I18n(`${element.kind}.${itemRecipeData.name}`, itemRecipeData.name)}
               </h3>
 
               {recipeTree(itemRecipeData)}
